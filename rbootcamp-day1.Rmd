@@ -1,0 +1,2237 @@
+---
+title: "R Boot Camp: A Quick Introduction to Programming with R"
+author: "Bilgecan Sen"
+output:
+  ioslides_presentation:
+    widescreen: true
+---
+
+---
+
+**Sources**
+
+- <a href = "http://r4ds.had.co.nz">R for Data Science</a>
+- <a href = "http://adv-r.had.co.nz">Advanced R</a>
+
+**Previous Contributors**
+
+- <a href = "http://benweinstein.weebly.com/">Ben Weinstein</a> (2014)
+- <a href = "http://mccannecology.weebly.com/">Mike McCann</a> (2015)
+- <a href = "http://gurevitchlab.weebly.com/nicole-kinlock.html">Nicole Kinlock</a> (2016, 2017)
+
+
+
+# Day 1
+
+- Part 1: <a href = "#/3"> Introduction to R </a>
+- Part 2: <a href = "#/30"> Homogenous Data Structures </a>
+- Part 3: <a href = "#/93"> Loops and Flow Statements </a>
+- Part 4: <a href = "#/116"> Functions </a>
+- Part 5: <a href = "#/133"> Heterogenous Data Structures </a>
+- Part 6: <a href = "#/172"> Basic Plotting </a>
+- Part 7: <a href = "#/172"> Epilogue </a> 
+
+
+
+# Part1: Introduction to R
+
+
+
+## The R Language
+
+- A programming language
+- Mainly used for
+    + Data wrangling
+    + Statistical analaysis
+    + Data visualization
+- Created by Ross Ihaka and Robert Gentlemen in 1996
+- Interpreted language not a compiled one
+- Development and distribution handled by several statisticians (R Core Development Team)
+- Freely distributed from *Comprehensive R Archive Network (CRAN)*
+- Available on MacOS, Windows and Linux
+
+
+
+## Why use R?
+
+- Flexibility
+- Reproducibility
+
+
+
+## RStudio
+
+- Any text editor is good enough for an R script
+- Rstudio provides a more structured and streamlined experience
+- The screen is split four ways: 
+    + **Workspace:** (Top left) Where scripts are written & saved
+    + **Console:** (Bottom left) Where commands are run
+    + **Environment, History:** (Top right) Where objects are stored
+    + **Files, Plots, Packages, and Help:** (Bottom right) View data, help
+
+
+
+## Running R
+
+- Type directly into the console (best when you don't want to save the code) or type into the script - then run `(CTRL + ENTER)`
+
+- A **script** is a plain text file with R commands in it. This will be where you save the code that you are writing - the file will end in the extension **.R**
+
+
+
+## Three components of R
+
+- Operators
+- Objects
+- Functions
+
+
+
+## Arithmetic operators
+
+- `+`  Addition 
+- `-`  Subtraction 
+- `*`  Multiplication 
+- `/`  Division 
+- `^`  Exponentiation 
+- `%%` Modulus (finds remainder) 
+- `%/%` Integer division (leaves off remainder)
+
+
+
+## Arithmetic operators
+
+```{r}
+2+2
+
+7-2
+
+4^3
+
+9/2
+```
+
+
+
+### Arithmetic operators
+
+- R obeys the standard order of operations.
+
+```{r}
+2+5*2/3
+
+2+(5*(2/3))
+```
+
+
+
+## Logical Operators
+
+- `<`  Less than
+- `<=` Less than or equal to 
+- `>`  Greater than
+- `>=` Greater than or equal to  
+- `==` Exactly equal to 
+- `!=` Not equal to 
+- `!`  NOT
+- `|`  OR
+- `&`  AND
+
+
+
+## Logical Operators
+
+```{r}
+2<3
+
+6>=4
+
+(2+2)==5
+
+9<=15 & 10>11
+```
+
+
+
+## Objects
+
+- "Things" in R are stored in objects which have a name.
+- "Things" can be variables, data, functions, results, numbers, etc.
+- The "assign" operator:  **<-**.
+
+
+
+## Objects | Assigning elements to objects
+
+```{r}
+x <- 1
+x
+x + 4
+x
+```
+
+
+
+## Objects | Assigning elements to objects
+
+```{r}
+y <- x + 4
+y
+x <- x + 4
+x
+```
+
+
+
+## Objects | Arithmetic using objects
+
+```{r}
+x <- 6
+y <- 38
+y-x
+x*y
+y%%x
+```
+
+
+
+## Objects | Arithmetic using objects
+
+```{r}
+z <- y + x
+z
+```
+
+
+
+## Objects | Arithmetic using objects
+
+```{r}
+x <- 10
+y <- 3
+x==y
+x>y
+```
+
+
+
+## Exercise 1.1
+
+- Pick a number, assign it to the object **z**
+- Double **z** and assign it to **a**
+- Add 10 to **a** and assign it to **b**
+- divide **b** by 2 and assign it to **c**
+- Subtract **z** from **c** and assign it to **d**
+- Is **d** equal to **z**?
+
+
+
+## Objects | Assigning multiple elements to objects: `c()`
+
+```{r}
+x <- c(1,2,3,4,5)
+x
+y <- c(4,2)
+y
+```
+
+
+
+## Objects | Arithmetic with multiple elements
+
+```{r}
+x <- c(1,2,3,4,5)
+x + 1
+x*2
+```
+
+
+
+## Objects | Arithmetic with multiple elements
+
+```{r}
+y <- c(1,4,3,2,5)
+x==y
+x>y
+```
+
+
+
+## Exercise 1.2
+
+- Create an object that stores values 45, 3, 9, 99, and 0
+- Create another object with 66, 0, 1, 5, and 0
+- Sum these objects
+- Multiply them
+- Divide the first one with the second one
+- What results did you get?
+- How does R handle arithmetic operiations with one dimensional objects of length>1?
+
+
+
+## Functions
+
+- A *function* is a stored object that performs a task given some inputs (called *arguments*). R has many functions already available, but you can also write your own functions.
+
+- Functions are used in the format: `name_of_function(inputs)`   
+
+- The output of a function can be saved to an object:  
+`output <- name_of_function(inputs)`
+
+
+
+## Functions
+
+- Use `sum()` to take the sum of all elements in an object:
+  
+```{r}
+x <- c(45,3,9,99,0)
+sum(x)
+z <- sum(x)
+z
+```
+
+
+
+## Functions
+
+- Use `prod()` to multiply all elements in an object:
+  
+```{r}
+prod(x)
+```
+
+- Use `mean()` to take the mean of all elements in an object:
+  
+```{r}
+mean(x)
+```
+
+
+
+## R Tip: The help system
+
+- Help files provide important information on what the function does, how it works, and they provide examples at the very bottom.
+
+```{r}
+help(mean)
+```
+
+- You can also use `?` before a function name to view the help file 
+
+```{r}
+?mean  # Same as help(mean) 
+```
+
+- Use `??` to search for functions; e.g. search for any function whose help files contain the word `"sequence"`
+
+```{r}
+??sequence
+```
+
+
+
+## Exercise 1.3
+
+1. What is the median of 34, 16, 105, and 27?   
+*Remember:* functions are often named intuitively.
+
+2. What does the function `range()` do, and what is the sample example in the help file?
+
+3. Is `mean(4, 5)` different than `mean(c(4, 5))`?
+
+
+
+# Part 2: Homogenous Data Structures
+
+
+
+---
+
+- R has 7 types of object *classes* representing data
+    + vector (atomic vector)
+    + factor
+    + matrix
+    + array
+    + data frame
+    + list (recursive vector)
+    + ts
+
+
+
+## 1. Vectors | Creating vectors
+
+- Every object we have crated so far is a vector
+- Vectors can be of any length
+- Single dimension
+
+```{r}
+x <- 1
+x <- c(5,6,7,8,9,10)
+```
+
+
+
+## 1. Vectors | Creating vectors
+
+```{r}
+x <- 5:10
+x
+```
+
+
+
+## 1. Vectors | Creating vectors
+
+```{r}
+x <- seq(from = 5, to = 10, by = 1)
+x
+
+x <- seq(from = 5, to = 6, by = 0.1)
+x
+
+```
+
+
+
+## 1. Vectors | Creating vectors
+
+```{r}
+is.vector(x)
+
+y <- c()
+is.vector(y)
+
+z <- vector(length = 5, mode = "numeric")
+z
+```
+
+
+
+## 1. Vectors | Combining vectors
+
+- You can combine multiple vectors into a single vector
+
+```{r}
+x <- c(1,2,3)
+y <- c(4,5)
+z <- c(x,y)
+z
+```
+
+
+
+## 1. Vectors | Naming vectors
+
+- You can name elements when you are creating the vector
+
+```{r}
+z <- c(monday = 1, tuesday = 2, wednesday = 3, thursday = 4, friday = 5)
+z
+names(z)
+```
+
+
+
+## 1. Vectors | Naming vectors
+
+- Or you can name the elements after you create the vector
+
+```{r}
+z <- c(1,2,3,4,5)
+names(z)
+# Names need to be a `character` vector 
+names(z) <- c("monday", "tuesday", "wednesday", "thursday", "friday") 
+names(z)
+```
+
+
+
+## 1. Vectors | Vector subsetting: positional
+
+- You can access any element in the vector by putting its position in square brackets `[ ]`
+
+```{r}
+height <- c(76, 72, 74, 74, 78)
+height
+```
+
+
+
+## 1. Vectors | Vector subsetting: positional
+
+- You can access any element in the vector by putting its position in square brackets `[ ]`
+
+```{r}
+height[1] # extract the 1st element in the vector 
+height[5] # extract the 5th element
+height[6] # There is no 6th element
+
+```
+
+
+
+## 1. Vectors | Vector subsetting: positional
+
+- We can assign subsets to new objects.
+
+```{r}
+x <- height[1]
+x
+y <- height[5]
+y
+```
+
+
+
+## 1. Vectors | Vector subsetting: positional
+
+- We can subset multiple elements simultaneusly.
+
+```{r}
+height[c(1,2,3)]
+height[1:3]
+```
+
+
+
+## 1. Vectors | Vector subsetting: positional
+
+- You can also use vector indexing to return the same vector with certain elements missing using the `-` operator.
+
+```{r}
+height[-1]
+
+height[c(-1,-5)]
+
+height_new <- height[-1]
+```
+
+
+
+## 1. Vectors | Vector subsetting: named
+
+- You can assign names to each element of the vector, and then extract the element by indexing based on the name.
+
+```{r}
+temp <- c(monday = 28.1, tuesday = 28.5, wednesday = 29.0, thursday = 30.1, friday = 30.2)
+temp
+```
+
+
+
+## 1. Vectors | Vector subsetting: named
+
+- You can assign names to each element of the vector, and then extract the element by indexing based on the name.
+
+```{r}
+temp["wednesday"] # Always use "" when subsetting by name
+temp[3]
+
+# Try subseting with only wednesday (without ""). 
+# What happens?
+
+```
+
+
+## 1. Vectors | Vector subsetting: logical
+
+- You can extract elements in a vector that meet specific criteria based on a logical expression.
+
+```{r}
+y <- 5:50
+y
+```
+
+
+
+## 1. Vectors | Vector subsetting: logical
+
+- You can extract elements in a vector that meet specific criteria based on a logical expression.
+
+```{r}
+# Turns whole vector to logical
+y <= 10
+
+# extract all elements less than or equal to 10
+y[y <= 10]
+```
+
+
+
+- You can extract elements in a vector that meet specific criteria based on a logical expression.
+
+```{r}
+ # extract all elements less than 10 and not equal to 5
+y[y < 10 & y != 5]  
+```
+
+## Exercise 2.1
+
+- What are the 9th and 12th positions of the vector `seq(1, 27, 0.5)`? 
+
+- Create a vector that includes all even number between 4 and 34 and name it `a`. Hint: use the `seq()` function. 
+
+- Extract all elements of `a` that are greater than or equal to 17.
+
+
+
+## Types of Vectors
+
+- Also called storage mode or just mode.
+- There are 6 vector types:
+    - Numeric (Double)
+    - Integer
+    - Character
+    - Logical
+    - Complex
+    - Raw
+
+
+
+## Types of Vectors | Numeric and integer
+
+```{r}
+x <- c(1,2,3,4,5)
+is.double(x)
+
+y <- c(1.25, 3.755, 9.001)
+is.double(y)
+```
+
+
+
+## Types of Vectors | Numeric and integer
+
+```{r}
+z1 <- c(1L,2L,3L,4L,5L)
+is.integer(z1)
+ 
+z2 <- as.integer(y)
+is.integer(z2)
+```
+
+
+
+## Types of Vectors | Character
+
+```{r}
+x <- c("Bilgecan is the best TA")
+x
+length(x)
+```
+
+
+
+## Types of Vectors | Character
+
+```{r}
+y <- c("Bilgecan", "is", "the", "best", "TA")
+y
+y[1]
+y[c(2,4)]
+```
+
+
+
+## Types of Vectors | Logical
+
+```{r}
+x <- c(1,2,3,4,5)
+y <- x<3
+y
+
+z <- c(TRUE, FALSE, T, F)
+z
+```
+
+
+
+## Conversion of modes | To character
+
+```{r}
+x
+z
+```
+
+
+
+## Conversion of modes | To character
+
+```{r}
+x <- as.character(x)
+x
+
+z <- as.character(z)
+z
+```
+
+
+
+## Conversion of modes | To numeric
+
+```{r}
+x <- c("1","-2", "3.25", "A")
+x <- as.numeric(x)
+x
+```
+
+
+
+## Conversion of modes | To numeric
+
+```{r}
+y <- c(T,F,F,T,T)
+y <- as.numeric(y)
+y
+```
+
+
+
+## Conversion of modes | To logical
+
+```{r}
+x <- c(0, 0, 5, 79, 3500)
+x <- as.logical(x)
+x
+
+y <- c("TRUE", "F", "1", "0", "35000")
+y <- as.logical(y)
+y
+```
+
+
+
+## Exercise 2.2
+
+1. Create a vector with TRUE, and 50
+2. Create a vector with "A", and 1
+3. Create a vector with TRUE and "C" 
+4. Did you notice a pattern? How is the mode of each vector you created above determined?
+
+
+
+## R Tip: Coercion
+
+All elements of an atomic vector must be the same type, so when you attempt to combine different types they will be coerced to the most flexible type. Types from least to most flexible are: logical, integer, double, and character.
+
+
+
+## 2. Factors
+
+- A factor is a vector that can contain only predefined values, and is used to store categorical data.
+- Factors are built on top of integer vectors with additional attributes.
+
+
+
+## 2. Factors | Creating factors
+
+```{r}
+x <- c(1,2,3,4,5)
+x <- factor(x)
+x
+```
+
+
+
+## 2. Factors | Creating factors
+
+```{r}
+z <- c("a", "b", "c", "d")
+z <- as.factor(z)
+z
+
+z <- factor(z, levels = c("c","b","a","d"), ordered = T)
+z
+```
+
+
+
+## 2. Factors | Creating factors
+
+- You can't assign values that is outside of its levels to a factor.
+
+```{r}
+z[5] <- "a"
+z[6] <- "e"
+z
+```
+
+
+
+## 2. Factors | Creating factors
+
+- You can't combine factors
+
+```{r}
+f <- c(z,x)
+f
+is.factor(f)
+typeof(f)
+```
+
+
+
+## 3. Matrices
+
+- Two dimensional data related object (a table)
+- Behaves very similiarly to vectors
+
+
+
+## 3. Matrices | Creating Matrices
+
+```{r}
+m <- matrix(nrow = 2, ncol = 2)
+m
+```
+
+
+
+## 3. Matrices | Creating Matrices
+
+```{r}
+m <- matrix(c(1,2,3,4), nrow = 2, ncol = 2)
+m
+```
+
+
+
+## 3. Matrices | Creating Matrices
+
+```{r}
+m <- matrix(c(1,2,3,4), nrow = 2, ncol = 2, byrow = T)
+m
+
+is.matrix(m)
+```
+
+
+
+## 3. Matrices | Creating Matrices
+
+```{r}
+v1 <- c(1,2,3)
+v2 <- c(4,5,6)
+
+m <- cbind(v1, v2)
+m
+```
+
+
+
+## 3. Matrices | Creating Matrices
+
+```{r}
+m <- rbind(v1, v2)
+m
+
+is.matrix(m)
+```
+
+
+
+## 3. Matrices | Naming rows and columns
+
+```{r}
+names(m)
+
+colnames(m)
+rownames(m)
+```
+
+
+
+## 3. Matrices | Naming rows and columns
+
+```{r}
+colnames(m) <- c("a", "b", "c")
+m
+```
+
+
+
+## 3. Matrices | Arithmetic
+
+```{r}
+m <- matrix(c(1,2,3,4), nrow = 2, ncol = 2)
+m*2
+```
+
+
+
+## 3. Matrices | Arithmetic
+
+```{r}
+m2 <- matrix(c(5,6,7,8), nrow = 2, ncol = 2)
+m + m2
+```
+
+
+
+## 3. Matrices | Matrix subsetting: positional
+
+```{r}
+january <- matrix(1:31, nrow = 5, ncol = 7, byrow = T)
+january
+```
+
+
+
+## 3. Matrices | Matrix subsetting: positional
+
+```{r}
+january[1,2] # first row, second column
+january[5,4] # fifth row, fourth column
+```
+
+
+
+## 3. Matrices | Matrix subsetting: positional
+
+```{r}
+january[1,]  # entire first row
+january[,3]  # entire third column
+```
+
+
+
+## 3. Matrices | Matrix subsetting: named
+
+```{r}
+colnames(january) <- c("monday", "tuesday", "wednesday", 
+                       "thursday", "friday", "saturday", "sunday")
+rownames(january) <- c("week 1", "week 2", "week 3", "week 4", "week 5")
+january
+```
+
+
+
+## 3. Matrices | Matrix subsetting: named
+
+```{r}
+january[,"monday"] # Remember to use "" when subsetting by name!
+january[,"sunday"]
+```
+
+
+
+## 3. Matrices | Matrix subsetting: named
+
+```{r}
+january["week 1",]
+january["week 3", "thursday"]
+```
+
+
+
+## 3. Matrices | Matrix subsetting: logical
+
+```{r}
+january<15 # turns whole matrix to logical
+```
+
+
+
+## 3. Matrices | Matrix subsetting: logical
+
+```{r}
+january[january<15]
+```
+
+
+
+## 3. Matrices | Matrix subsetting: logical
+
+```{r}
+january[,"tuesday"]
+tues <- january[,"tuesday"]
+tues[tues<15]
+```
+
+
+
+## Exercise 2.3
+
+- Create two 5 by 2 matrices. One should include all the even numbers between 1 and 20. Other should include all the odd numbers between 1 and 20. Fill these matrices by row.
+- Combine these two matrices by row (rbind) and assing it to a new object.
+- Combine these two matrices by column (cbind) and assing it to a new object.
+
+
+
+## Exercise 2.4
+
+```{r, eval = F}
+january <- matrix(1:31, nrow = 5, ncol = 7, byrow = T)
+colnames(january) <- c("monday", "tuesday", "wednesday", 
+                       "thursday", "friday", "saturday", "sunday")
+rownames(january) <- c("week 1", "week 2", "week 3", "week 4", "week 5")
+```
+
+- Run the code above.
+- Remove Saturday and Sunday columns from January.
+- You called in sick from 9th to 11th. Replace those days in the matrix with "sick". How has the other entries in the matrix changed?
+- Replace the remaining days with "healthy"
+- What do you get when you use length() on a matrix? Use also nrow() and ncol() on the same matrix. How are they related to length?
+
+
+
+## 4. Arrays
+
+- Arrays are multidimensional
+- Behaves prcatically the same as vectors and matrices
+- Vectore are actually single dimensional arrays and matrices are two dimensional arrays
+
+
+
+## 4. Arrays
+
+```{r}
+x <- array(c(1,2,3), dim = 3)
+x
+is.vector(x)
+is.array(x)
+```
+
+
+
+## 4. Arrays
+
+```{r}
+m <- array(c(1,2,3,4), dim = c(2,2))
+m
+is.array(m)
+is.matrix(m)
+```
+
+
+
+## 4. Arrays
+
+```{r}
+a <- array(c(1,2,3,4,5,6,7,8), dim = c(2,2,2))
+a
+```
+
+
+
+## 4. Arrays
+
+```{r}
+a[,,1]
+a[1,2,]
+a[1,2,2]
+```
+
+
+
+# Part 3: Loops and Flow Statements
+
+
+
+## For loops
+
+- Loops are an important programming tool. The one we will learn today is called a **for loop**. 
+
+- For loops run for a certain number of steps (iterations) that you define, during which any statements in the loop are executed.
+
+- The basic syntax is:
+
+`for (i in 1:number_of_iterations) {`
+`execute these statements`
+`}`
+
+
+
+## For loops | Why use a for loop?
+
+- We have a repeated process with indentical formatting, but different values.
+
+- To avoid laborious typing into R
+
+
+
+## For loops | Our first loop
+
+```{r}
+for (i in 1:5){
+    print(i)
+}
+```
+
+
+
+## For loops | Our first loop
+
+`for (i in 1:5) {`
+
+- i starts at 1. R will execute some statements; 
+- i is increased to i = 2 and statements are executed again; 
+- i is increased to i = 3 and statements are executed again; 
+- and so on, until i = 5, at which point the loop executes the set of statements for the last time.
+
+`}`
+
+
+## For loops
+
+```{r}
+for (i in 1:2){
+    print(i)
+}
+```
+
+- You can also call **i** after the loops is finished.
+
+```{r}
+i # i is an object in the work space now
+```
+
+- i will reset if you start another loop with it.
+
+
+
+## For loops
+
+- We can assign values to objects inside the loop.
+
+```{r}
+x <- 2
+
+for (i in 1:4){
+    x <- x^2
+    print(x)
+}
+```
+
+
+
+## Exercise 3.1
+
+For this exercise use the `january` matrix you created in part 2.
+
+- Print the dates of all wednesdays.
+
+- Replace the days of February in week 5 with `NA`s.  
+
+
+
+## For loops | Loop Environment
+
+- Loops are their own little environment, so use `print()` to view them on your console so you can see the output of each iteration.
+
+- Without `print()` or an assignment `<-` results are not returned.
+
+```{r}
+wizards <- c("Harry", "Hermione", "Ron")
+
+for (i in 1:length(wizards)){
+    paste("Hi,", wizards[i], sep=" ")
+}
+```
+
+
+
+## Exercise 3.2
+
+Create a vector of names of people in your row, write them a nice message using a loop.
+
+
+
+## For loops | How do we save loop outputs?
+
+- Instead of printing to the screen, we usually want to create a new object with the outputs in the loop.
+- To do this, you need to create a blank object before the loop
+
+```{r}
+x <- rnorm(n = 10, mean = 1, sd = 0.5)  # Vector that we will use in the loop
+
+outputs <- c()  # Create a blank vector
+
+for (i in 1:length(x)) {
+  outputs[i] <- x[i] * 10
+}
+head(outputs)
+```
+
+
+
+## Exercise 3.3
+
+```{r}
+x <- rnorm(n = 50, mean = 0, sd = 1)
+m <- matrix(x, ncol = 5, nrow = 10)
+```
+
+- Write a for loop that calculates the mean of each column in matrix `m`, and stores the output in a single vector.
+
+
+
+## For loops | Nested for loops
+
+- A single `for loop` is enough if the object we are manipulating has a single dimension.
+
+- We need more than one `for loops` nested withing one another if we are dealing multi-dimensinonal objects.
+
+```{r}
+m <-  matrix(1:6, nrow = 3, ncol = 2)
+for (i in 1:nrow(m)) {
+  for(h in 1:ncol(m)) {
+    print(m[i,h])
+  }
+}
+```
+
+
+
+## For loops | Nested for loops
+
+- Iteration index (i, h etc.) should match with the correct subset of the object.
+
+```{r, eval=FALSE}
+for (i in 1:nrow(m)) {
+  for(h in 1:ncol(m)) {
+    print(m[h,i])
+  }
+}
+```
+
+
+
+## For loops | Nested for loops
+
+- Track the iteration indexes of your for loops carefuly. Do not reuse them in nested for loops.
+
+```{r, eval=FALSE}
+for (i in 1:nrow(m)) {
+  for(i in 1:ncol(m)) {
+    print(m[i,i])
+  }
+}
+```
+
+
+
+## Flow Statements | if statements
+
+```{r}
+if (3 > 2) {
+  print("Yes")
+}
+```
+
+
+
+## Flow Statements | if statements
+
+- The basic syntax is:
+
+`if (logical statement) {`
+`execute these statements`
+`}`
+
+- If the logical statement is **TRUE**, it will exectute the statement. If it is **FALSE**, it will not execute the satement
+
+
+
+## Flow Statements | if statements
+
+- Often, we want for loops to be able to do different things under different conditions. We want the for loop to account for variables, options, and logical statements.
+
+
+
+## Flow Statements | if statements
+
+```{r}
+x <- 1:5
+
+for (i in 1:length(x)) {
+  if(x[i] > 3) {
+    print(paste(x[i],"is greater than 3"))
+  }
+  if(x[i] <= 3) {
+    print(paste(x[i],"is less than or equal to 3"))
+  }
+}
+```
+
+
+
+## Exercise 3.4
+
+- Create a vector, `x`, with all integers between 1 and 100.
+
+- Create a for loop that computes `x[i] * 2` for 100 iterations (the length of vector `x`). Place the output in a vector. However, calculate `x[i] * 3` if `x[i]` is larger than 32 and smaller than 50.
+
+
+
+## Flow Statements | else statements
+
+- When using only an `if` statement and when logical statement is `FALSE` nothing is executed.
+
+- We can set up a statement to be executed when logical statement is `FALSE` by using `else`
+
+```{r}
+if (1 > 2) {
+  print("Yes")
+} else print("No")
+```
+
+
+
+## Flow Statements | else statements
+
+- When using only an `if` statement and when logical statement is `FALSE` nothing is executed.
+
+- We can set up a statement to be executed when logical statement is `FALSE` by using `else`
+
+```{r}
+if (1 > 2) {
+  print("Yes")
+} else {
+  print("No") # You can use curly braces with else statements as well
+}  
+```
+
+
+
+## Exercise 3.5
+
+- There are five geographically sepearate areas infested with ticks. Scientists sample 10 deers from each location and count the number of ticks on them. We can simulate a simple scenario like this as below, assuming we know the mean number of ticks excpected to be counted in each deer in each location and that number of ticks counted follows a poisson distribution    
+
+```{r}
+tick_mean <- c(4,32,17,10,12)
+tick_count <- matrix(nrow = 10, ncol = 5)
+for (i in 1:5) {
+  tick_count[,i] <- rpois(10, tick_mean[i])
+} 
+```
+
+- Run the code above.
+- Create a new data set in which animals with a tick count less than or equal to 10 is assgined 0 and the ones with a tick count larger than assigned 1. Use for loops first. Then try to do it without a for loop. 
+
+
+
+# Part 4: Functions
+
+
+## Base functions
+
+- Functions contain sets of instructions that we want to carry out repeatedly.
+
+- Like for loops they reduce the amount of laborius typing.
+
+- We have already seen many of the basic functions that come pre-installed with R.
+
+```{r, eval = FALSE}
+sum(seq(1, 100, 1))
+abs(-100 + 50)
+dim(iris)
+str(iris)
+colnames(iris)
+```
+
+
+
+## Functions from packages 
+
+- Many custom made functions availabe via packages. 
+
+```{r, eval = FALSE}
+# This will not run. tree is not loaded 
+tree(formula = Species ~ . -Species, data = iris) 
+
+install.packages("tree") # Install package 
+library(tree) # Load package 
+
+# Now it should work 
+tree(formula = Species ~ . -Species, data = iris)
+```
+
+- Vast user community leads to a lot of different packages.
+
+
+
+## Make your own!
+
+- It is also possible to *define your own functions*. This is especially important if you are going to write the same lines of code over and over again. 
+
+- R functions are objects just like anything else.
+
+
+
+## Writing functions
+
+- Typical syntax: 
+
+`function_name <- function(arguments) {
+  body
+}`
+
+```{r}
+# define a function, f
+f <- function(x, y) {
+  x + y
+}
+
+# call function f
+f(x = 1, y = 3)
+```
+
+
+
+## Writing functions
+
+- Typical syntax: 
+
+`function_name <- function(arguments) {
+  body
+}`
+
+```{r}
+f
+
+# Also try to call teh function as f(). What error did you get?
+```
+
+
+
+## Main parts of functions
+
+- Body
+
+- Formals
+
+- Environment
+
+```{r}
+body(f)
+```
+
+
+
+## Main parts of functions
+
+- Body
+
+- Formals
+
+- Environment
+
+```{r}
+formals(f)
+```
+
+
+
+## Main parts of functions
+
+- Body
+
+- Formals
+
+- Environment
+
+```{r}
+environment(f)
+
+# Try to look for these three parts for the sum function. What do you see?
+```
+
+
+
+## A Function and its environment 
+
+- Variables defined inside functions exist in a different *environment* than the global environment, i.e. they don't exist outside of the function.
+
+- However, if a variable is not defined inside a function, the function will look one level above.
+
+- If you run this function, you'll see that `y` does not pop up in your environment panel.
+
+
+
+## A Function and its environment 
+
+```{r}
+ismail <- 2  # variable defined outside the function
+
+g <- function() {
+     bilgecan <- 1 # variable defined inside the function 
+    c(ismail, bilgecan) 
+}
+
+g()
+```
+
+- Do you have an object named ismail in your environment? What about bilgecan?
+
+
+## Function basics
+
+- Unless you use the function `return()` or write the output at the end of the function, you won't be able to access the output.
+
+```{r}
+f1 <- function(a, b) {
+    x <- a + b 
+    y <- (a + b)^2
+    z <- a/b
+}
+
+f1(1, 2)  # doesn't return anything
+```
+
+
+
+## Function basics
+
+```{r}
+f2 <- function(a, b) {
+    x <- a + b 
+    y <- (a + b)^2
+    z <- a/b
+    return(c(x, y, z))
+}
+
+f3 <- function(a, b) {
+    x <- a + b 
+    y <- (a + b)^2
+    z <- a/b
+    c(x, y, z) # same result as writing return(c(x, y, z))
+}
+
+# returns x, y, and z
+f2(1, 2)  
+f3(1, 2)
+```
+
+
+
+## Exercise 4.1
+
+1. Create a function that takes in two arguments, `x` and `y`, and computes `x * 2 * y`.
+
+2. Create a function that takes in three arguments, and makes a vector from the result.
+
+
+
+## Function basics
+
+- Arguments can be passed to a function as a vector or a list
+
+```{r}
+
+params <- c(5, 25)
+params
+
+f3 <- function(p){
+    alpha <- p[1]
+    beta <- p[2]
+    alpha * beta
+}
+
+f3(params)
+```
+
+
+
+## Functions with pre-defined values
+
+```{r}
+subtract <- function(a = 5, b = 2){
+    return(a - b)
+}
+
+subtract()
+subtract(5, 6)
+```
+
+
+
+## Exercise 4.2
+
+Write a function that takes a vector as an argument and multiplies the sum of the vector by 10, and returns a logical statement based on whether the sum is under 1000.
+
+
+
+## Exercise 4.3 (Advanced)
+
+Write an R unction that seperates any given number to all it's multipliers.
+
+
+
+# Part 5: Heterogenous Data Structures
+
+
+
+## 5. Data frames
+
+- Most data you are going to be working with in R is going to be in a "table" form but will also include variables of different types. So matrices and vectors do not meet all our needs.
+
+- Data frames can be thought of as collection of vectors with different types.
+
+- There are many pre-loaded data sets in R. We'll be working with **iris**, famously used by <a href = "http://en.wikipedia.org/wiki/Iris_flower_data_set">R.A. Fisher in 1936</a>.
+
+
+
+## 5. Data frames
+
+```{r}
+iris
+```
+
+
+
+## 5. Data frames
+
+```{r}
+head(iris)
+is.data.frame(iris)
+```
+
+
+
+## 5. Data frames | Useful functions for dataframes and matrices
+
+- `head()` - see first 6 rows
+- `tail()` - see last 6 rows
+- `dim()` - dimensions (# rows, # columns)
+- `nrow()` - number of rows
+- `ncol()` - number of columns
+- `str()` - structure of any object
+- `rownames()` - row names 
+- `colnames()` - column names
+
+
+
+## Exercise 5.1
+
+*trees* and *mtcars* are other available data sets.
+
+1. How many rows does the *trees* and *mtcars* data frames have?
+
+2. How many columns? What are the column names?
+
+3. Using the `str()` function, how many species does *iris* data set have?
+
+4. What classes are each of the columns for the two data sets?
+
+
+
+## 5. Data frames | Data frame subsetting
+
+- Subsetting data frames is very similar to subsetting matrices
+
+```{r}
+iris[1,3]
+head(iris[,4])
+tail(iris[,"Species"])
+```
+
+
+
+## 5. Data frames | Data frame subsetting
+
+- We can also use the dollar sign to call specific columns
+
+```{r}
+head(iris$Petal.Width)
+head(iris[,4])
+```
+
+
+
+## Exercise 5.2
+
+1. What is the 9th entry of the `Sepal.Width` column of the `iris` data frame?
+
+2. Subset the 17th row of the `iris` data frame.
+
+3. Create an object with the 1st, 4th and 7th rows of the `iris` data frame.
+
+4. Use the `seq()` function to subset all odd rows in the `iris` data frame.
+
+5. Remove the sepal width column from `iris` data frame, and assign this to an object.
+
+6. What do you get when you use the `length()` function on a data frame? How is that different from a matrix?
+
+7. Extract the rows of `iris` that has larger than 3 petal length.
+
+
+
+## 5. Data frames | Creating data frames
+
+```{r}
+d <- data.frame(x = c(5.6, 2.45, 7.09), y = c("a","b","c"), z = c(1,2,3))
+d
+str(d)
+```
+
+
+
+## 5. Data frames | Creating data frames
+
+```{r}
+d <- data.frame(x = c(5.6, 2.45, 7.09), y = c("a","b","c"), z = c(1,2,3), 
+                stringsAsFactors = F)
+str(d)
+```
+
+
+
+## 5. Data frames | Creating data frames
+
+```{r}
+d$t <- as.factor(c(10,20,30))
+d
+str(d)
+```
+
+
+
+## 5. Data frames | Combining data frames
+
+```{r}
+d1 <- data.frame(x = c(5.6, 2.45, 7.09), y = c("a","b","c"), 
+                 stringsAsFactors = F)
+d2 <- data.frame(z = c(1,2,3), t = as.factor(c(10,20,30)))
+d3 <- cbind(d1,d2)
+str(d3)
+```
+
+
+
+## 5. Data frames | Combining data frames
+
+```{r}
+# When binding two data frames by row, column names must match!
+# Try binding d1 and d2 from the previous slide by row. What error do you get? 
+
+d2 <- data.frame(x = c(1,2,3), y = as.factor(c(10,20,30)))
+d4 <- rbind(d1,d2)
+
+# Remember coercison
+str(d4)
+```
+
+
+## Exercise 5.3
+
+1. Create a two column data frame with c(1,2,3) and c(4,5,6,7). What was the result?
+
+2. Create a data frame with c("a","b","c") and c(1,2,3) using `dataframe` directly. Create another one using `cbind` first and then `data.frame`. What is the difference?
+
+
+  
+## Importing your own data
+  
+- R is not a spreadsheet program, so it's not great for direct data entry. It's best to start with spreadsheets for data entry and storage, and to import spreadhseets into R for data visualization and analysis.
+
+- **.csv** (comma separated values) files are often the preferred format to import into R. 
+
+- Before we do that, we will need to look at concept of your **working directory**.
+
+
+  
+## Importing your own data | Working directory
+
+- Find out what your current working directory is
+
+```{r}
+getwd()
+```
+
+- This is the folder on your computer where R will look to open or write files. 
+
+
+  
+## Importing your own data | Working directory
+
+- Set your working directory 
+
+```{r, eval = FALSE}
+setwd("/Users/bilgecan/Desktop/")
+```
+
+
+  
+## Importing your own data
+
+```{r, eval=FALSE}
+blue.hill <- read.csv("BlueHill.csv")
+head(blue.hill)
+
+# Reading data without changing working directory
+blue.hill <- read.csv("/Users/bilgecan/Desktop/BlueHill.csv")
+```
+
+
+
+## R Tip: Variable names 
+
+- One of the largest sources of frustration with R can be importing data. Variable names often cause problems. 
+- Do not have spaces in variable names  
+- Use lower case letters
+- Abbreviate when appropriate  
+  
+```{r, eval = FALSE}
+Average Height # BAD - this won't work
+Average.Height # OK - this will work but isn't best practice 
+average.height # BETTER - this will work, but will be slow to type repeatedly
+avg.height     # GOOD!  
+```
+
+
+
+## Execise 5.4
+
+1. Import the data frame <a href = https://www.dropbox.com/s/cg0yyuvfxpdbouy/BlueHill.csv?dl=0>BlueHill.csv</a> and read it into R.
+
+2. What is the mean daily temperature across all years and stations (**MNTM**)?
+
+3. Subset the fourth column and assign it to an object. What is its class and mode? Hint: use `class`
+and `mode` functions.
+
+4. Subset the first row and assign it to an object. What is its class? Does it have a single mode?
+
+5. Considering the third and fourth questions, how is subsetting rows vs columns different for data frames compared to matrices?
+
+
+
+## Exporting data frames 
+
+- After you've made changes (done subsetting, etc.), you may want to export the altered data frame.
+
+```{r, eval = FALSE}
+# Write the file 
+write.csv(iris, file = "iris.csv", row.names = FALSE)
+
+# Check in your working directory for the new file
+list.files()
+```
+
+
+
+## 6. Lists (Recursive Vectors)
+
+- List can include elements of any type and class simultaneusly.
+
+- A data frame is a list of vectors.
+
+- Unless specified, data in lists are not stored in a table format.
+
+
+
+## 6. Lists
+
+```{r}
+d <- data.frame(x = c(5.6, 2.45, 7.09), y = c("a","b","c"), z = as.factor(c(1,2,3)))
+l <- list(x = c(5.6, 2.45, 7.09), y = c("a","b","c"), z = as.factor(c(1,2,3)))
+l
+typeof(l)
+typeof(d)
+```
+
+
+
+## 6. Lists
+
+- Elements of a list can include other lists and data frames as well.
+
+```{r}
+# Notice the similarity in the syntax with adding a column in a data frame
+l$d <- d
+l[2:4]
+```
+
+
+
+## 6. Lists
+
+```{r}
+# Listception
+l$l <- l
+l[4:5]
+```
+
+
+
+## 6. Lists | List subsetting
+
+- Brackets returns the elements of a given index as a list
+
+```{r}
+l[1]
+str(l[1])
+```
+
+
+
+## 6. Lists | List subsetting
+
+- Double brackets return the elements in its original type and class
+
+```{r}
+l[[1]]
+str(l[[1]])
+```
+
+
+
+## 6. Lists | List naming
+
+```{r}
+names(l)
+```
+
+
+
+## 6. Lists | List naming
+
+```{r}
+names(l)[1] <- "new name"
+names(l)[1]
+names(l[1])
+```
+
+
+
+## 6. Lists | List naming
+
+```{r}
+names(l[[1]])
+names(l[[1]])[1] <- "a"
+l[1]
+```
+
+
+
+## 6. Lists | List naming
+
+- You can use `$` to call elements from a list as well. This is the same as using `[[]]`.
+
+```{r}
+l$x
+l$y
+```
+
+
+
+## Exercise 5.5
+
+- Create the objects below:
+
+```{r}
+d <- data.frame(x = c(5.6, 2.45, 7.09), 
+                y = c("a","b","c"), 
+                z = as.factor(c(1,2,3)))
+l <- list(x = c(5.6, 2.45, 7.09), 
+          y = c("a","b","c"), 
+          z = as.factor(c(1,2,3)))
+l2 <- list(a = c(5:10), b = c(500:600))
+l$d <- d
+l$l2 <- l2
+```
+
+
+
+## Exercise 5.5
+
+- Extract the first element of `z` in the list.
+
+- Extract the entire second column of `d` in the list.
+
+- Extract the 50th element of b in the `l2` within `l`.
+
+- Multiply `x` in `l` with 2 by extracting it with `[]` and ``[[]]``. Why do you think one works and the other does not?
+
+
+
+## General subsetting suggestions
+
+- Subset vectors and factors using `[]`
+
+- Subset matrices, arrays, and data frames using `[,]`
+
+- Subset lists with `[]` if you want your output to be a list, or if you want to subset multiple elements from a list.
+
+- Subset lists with `[[]]` if you want to subset and use the actual data within the elements of a list.
+
+
+
+# Part 6: Basic Plotting
+
+
+
+## Scatter Plots
+
+```{r}
+x <- 1:10
+y <- 11:20
+plot(x, y)
+```
+
+
+
+## Scatter Plots
+
+```{r, eval=FALSE}
+iris <- iris[order(iris$Sepal.Length),]
+x <- iris$Sepal.Length
+y <- iris$Petal.Length
+plot(x, y, 
+     xlab = "Sepal Length", 
+     ylab = "Petal Length", 
+     main = "Couldn't think of a good name")
+```
+
+
+
+## Scatter Plots
+
+```{r, echo=FALSE}
+iris <- iris[order(iris$Sepal.Length),]
+x <- iris$Sepal.Length
+y <- iris$Petal.Length
+plot(x, y, 
+     xlab = "Sepal Length", 
+     ylab = "Petal Length", 
+     main = "Couldn't think of a good name")
+```
+
+
+
+## Scatter Plots
+
+```{r}
+plot(x, y, xlab = "Sepal Length", ylab = "Petal Length", pch = 16)
+```
+
+- Lets look at ?par.
+
+
+
+## Scatter Plots
+
+```{r}
+plot(x, y, xlab = "Sepal Length", ylab = "Petal Length", pch = 16, cex = 0.5)
+```
+
+
+
+## Scatter Plots
+
+```{r}
+plot(x, y, xlab = "Sepal Length", ylab = "Petal Length", pch = 16, cex = 2)
+```
+
+
+
+## Scatter Plots
+
+```{r, eval=FALSE}
+plot(x, 
+     y, 
+     xlab = "Sepal Length", 
+     ylab = "Petal Length", 
+     pch = 16, 
+     cex = 2, 
+     cex.lab = 1.5)
+```
+
+
+
+## Scatter Plots
+
+```{r, echo=FALSE}
+plot(x, 
+     y, 
+     xlab = "Sepal Length", 
+     ylab = "Petal Length", 
+     pch = 16, 
+     cex = 2, 
+     cex.lab = 1.5)
+```
+
+
+
+## Line Graphs
+
+```{r, eval=FALSE}
+plot(x, 
+     y, 
+     xlab = "Sepal Length", 
+     ylab = "Petal Length", 
+     pch = 16, 
+     cex = 2, 
+     cex.lab = 1.5,
+     type = "l")
+```
+
+
+
+## Line Graphs
+
+```{r, echo=FALSE}
+plot(x, 
+     y, 
+     xlab = "Sepal Length", 
+     ylab = "Petal Length", 
+     pch = 16, 
+     cex = 2, 
+     cex.lab = 1.5,
+     type = "l")
+```
+
+
+
+## Histograms
+
+```{r}
+hist(iris$Sepal.Length, xlab = "Sepal Length")
+```
+
+
+
+## Histograms
+
+```{r}
+hist(iris$Sepal.Length, xlab = "Sepal Length", breaks = 5)
+```
+
+
+
+## Histograms
+
+```{r}
+plot(density(iris$Sepal.Length), xlab = "Sepal Length", main = "")
+```
+
+
+
+## Histograms
+
+```{r}
+hist(iris$Sepal.Length, xlab = "Sepal Length", probability = T, col = "grey")
+lines(density(iris$Sepal.Length), col =  "red", lwd = 2)
+```
+
+
+
+## Box Plots
+
+```{r}
+boxplot(iris$Sepal.Length, iris$Petal.Length, names = c("Sepal Length", "Petal Length"))
+```
+
+
+
+## Combining Multiple Graphs
+
+```{r, eval=FALSE}
+par(mfrow = c(2,2)) # you can also use mfcol()
+
+plot(x, 
+     y, 
+     xlab = "Sepal Length", 
+     ylab = "Petal Length", 
+     pch = 16, 
+     cex = 0.5)
+
+hist(x, xlab = "Sepal Length", probability = T, col = "grey", main = "")
+lines(density(x), col =  "red", lwd = 2)
+
+hist(y, xlab = "Petal Length", probability = T, col = "grey", main = "")
+lines(density(y), col =  "red", lwd = 2)
+
+boxplot(x, y, names = c("Sepal Length", "Petal Length"))
+```
+
+
+
+## Combining Multiple Graphs
+
+```{r, echo=FALSE}
+par(mfrow = c(2,2))
+
+plot(x, y, xlab = "Sepal Length", ylab = "Petal Length", pch = 16, cex = 0.5)
+
+hist(x, xlab = "Sepal Length", probability = T, col = "grey", main = "")
+lines(density(x), col =  "red", lwd = 2)
+
+hist(y, xlab = "Petal Length", probability = T, col = "grey", main = "")
+lines(density(y), col =  "red", lwd = 2)
+
+boxplot(x, y, names = c("Sepal Length", "Petal Length"))
+```
+
+
+
+## Combining Multiple Graphs
+
+```{r, eval=FALSE}
+par(mfrow = c(2,2)) # you can also use mfcol()
+
+par(mar = c(5,4,1,1)) # default mar values are c(5, 4, 4, 2)
+plot(x, y, xlab = "Sepal Length", ylab = "Petal Length", 
+     pch = 16, 
+     cex = 0.5) 
+
+par(mar = c(5,4,1,1))
+hist(x, xlab = "Sepal Length", probability = T, 
+     col = "grey", 
+     main = "")
+lines(density(x), col =  "red", lwd = 2)
+
+hist(y, xlab = "Petal Length", probability = T, col = "grey", main = "")
+lines(density(y), col =  "red", lwd = 2)
+
+boxplot(x, y, names = c("Sepal Length", "Petal Length"))
+```
+
+
+
+## Combining Multiple Graphs
+
+```{r, echo=FALSE}
+par(mfrow = c(2,2)) # you can also use mfcol()
+
+par(mar = c(5,4,1,1)) # default mar values are c(5, 4, 4, 2)
+plot(x, y, xlab = "Sepal Length", ylab = "Petal Length", 
+     pch = 16, 
+     cex = 0.5) 
+
+par(mar = c(5,4,1,1))
+hist(x, xlab = "Sepal Length", probability = T, 
+     col = "grey", 
+     main = "")
+lines(density(x), col =  "red", lwd = 2)
+
+hist(y, xlab = "Petal Length", probability = T, col = "grey", main = "")
+lines(density(y), col =  "red", lwd = 2)
+
+boxplot(x, y, names = c("Sepal Length", "Petal Length"))
+```
+
+
+
+# Epilogue
+
+---
+
+### “To understand computations in R, two slogans are helpful:
+### Everything that exists is an object.
+### Everything that happens is a function call."
+— John Chambers
+
+
+
+## Mindblown!
+
+- Even operators are functions, and consequently objects.
+
+```{r}
+`+`(2,3)
+`*`(10,10)
+`[`(x,1)
+`[`
+```
