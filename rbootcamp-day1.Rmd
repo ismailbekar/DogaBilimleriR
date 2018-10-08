@@ -1,6 +1,6 @@
 ---
-title: "R Boot Camp: A Quick Introduction to Programming with R"
-author: "Bilgecan Sen"
+title: "Doğa Bilimlerinde R Programlamaya Giriş"
+author: "Bilgecan Sen, Türkçe çeviri: İsmail Bekar"
 output:
   ioslides_presentation:
     widescreen: true
@@ -23,7 +23,7 @@ output:
 
 # Day 1
 
-- Part 1: <a href = "#/3"> Introduction to R </a>
+- Part 1: <a href = "#/3"> R Programlamaya Giriş </a>
 - Part 2: <a href = "#/30"> Homogenous Data Structures </a>
 - Part 3: <a href = "#/93"> Loops and Flow Statements </a>
 - Part 4: <a href = "#/116"> Functions </a>
@@ -33,29 +33,29 @@ output:
 
 
 
-# Part1: Introduction to R
+# Part1: R Programlamaya Giriş
 
 
 
-## The R Language
+## R
 
-- A programming language
-- Mainly used for
-    + Data wrangling
-    + Statistical analaysis
-    + Data visualization
-- Created by Ross Ihaka and Robert Gentlemen in 1996
+- Bir programlama dili
+- Genellikle:
+    + Veri düzenleme
+    + İstatistiksel analizler
+    + Veri görselleştirme
+- Ross Ihaka ve Robert Gentlemen tarafından 1996 yılında geliştirildi
 - Interpreted language not a compiled one
-- Development and distribution handled by several statisticians (R Core Development Team)
-- Freely distributed from *Comprehensive R Archive Network (CRAN)*
-- Available on MacOS, Windows and Linux
+- Geliştirilmesi ve dağıtılması birçok istatistikçi tarafından üstlenilmiş durumda (R Core Development Team)
+- *Comprehensive R Archive Network (CRAN)* tarafından ücretsizce dağıtılmakta
+- MacOS, Windows ve Linux üzerinde kullanılabilir.
 
 
 
-## Why use R?
+## Neden R kullanmalı?
 
-- Flexibility
-- Reproducibility
+- Esneklik
+- Tekrar edilebilirlik
 
 
 
