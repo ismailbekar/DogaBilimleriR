@@ -1,6 +1,6 @@
 ---
 title: "Doğa Bilimlerinde R Programlamaya Giriş"
-author: "Bilgecan Sen, Türkçe çeviri: İsmail Bekar"
+author: "Bilgecan Sen, Nurbahar Usta, İsmail Bekar"
 output:
   ioslides_presentation:
     widescreen: true
@@ -8,12 +8,12 @@ output:
 
 ---
 
-**Sources**
+**Kaynaklar**
 
 - <a href = "http://r4ds.had.co.nz">R for Data Science</a>
 - <a href = "http://adv-r.had.co.nz">Advanced R</a>
 
-**Previous Contributors**
+**Katkı Sağlayanlar**
 
 - <a href = "http://benweinstein.weebly.com/">Ben Weinstein</a> (2014)
 - <a href = "http://mccannecology.weebly.com/">Mike McCann</a> (2015)
@@ -21,38 +21,38 @@ output:
 
 
 
-# Day 1
+# 1. Gün
 
 - Part 1: <a href = "#/3"> R Programlamaya Giriş </a>
-- Part 2: <a href = "#/30"> Homogenous Data Structures </a>
-- Part 3: <a href = "#/93"> Loops and Flow Statements </a>
-- Part 4: <a href = "#/116"> Functions </a>
-- Part 5: <a href = "#/133"> Heterogenous Data Structures </a>
-- Part 6: <a href = "#/172"> Basic Plotting </a>
-- Part 7: <a href = "#/172"> Epilogue </a> 
+- Part 2: <a href = "#/30"> Homojen Veri Yapıları </a>
+- Part 3: <a href = "#/93"> Loops and Flow İfadeleri </a>
+- Part 4: <a href = "#/116"> Fonksiyonlar </a>
+- Part 5: <a href = "#/133"> Heterojen Veri Yapıları </a>
+- Part 6: <a href = "#/172"> Temel Görselleştirme </a>
+- Part 7: <a href = "#/172"> Kapanış </a> 
 
 
 
-# Part1: R Programlamaya Giriş
+# Part 1: R Programlamaya Giriş
 
 
 
 ## R
 
 - Bir programlama dili
-- Genellikle:
-    + Veri düzenleme
-    + İstatistiksel analizler
-    + Veri görselleştirme
+- Genellikle kullanıldığı alanlar:
+    + veri düzenleme
+    + istatistiksel analizler
+    + veri görselleştirme
 - Ross Ihaka ve Robert Gentlemen tarafından 1996 yılında geliştirildi
-- Interpreted language not a compiled one
-- Geliştirilmesi ve dağıtılması birçok istatistikçi tarafından üstlenilmiş durumda (R Core Development Team)
-- *Comprehensive R Archive Network (CRAN)* tarafından ücretsizce dağıtılmakta
+- "Interpreted" bir programlama dili, "compiled" değil
+- Geliştirilmesi ve dağıtılması bir istatistikçi grubu tarafından üstlenilmiş durumda (R Core Development Team)
+- *Comprehensive R Archive Network (CRAN)* tarafından ücretsiz olarak indirilebilir
 - MacOS, Windows ve Linux üzerinde kullanılabilir.
 
 
 
-## Neden R kullanmalı?
+## Neden R ?
 
 - Esneklik
 - Tekrar edilebilirlik
@@ -61,25 +61,25 @@ output:
 
 ## RStudio
 
-- Any text editor is good enough for an R script
-- Rstudio provides a more structured and streamlined experience
-- The screen is split four ways: 
-    + **Workspace:** (Top left) Where scripts are written & saved
-    + **Console:** (Bottom left) Where commands are run
-    + **Environment, History:** (Top right) Where objects are stored
-    + **Files, Plots, Packages, and Help:** (Bottom right) View data, help
+- Sıradan bir metin editörü R betik dosyaları (script) için yeterli
+- Rstudio daha rahat bir kullanım tecrübesi sağlıyor
+- Ekran dört parçadan oluşuyor: 
+    + **Workspace:** (Sol üst) Betikleri yazdığınız ve kaydetttiğiniz yer
+    + **Console:** (Sol alt) Komutların çalıştırıldığı yer
+    + **Environment, History:** (Sağ üst) Objelerin saklandığı yer
+    + **Files, Plots, Packages, and Help:** (Sağ alt) Veriyi görüntüleme, yardım
 
 
 
-## Running R
+## Çalıştırma
 
-- Type directly into the console (best when you don't want to save the code) or type into the script - then run `(CTRL + ENTER)`
+- Kodu doğrudan konsola yazın (eğer kodu kaydetmek istemiyorsanız) veya betik dosyasına yazın ve ardırdan çalıştırın `(CTRL + ENTER)`
 
-- A **script** is a plain text file with R commands in it. This will be where you save the code that you are writing - the file will end in the extension **.R**
+- **betik** dosyası uzantısı **.R** olan ve içinde R komutları barındıran bir metin dosyası demektir. Yazdığınız kodları saklamanızı sağlar.
 
 
 
-## Three components of R
+## R üç temel bileşene sahip
 
 - Operators
 - Objects
@@ -87,19 +87,19 @@ output:
 
 
 
-## Arithmetic operators
+## Aritmetik operatörler
 
-- `+`  Addition 
-- `-`  Subtraction 
-- `*`  Multiplication 
-- `/`  Division 
-- `^`  Exponentiation 
-- `%%` Modulus (finds remainder) 
-- `%/%` Integer division (leaves off remainder)
+- `+`  Toplama 
+- `-`  Çıkarma 
+- `*`  Çarpma 
+- `/`  Bölme 
+- `^`  Katsayı 
+- `%%` Modülo (kalanı bulur) 
+- `%/%` Tamsayı bölümü (kalanı atar)
 
 
 
-## Arithmetic operators
+## Aritmetik operatörler
 
 ```{r}
 2+2
@@ -113,9 +113,9 @@ output:
 
 
 
-### Arithmetic operators
+### Aritmetik operatörler
 
-- R obeys the standard order of operations.
+- Klasik matematik işlem öncelikleri geçerlidir.
 
 ```{r}
 2+5*2/3
@@ -125,21 +125,21 @@ output:
 
 
 
-## Logical Operators
+## Mantıksal operatörler
 
-- `<`  Less than
-- `<=` Less than or equal to 
-- `>`  Greater than
-- `>=` Greater than or equal to  
-- `==` Exactly equal to 
-- `!=` Not equal to 
-- `!`  NOT
-- `|`  OR
-- `&`  AND
+- `<`  Küçüktür
+- `<=` Küçüktür veya eşittir
+- `>`  Büyüktür
+- `>=` Büyüktür veya eşittir
+- `==` Eşittir
+- `!=` Eşit değildir
+- `!`  NOT [XXX]
+- `|`  veya
+- `&`  ve
 
 
 
-## Logical Operators
+## Mantıksal Operatörler
 
 ```{r}
 2<3
@@ -153,15 +153,15 @@ output:
 
 
 
-## Objects
+## Objeler
 
-- "Things" in R are stored in objects which have a name.
-- "Things" can be variables, data, functions, results, numbers, etc.
-- The "assign" operator:  **<-**.
+- R'da depolanmış ve bir isme sahip olan "şeyler"
+- Değişken, veri, fonksiyon, sonuç veya sayılar "şey" olabilir.
+- R'da atama operatörü  **<-**.
 
 
 
-## Objects | Assigning elements to objects
+## Objeler | Atama yapma
 
 ```{r}
 x <- 1
@@ -172,7 +172,7 @@ x
 
 
 
-## Objects | Assigning elements to objects
+## Objeler | Atama yapma
 
 ```{r}
 y <- x + 4
@@ -183,7 +183,7 @@ x
 
 
 
-## Objects | Arithmetic using objects
+## Objeler | Objeleri kullanarak işlem yapma
 
 ```{r}
 x <- 6
@@ -195,7 +195,7 @@ y%%x
 
 
 
-## Objects | Arithmetic using objects
+## Objeler | Objeleri kullanarak işlem yapma
 
 ```{r}
 z <- y + x
@@ -204,7 +204,7 @@ z
 
 
 
-## Objects | Arithmetic using objects
+## Objeler | Objeleri kullanarak işlem yapma
 
 ```{r}
 x <- 10
@@ -215,18 +215,18 @@ x>y
 
 
 
-## Exercise 1.1
+## Alıştırma 1.1
 
-- Pick a number, assign it to the object **z**
-- Double **z** and assign it to **a**
-- Add 10 to **a** and assign it to **b**
-- divide **b** by 2 and assign it to **c**
-- Subtract **z** from **c** and assign it to **d**
-- Is **d** equal to **z**?
+- Bir sayı seçin ve bunu **z** objesine atayın
+- **z** objesini ikiyle çarpın ve bunu **a** objesine atayın
+- **a** objesine 10 ekleyin ve bunu **b** objesine atayın
+- **b** objesini ikiye bölün ve bunu **c** objesine atayın
+- **z** objesini **c** objesinden çıkarın ve bunu **d** objesine atayın
+- **d** objesi **z** objesine eşit mi?
 
 
 
-## Objects | Assigning multiple elements to objects: `c()`
+## Objeler | Bir çok elementi tek bir objeye atama `c()`
 
 ```{r}
 x <- c(1,2,3,4,5)
@@ -237,7 +237,7 @@ y
 
 
 
-## Objects | Arithmetic with multiple elements
+## Objeler | Bir çok elementle işlem yapma
 
 ```{r}
 x <- c(1,2,3,4,5)
@@ -247,7 +247,7 @@ x*2
 
 
 
-## Objects | Arithmetic with multiple elements
+## Objeler | Bir çok elementle işlem yapma
 
 ```{r}
 y <- c(1,4,3,2,5)
@@ -257,32 +257,32 @@ x>y
 
 
 
-## Exercise 1.2
+## Alıştırma 1.2
 
-- Create an object that stores values 45, 3, 9, 99, and 0
-- Create another object with 66, 0, 1, 5, and 0
-- Sum these objects
-- Multiply them
-- Divide the first one with the second one
-- What results did you get?
-- How does R handle arithmetic operiations with one dimensional objects of length>1?
+- 45, 3, 9, 99, ve 0'ı barındıran bir obje oluşturun
+- 66, 0, 1, 5, and 0'ı barındıran bir diğer obje oluşturun
+- Bu iki objeyi toplayın
+- Birbiriyle çarpın
+- Birinciyi ikinciye bölün
+- Sonuç kaç çıktı?
+- R tek boyutlu ve birçok elemente sahip objelerle nasıl başa çıkıyor? 
 
 
 
-## Functions
+## Fonksiyonlar
 
-- A *function* is a stored object that performs a task given some inputs (called *arguments*). R has many functions already available, but you can also write your own functions.
+- *fonksiyon* verilen bir girdi (*arguments*) ile belirli bir işlemi gerçekleştiren objelerdir. R halihazırda bir çok fonksiyona sahip ama isterseniz kendi fonksiyonunuzu yazmanız da mümkün.
 
-- Functions are used in the format: `name_of_function(inputs)`   
+- Fonksiyonlar şu şekilde kullanılır: `name_of_function(inputs)`   
 
-- The output of a function can be saved to an object:  
+- Fonksiyonun sonucu bir objeye saklanabilir:
 `output <- name_of_function(inputs)`
 
 
 
-## Functions
+## Fonksiyonlar
 
-- Use `sum()` to take the sum of all elements in an object:
+- `sum()` fonksiyonunu bir objedeki tüm elementlerin toplamını elde etmek için kullanın:
   
 ```{r}
 x <- c(45,3,9,99,0)
@@ -293,15 +293,15 @@ z
 
 
 
-## Functions
+## Fonksiyonlar
 
-- Use `prod()` to multiply all elements in an object:
+- `prod()` fonksiyonunu objedeki tüm elementleri birbiriyle çarpmak için kullanın:
   
 ```{r}
 prod(x)
 ```
 
-- Use `mean()` to take the mean of all elements in an object:
+- `mean()` fonksiyonunu objedeki elementlerin ortalamasını almak için kullanın:
   
 ```{r}
 mean(x)
@@ -309,21 +309,21 @@ mean(x)
 
 
 
-## R Tip: The help system
+## R İpucu: Yardım Sistemi
 
-- Help files provide important information on what the function does, how it works, and they provide examples at the very bottom.
+- Yardım dosyaları fonksiyonların neler yaptığı, nasıl çalıştığı gibi bilgilerin yanı sıra çeşitli örnekleri de içinde barındırır. 
 
 ```{r}
 help(mean)
 ```
 
-- You can also use `?` before a function name to view the help file 
+- Fonksiyonun adından önce `?` yazarak da yardım sayfasını görüntüleyebilirsiniz.
 
 ```{r}
 ?mean  # Same as help(mean) 
 ```
 
-- Use `??` to search for functions; e.g. search for any function whose help files contain the word `"sequence"`
+- `??` kullanarak `"sequence"` kelimesini içeren tüm fonksiyonları aratabilirsiniz.
 
 ```{r}
 ??sequence
@@ -331,24 +331,24 @@ help(mean)
 
 
 
-## Exercise 1.3
+## Alıştırma 1.3
 
-1. What is the median of 34, 16, 105, and 27?   
-*Remember:* functions are often named intuitively.
+1. 34, 16, 105, ve 27'nin "medianını" hesaplayın.
+*Hatırlatma:* fonksiyon isimleri işlevlerine göre verilmiştir.
 
-2. What does the function `range()` do, and what is the sample example in the help file?
+2. `range()` fonksiyonu ne yaptığını açıklayın ve yardım dosyasındaki örneğin ne olduğuna bakın.
 
-3. Is `mean(4, 5)` different than `mean(c(4, 5))`?
+3. `mean(4, 5)`'ün sonucu `mean(c(4, 5))`'den farklı mı?
 
 
 
-# Part 2: Homogenous Data Structures
+# Part 2: Homojen Veri Yapıları
 
 
 
 ---
 
-- R has 7 types of object *classes* representing data
+- R farklı veri tiplerini temsil eden 7 farklı *class*'a sahip
     + vector (atomic vector)
     + factor
     + matrix
@@ -359,11 +359,11 @@ help(mean)
 
 
 
-## 1. Vectors | Creating vectors
+## 1. Vektörler | Vektör oluşturma
 
-- Every object we have crated so far is a vector
-- Vectors can be of any length
-- Single dimension
+- Şu ana kadar oluşturduğumuz her obje bir vektör.
+- Vektörler her uzunlukta olabilir
+- Tek boyutlu
 
 ```{r}
 x <- 1
@@ -372,7 +372,7 @@ x <- c(5,6,7,8,9,10)
 
 
 
-## 1. Vectors | Creating vectors
+## 1. Vektörler | Vektör oluşturma
 
 ```{r}
 x <- 5:10
@@ -381,7 +381,7 @@ x
 
 
 
-## 1. Vectors | Creating vectors
+## 1. Vektörler | Vektör oluşturma
 
 ```{r}
 x <- seq(from = 5, to = 10, by = 1)
@@ -394,7 +394,7 @@ x
 
 
 
-## 1. Vectors | Creating vectors
+## 1. Vektörler | Vektör oluşturma
 
 ```{r}
 is.vector(x)
@@ -408,9 +408,9 @@ z
 
 
 
-## 1. Vectors | Combining vectors
+## 1. Vektörler | Vektör birleştirme
 
-- You can combine multiple vectors into a single vector
+- Birden fazla vektörü tek bir vektör olarak birleştirebilirsiniz.
 
 ```{r}
 x <- c(1,2,3)
@@ -421,9 +421,9 @@ z
 
 
 
-## 1. Vectors | Naming vectors
+## 1. Vektörler | Vektörleri adlandırma
 
-- You can name elements when you are creating the vector
+- Vektörleri oluştururken onu oluşturan elementleri adlandırabilirsiniz.
 
 ```{r}
 z <- c(monday = 1, tuesday = 2, wednesday = 3, thursday = 4, friday = 5)
@@ -433,9 +433,9 @@ names(z)
 
 
 
-## 1. Vectors | Naming vectors
+## 1. Vektörler | Vektörleri adlandırma
 
-- Or you can name the elements after you create the vector
+- veya aynı işlemi vektörü oluşturduktan sonra da yapabilirsiniz.
 
 ```{r}
 z <- c(1,2,3,4,5)
@@ -447,9 +447,9 @@ names(z)
 
 
 
-## 1. Vectors | Vector subsetting: positional
+## 1. Vektörler | Vektör elementlerini seçme: pozisyonuna göre
 
-- You can access any element in the vector by putting its position in square brackets `[ ]`
+- Bir vektördeki her elemente pozisyonunu kare parentezin `[ ]` içine koyarak ulaşabilirsiniz.
 
 ```{r}
 height <- c(76, 72, 74, 74, 78)
@@ -458,22 +458,22 @@ height
 
 
 
-## 1. Vectors | Vector subsetting: positional
+## 1. Vektörler | Vektör elementlerini seçme: pozisyonuna göre
 
-- You can access any element in the vector by putting its position in square brackets `[ ]`
+- Bir vektördeki her elemente pozisyonunu kare parentezin `[ ]` içine koyarak ulaşabilirsiniz.
 
 ```{r}
-height[1] # extract the 1st element in the vector 
-height[5] # extract the 5th element
-height[6] # There is no 6th element
+height[1] # 1. vektörü seç
+height[5] # 5. vektörü seç
+height[6] # 6. element yok
 
 ```
 
 
 
-## 1. Vectors | Vector subsetting: positional
+## 1. Vektörler | Vektör elementlerini seçme: pozisyonuna göre
 
-- We can assign subsets to new objects.
+- Seçilen elementleri yeni objelere atayabiliriz.
 
 ```{r}
 x <- height[1]
@@ -484,9 +484,9 @@ y
 
 
 
-## 1. Vectors | Vector subsetting: positional
+## 1. Vektörler | Vektör elementlerini seçme: pozisyonuna göre
 
-- We can subset multiple elements simultaneusly.
+- Aynı anda bir çok elementi seçebiliriz.
 
 ```{r}
 height[c(1,2,3)]
@@ -495,9 +495,9 @@ height[1:3]
 
 
 
-## 1. Vectors | Vector subsetting: positional
+## 1. Vektörler | Vektör elementlerini seçme: pozisyonuna göre
 
-- You can also use vector indexing to return the same vector with certain elements missing using the `-` operator.
+- `-` işaretini belirli elementleri dışarıda bırakarak geri kalanları seçmek için kullanabiliriz.
 
 ```{r}
 height[-1]
@@ -509,9 +509,9 @@ height_new <- height[-1]
 
 
 
-## 1. Vectors | Vector subsetting: named
+## 1. Vektörler | Vektör elementlerini seçme: isme göre
 
-- You can assign names to each element of the vector, and then extract the element by indexing based on the name.
+- Vektör elementlerine isim atayıp daha sonra bu isimlerle seçim yapılabilir.
 
 ```{r}
 temp <- c(monday = 28.1, tuesday = 28.5, wednesday = 29.0, thursday = 30.1, friday = 30.2)
@@ -520,23 +520,23 @@ temp
 
 
 
-## 1. Vectors | Vector subsetting: named
+## 1. Vektörler | Vektör elementlerini seçme: isme göre
 
-- You can assign names to each element of the vector, and then extract the element by indexing based on the name.
+- Vektör elementlerine isim atayıp daha sonra bu isimlerle seçim yapılabilir.
 
 ```{r}
-temp["wednesday"] # Always use "" when subsetting by name
+temp["wednesday"] # İsimle seçim yaparken her zaman ""  kullanın.
 temp[3]
 
-# Try subseting with only wednesday (without ""). 
-# What happens?
+# Wednesday'i " " kullanmadan seçmeye çalışın. 
+# Ne oldu?
 
 ```
 
 
-## 1. Vectors | Vector subsetting: logical
+## 1. Vektörler | Vektör elementlerini seçme: mantıksal
 
-- You can extract elements in a vector that meet specific criteria based on a logical expression.
+- Çeşitli mantıksal ifadelerle belirli kriterlere ait olan elementler seçilebilir.
 
 ```{r}
 y <- 5:50
@@ -545,41 +545,41 @@ y
 
 
 
-## 1. Vectors | Vector subsetting: logical
+## 1. Vektörler | Vektör elementlerini seçme: mantıksal
 
-- You can extract elements in a vector that meet specific criteria based on a logical expression.
+- Çeşitli mantıksal ifadelerle belirli kriterlere ait olan elementler seçilebilir.
 
 ```{r}
-# Turns whole vector to logical
+# Tüm vektörü mantıksal hale dönüştürür.
 y <= 10
 
-# extract all elements less than or equal to 10
+# 10'a eşit veya küçük olan tüm elementleri seç
 y[y <= 10]
 ```
 
 
 
-- You can extract elements in a vector that meet specific criteria based on a logical expression.
+- Çeşitli mantıksal ifadelerle belirli kriterlere ait olan elementler seçilebilir.
 
 ```{r}
- # extract all elements less than 10 and not equal to 5
+ # 10'dan küçük olan ve 5'e eşit olmayan tüm elementleri seç
 y[y < 10 & y != 5]  
 ```
 
-## Exercise 2.1
+## Alıştırma 2.1
 
-- What are the 9th and 12th positions of the vector `seq(1, 27, 0.5)`? 
+- `seq(1, 27, 0.5)` vektörünün 9 ve 12.sıradaki elementleri nelerdir? 
 
-- Create a vector that includes all even number between 4 and 34 and name it `a`. Hint: use the `seq()` function. 
+- 4 ve 34 arasındaki tüm çift sayıları içeren bir vektör yaratın ve bunu `a` objesine atayın. İpucu: `seq()` fonksiyonunu kullanın.
 
-- Extract all elements of `a` that are greater than or equal to 17.
+- `a` vektöründe 17'den büyük olan tüm elementleri seçerek çıkarın.
 
 
 
-## Types of Vectors
+## Vektör Çeşitleri
 
-- Also called storage mode or just mode.
-- There are 6 vector types:
+- "Storage mode"" veya sadece "mode"" olarak da adlandırılır.
+- Altı çeşit vektör vardır:
     - Numeric (Double)
     - Integer
     - Character
@@ -589,7 +589,7 @@ y[y < 10 & y != 5]
 
 
 
-## Types of Vectors | Numeric and integer
+## Vektör Çeşitleri | Numeric ve integer
 
 ```{r}
 x <- c(1,2,3,4,5)
@@ -601,7 +601,7 @@ is.double(y)
 
 
 
-## Types of Vectors | Numeric and integer
+## Vektör Çeşitleri | Numeric ve integer
 
 ```{r}
 z1 <- c(1L,2L,3L,4L,5L)
@@ -613,20 +613,20 @@ is.integer(z2)
 
 
 
-## Types of Vectors | Character
+## Vektör Çeşitleri | Character
 
 ```{r}
-x <- c("Bilgecan is the best TA")
+x <- c("Bilgecan is the best Teaching Assistant")
 x
 length(x)
 ```
 
 
 
-## Types of Vectors | Character
+## Vektör Çeşitleri | Character
 
 ```{r}
-y <- c("Bilgecan", "is", "the", "best", "TA")
+y <- c("Bilgecan", "is", "the", "best", "Teaching", "Assistant")
 y
 y[1]
 y[c(2,4)]
@@ -634,7 +634,7 @@ y[c(2,4)]
 
 
 
-## Types of Vectors | Logical
+## Vektör Çeşitleri | Logical
 
 ```{r}
 x <- c(1,2,3,4,5)
@@ -647,7 +647,7 @@ z
 
 
 
-## Conversion of modes | To character
+## Modların birbirine dönüşümleri | character'e dönüştürme
 
 ```{r}
 x
@@ -656,7 +656,7 @@ z
 
 
 
-## Conversion of modes | To character
+## Modların birbirine dönüşümleri | character'e dönüştürme
 
 ```{r}
 x <- as.character(x)
@@ -668,7 +668,7 @@ z
 
 
 
-## Conversion of modes | To numeric
+## Modların birbirine dönüşümleri | numeric'e dönüştürme
 
 ```{r}
 x <- c("1","-2", "3.25", "A")
@@ -678,7 +678,7 @@ x
 
 
 
-## Conversion of modes | To numeric
+## Modların birbirine dönüşümleri | numeric'e dönüştürme
 
 ```{r}
 y <- c(T,F,F,T,T)
@@ -688,7 +688,7 @@ y
 
 
 
-## Conversion of modes | To logical
+## Modların birbirine dönüşümleri | logical'a dönüştürme
 
 ```{r}
 x <- c(0, 0, 5, 79, 3500)
@@ -702,29 +702,29 @@ y
 
 
 
-## Exercise 2.2
+## Alıştırma 2.2
 
-1. Create a vector with TRUE, and 50
-2. Create a vector with "A", and 1
-3. Create a vector with TRUE and "C" 
-4. Did you notice a pattern? How is the mode of each vector you created above determined?
-
-
-
-## R Tip: Coercion
-
-All elements of an atomic vector must be the same type, so when you attempt to combine different types they will be coerced to the most flexible type. Types from least to most flexible are: logical, integer, double, and character.
+1. TRUE ve 50'yi içeren bir vektör oluşturun.
+2. "A" ve 1 içeren bir vektör oluşturunç
+3. TRUE ve "C" içeren bir vektör oluşturun.
+4. Örüntüyü farkettiniz mi? Oluşturduğunuz vektörleri modu nasıl belirlendi? 
 
 
 
-## 2. Factors
+## R İpucu: Zorla güzellik olmaz
 
-- A factor is a vector that can contain only predefined values, and is used to store categorical data.
-- Factors are built on top of integer vectors with additional attributes.
-
+Atomic bir vektörün tüm elementleri aynı tipte olmalıdır. Yani birbirinden farklı elementleri birleştirmeye çalıştığınızda otomatik olarak en esnek tipte birleşeceklerdir. En esnek tipler en az esnek olandan başlalayarak şu şekilde sıralanır: logical, integer, double, and character.
 
 
-## 2. Factors | Creating factors
+
+## 2. Faktörler
+
+- Faktör sadece daha önceden belirlenmiş değerleri içerebilen bir vektör tipidir. Genellikle kategorik veri depolamak için kullanılır.
+- Faktörler integer vektörlerin üstüne çeşitli bilgilerin eklenmesiyle oluşmuştur.
+
+
+
+## 2. Faktörler | Faktör oluşturma
 
 ```{r}
 x <- c(1,2,3,4,5)
@@ -734,7 +734,7 @@ x
 
 
 
-## 2. Factors | Creating factors
+## 2. Faktörler | Faktör oluşturma
 
 ```{r}
 z <- c("a", "b", "c", "d")
@@ -747,9 +747,9 @@ z
 
 
 
-## 2. Factors | Creating factors
+## 2. Faktörler | Faktör oluşturma
 
-- You can't assign values that is outside of its levels to a factor.
+- Faktör "levelı" dışında kalan değerlerin ataması yapılmaz.
 
 ```{r}
 z[5] <- "a"
@@ -759,9 +759,9 @@ z
 
 
 
-## 2. Factors | Creating factors
+## 2. Faktörler | Faktör oluşturma
 
-- You can't combine factors
+- Faktörler birleştirilemez.
 
 ```{r}
 f <- c(z,x)
@@ -772,14 +772,14 @@ typeof(f)
 
 
 
-## 3. Matrices
+## 3. Matriksler
 
-- Two dimensional data related object (a table)
-- Behaves very similiarly to vectors
+- İki boyutlu veri dosyası (tablo)
+- Matriksler vektörlerle çok benzer davranış gösterir.
 
 
 
-## 3. Matrices | Creating Matrices
+## 3. Matriksler | Matriks oluşturma
 
 ```{r}
 m <- matrix(nrow = 2, ncol = 2)
@@ -788,7 +788,7 @@ m
 
 
 
-## 3. Matrices | Creating Matrices
+## 3. Matriksler | Matriks oluşturma
 
 ```{r}
 m <- matrix(c(1,2,3,4), nrow = 2, ncol = 2)
@@ -797,7 +797,7 @@ m
 
 
 
-## 3. Matrices | Creating Matrices
+## 3. Matriksler | Matriks oluşturma
 
 ```{r}
 m <- matrix(c(1,2,3,4), nrow = 2, ncol = 2, byrow = T)
@@ -808,7 +808,7 @@ is.matrix(m)
 
 
 
-## 3. Matrices | Creating Matrices
+## 3. Matriksler | Matriksler oluşturma
 
 ```{r}
 v1 <- c(1,2,3)
@@ -820,7 +820,7 @@ m
 
 
 
-## 3. Matrices | Creating Matrices
+## 3. Matriksler | Matriksler oluşturma
 
 ```{r}
 m <- rbind(v1, v2)
@@ -831,7 +831,7 @@ is.matrix(m)
 
 
 
-## 3. Matrices | Naming rows and columns
+## 3. Matriksler | Satır ve sütun adlandırma
 
 ```{r}
 names(m)
@@ -842,7 +842,7 @@ rownames(m)
 
 
 
-## 3. Matrices | Naming rows and columns
+## 3. Matriksler | Satır ve sütun adlandırma
 
 ```{r}
 colnames(m) <- c("a", "b", "c")
@@ -851,7 +851,7 @@ m
 
 
 
-## 3. Matrices | Arithmetic
+## 3. Matriksler | Aritmetik
 
 ```{r}
 m <- matrix(c(1,2,3,4), nrow = 2, ncol = 2)
@@ -860,7 +860,7 @@ m*2
 
 
 
-## 3. Matrices | Arithmetic
+## 3. Matriksler | Aritmetik
 
 ```{r}
 m2 <- matrix(c(5,6,7,8), nrow = 2, ncol = 2)
@@ -869,7 +869,7 @@ m + m2
 
 
 
-## 3. Matrices | Matrix subsetting: positional
+## 3. Matriksler | Matriks elementlerini seçme: pozisyona göre
 
 ```{r}
 january <- matrix(1:31, nrow = 5, ncol = 7, byrow = T)
@@ -878,25 +878,25 @@ january
 
 
 
-## 3. Matrices | Matrix subsetting: positional
+## 3. Matriksler | Matriks elementlerini seçme: pozisyona göre
 
 ```{r}
-january[1,2] # first row, second column
-january[5,4] # fifth row, fourth column
+january[1,2] # birinci satır, ikinci sütun
+january[5,4] # beşinci satır, dördüncü sütun
 ```
 
 
 
-## 3. Matrices | Matrix subsetting: positional
+## 3. Matriksler | Matriks elementlerini seçme: pozisyona göre
 
 ```{r}
-january[1,]  # entire first row
-january[,3]  # entire third column
+january[1,]  # tüm satırlar
+january[,3]  # tüm sütunlar
 ```
 
 
 
-## 3. Matrices | Matrix subsetting: named
+## 3. Matriksler | Matriks elementlerini seçme: isme göre
 
 ```{r}
 colnames(january) <- c("monday", "tuesday", "wednesday", 
@@ -907,16 +907,16 @@ january
 
 
 
-## 3. Matrices | Matrix subsetting: named
+## 3. Matriksler | Matriks elementlerini seçme: isme göre
 
 ```{r}
-january[,"monday"] # Remember to use "" when subsetting by name!
+january[,"monday"] # İsimle seçme yaparken "" işaretlerini kullanmayı unutmayın!
 january[,"sunday"]
 ```
 
 
 
-## 3. Matrices | Matrix subsetting: named
+## 3. Matriksler | Matriks elementlerini seçme: isme göre
 
 ```{r}
 january["week 1",]
@@ -925,15 +925,15 @@ january["week 3", "thursday"]
 
 
 
-## 3. Matrices | Matrix subsetting: logical
+## 3. Matriksler | Matriks elementlerini seçme: mantıksal
 
 ```{r}
-january<15 # turns whole matrix to logical
+january<15 # Tüm matriksi mantıksal hale çevirir.
 ```
 
 
 
-## 3. Matrices | Matrix subsetting: logical
+## 3. Matriksler | Matriks elementlerini seçme: mantıksal
 
 ```{r}
 january[january<15]
@@ -941,7 +941,7 @@ january[january<15]
 
 
 
-## 3. Matrices | Matrix subsetting: logical
+## 3. Matriksler | Matriks elementlerini seçme: mantıksal
 
 ```{r}
 january[,"tuesday"]
@@ -951,15 +951,15 @@ tues[tues<15]
 
 
 
-## Exercise 2.3
+## Alıştırma 2.3
 
-- Create two 5 by 2 matrices. One should include all the even numbers between 1 and 20. Other should include all the odd numbers between 1 and 20. Fill these matrices by row.
-- Combine these two matrices by row (rbind) and assing it to a new object.
-- Combine these two matrices by column (cbind) and assing it to a new object.
+- iki tane 5'e 2lik matriks oluşturun. Bir tanesi 1-2* arasındaki tüm çift sayıları içermeli, diğeri tüm tek sayıları. Matriksleri satırlara göre doldurdun.
+- Bu iki matriksi satır ile birleştirin (rbind) ve yeni bir objeye atayın.
+- Bu iki matriksi sütun ile birleştirin (cbind) ve yeni bir objeye atayın.
 
 
 
-## Exercise 2.4
+## Alıştırma 2.4
 
 ```{r, eval = F}
 january <- matrix(1:31, nrow = 5, ncol = 7, byrow = T)
@@ -968,23 +968,23 @@ colnames(january) <- c("monday", "tuesday", "wednesday",
 rownames(january) <- c("week 1", "week 2", "week 3", "week 4", "week 5")
 ```
 
-- Run the code above.
-- Remove Saturday and Sunday columns from January.
-- You called in sick from 9th to 11th. Replace those days in the matrix with "sick". How has the other entries in the matrix changed?
-- Replace the remaining days with "healthy"
-- What do you get when you use length() on a matrix? Use also nrow() and ncol() on the same matrix. How are they related to length?
+- Yukarıdaki kodu çalıştırın.
+- January ayından Saturday ve Sunday sütunlarını silin.
+- 9 ve 11. günlerde hasta oldunuz (geçmiş olsun!). Bu günleri "hasta" olarak değiştirin. Matriksteki diğer girdiler bundan nasıl etkilendi?
+- Kalan günleri "sağlıklı" olarak değiştirin.
+- length() fonksiyonunu matriks üzerinde kullanınca ne sonuç alıyorsunuz? Aynı matriks üzerinde nrow() ve ncol() fonksiyonlarını kullanın. İlk sonuçla nasıl ilişkililer?
 
 
 
-## 4. Arrays
+## 4. Arrayler
 
-- Arrays are multidimensional
-- Behaves prcatically the same as vectors and matrices
-- Vectore are actually single dimensional arrays and matrices are two dimensional arrays
+- Arrayler çok boyutludur.
+- Vektörler ve matrikslerle benzer davranır.
+- Aslında vektörler tek boyutlu array, matriksler iki boyutlu arraydir.
 
 
 
-## 4. Arrays
+## 4. Arrayler
 
 ```{r}
 x <- array(c(1,2,3), dim = 3)
@@ -995,7 +995,7 @@ is.array(x)
 
 
 
-## 4. Arrays
+## 4. Arrayler
 
 ```{r}
 m <- array(c(1,2,3,4), dim = c(2,2))
@@ -1006,7 +1006,7 @@ is.matrix(m)
 
 
 
-## 4. Arrays
+## 4. Arrayler
 
 ```{r}
 a <- array(c(1,2,3,4,5,6,7,8), dim = c(2,2,2))
@@ -1015,7 +1015,7 @@ a
 
 
 
-## 4. Arrays
+## 4. Arrayler
 
 ```{r}
 a[,,1]
@@ -1025,33 +1025,35 @@ a[1,2,2]
 
 
 
-# Part 3: Loops and Flow Statements
+# Part 3: Loops and Flow İfadeleri
 
 
 
-## For loops
+## Loop
 
-- Loops are an important programming tool. The one we will learn today is called a **for loop**. 
+- Looplar önemli! Bugün öğreneceğimiz loopun adı **for loop**. 
 
-- For loops run for a certain number of steps (iterations) that you define, during which any statements in the loop are executed.
+- For loopları yazdığınız kodu belirlediğiniz sayıda tekrar eder (iteration). 
 
-- The basic syntax is:
+- Temel taslak:
 
 `for (i in 1:number_of_iterations) {`
-`execute these statements`
+`buraya bakarlar`
+`buraya kod gelecek`
+`buraya bakarlar`
 `}`
 
 
 
-## For loops | Why use a for loop?
+## For loop | Neden for loop?
 
-- We have a repeated process with indentical formatting, but different values.
+- Aynı işlemi farklı değerler için tekrarlamamız gerektiğinde.
 
-- To avoid laborious typing into R
+- Yorucu miktarda kod yazmamak için.
 
 
 
-## For loops | Our first loop
+## For loop | İlk deneme
 
 ```{r}
 for (i in 1:5){
@@ -1061,19 +1063,19 @@ for (i in 1:5){
 
 
 
-## For loops | Our first loop
+## For loop | İlk deneme
 
 `for (i in 1:5) {`
 
-- i starts at 1. R will execute some statements; 
-- i is increased to i = 2 and statements are executed again; 
-- i is increased to i = 3 and statements are executed again; 
-- and so on, until i = 5, at which point the loop executes the set of statements for the last time.
+- i 1'den başlar. R, kodları çalıştırır; 
+- i artar ve 2 olur. R aynı kodu tekrar çalıştırır; 
+- i artar ve 3 olur. R aynı kodu tekrar çalıştırır; 
+- ...ve böyle devam eder, i 5 olduğunda R aynı kodu tekrar ama son kez çalıştırır.
 
 `}`
 
 
-## For loops
+## For loop
 
 ```{r}
 for (i in 1:2){
@@ -1081,19 +1083,19 @@ for (i in 1:2){
 }
 ```
 
-- You can also call **i** after the loops is finished.
+- For loop bittikten sonra **i**'yi çağırabilirsiniz.
 
 ```{r}
-i # i is an object in the work space now
+i # i şu anda workspace'de bir obje.
 ```
 
-- i will reset if you start another loop with it.
+- i eğer onunla başka bir loop çalıştırırsanız kendini yenileyecektir.
 
 
 
-## For loops
+## For loop
 
-- We can assign values to objects inside the loop.
+- Loopun içinde objelere atama yapabiliriz.
 
 ```{r}
 x <- 2
@@ -1106,21 +1108,21 @@ for (i in 1:4){
 
 
 
-## Exercise 3.1
+## Alıştırma 3.1
 
-For this exercise use the `january` matrix you created in part 2.
+Bu alıştırma için 2.kısımda oluşturduğunuzda `january` matriksini kullanın.
 
-- Print the dates of all wednesdays.
+- Tüm wednesdaylerin tarihlerini yazdırın.
 
-- Replace the days of February in week 5 with `NA`s.  
+- Beşinci haftada yer alan February günlerini `NA` ile değiştirin.
 
 
 
-## For loops | Loop Environment
+## For loop | Loop Environment
 
-- Loops are their own little environment, so use `print()` to view them on your console so you can see the output of each iteration.
+- Looplar kendi küçük dünyalarına sahiptir. `print()` fonksiyonunu kullanarak her tekrarın sonucunu görebilirsiniz.
 
-- Without `print()` or an assignment `<-` results are not returned.
+- Eğer `print()` veya atama `<-` kullanmazsanız sonuçlar size dönmez.
 
 ```{r}
 wizards <- c("Harry", "Hermione", "Ron")
@@ -1132,21 +1134,21 @@ for (i in 1:length(wizards)){
 
 
 
-## Exercise 3.2
+## Alıştırma 3.2
 
-Create a vector of names of people in your row, write them a nice message using a loop.
+Sizin sıranızda oturan insanların ismiyle bir vektör oluşturup, onlara bir loop ile küçük süprizler yapın (güzel bir şeyler yazın).
 
 
 
-## For loops | How do we save loop outputs?
+## For loop | Loop sonuçlarını nasıl kaydederiz?
 
-- Instead of printing to the screen, we usually want to create a new object with the outputs in the loop.
-- To do this, you need to create a blank object before the loop
+- Loop sonucunu ekrana çıktı olarak almaktansa (print), sonuçları obje olarak saklamayı tercih etmeli. 
+- Bunu yapmak için loopa başlamadan önce boş bir obje oluşturmanız lazım.
 
 ```{r}
-x <- rnorm(n = 10, mean = 1, sd = 0.5)  # Vector that we will use in the loop
+x <- rnorm(n = 10, mean = 1, sd = 0.5)  # Loopda kullanacağımız vektör.
 
-outputs <- c()  # Create a blank vector
+outputs <- c()  # Boş bir vektör oluştur
 
 for (i in 1:length(x)) {
   outputs[i] <- x[i] * 10
@@ -1156,22 +1158,22 @@ head(outputs)
 
 
 
-## Exercise 3.3
+## Alıştırma 3.3
 
 ```{r}
 x <- rnorm(n = 50, mean = 0, sd = 1)
 m <- matrix(x, ncol = 5, nrow = 10)
 ```
 
-- Write a for loop that calculates the mean of each column in matrix `m`, and stores the output in a single vector.
+- `m` matriksindeki her sütunun ortalamasını hesaplayan bir loop yazın ve sonucu a objesine atayarak saklayın.
 
 
 
-## For loops | Nested for loops
+## For loop | Nested for loop
 
-- A single `for loop` is enough if the object we are manipulating has a single dimension.
+- Eğer manipüle ettiğimiz obje tek boyutluysa, tek bir for loop yeterli.
 
-- We need more than one `for loops` nested withing one another if we are dealing multi-dimensinonal objects.
+- Eğer birden fazla boyutlu objelerle uğraşıyorsak iç içe birden fazla for loop yazmamız gerekiyor.
 
 ```{r}
 m <-  matrix(1:6, nrow = 3, ncol = 2)
@@ -1184,9 +1186,9 @@ for (i in 1:nrow(m)) {
 
 
 
-## For loops | Nested for loops
+## For loop | Nested for loop
 
-- Iteration index (i, h etc.) should match with the correct subset of the object.
+- Tekrar indekseleri (i, h vb.) objenin doğru kısmıyla eşleşmeli.
 
 ```{r, eval=FALSE}
 for (i in 1:nrow(m)) {
@@ -1198,9 +1200,9 @@ for (i in 1:nrow(m)) {
 
 
 
-## For loops | Nested for loops
+## For loop | Nested for loop
 
-- Track the iteration indexes of your for loops carefuly. Do not reuse them in nested for loops.
+- Tekrar indekslerini dikkatlice takip edin. İç içe geçmiş looplarda tekrar tekrar kullanmayın.
 
 ```{r, eval=FALSE}
 for (i in 1:nrow(m)) {
@@ -1212,7 +1214,7 @@ for (i in 1:nrow(m)) {
 
 
 
-## Flow Statements | if statements
+## Flow ifadeleri | If ifadeleri
 
 ```{r}
 if (3 > 2) {
@@ -1222,54 +1224,56 @@ if (3 > 2) {
 
 
 
-## Flow Statements | if statements
+## Flow ifadeleri | If ifadeleri
 
-- The basic syntax is:
+- Temel taslak:
 
 `if (logical statement) {`
-`execute these statements`
+`buraya kod gelecek`
 `}`
 
-- If the logical statement is **TRUE**, it will exectute the statement. If it is **FALSE**, it will not execute the satement
+- Eğer mantıksal önerme doğru ise, **TRUE**, kod çalışacak. Eğer yanlış ise, **FALSE**, çalışmayacak.
 
 
 
-## Flow Statements | if statements
+## Flow ifadeleri | If ifadeleri
 
-- Often, we want for loops to be able to do different things under different conditions. We want the for loop to account for variables, options, and logical statements.
+- Genellikle loopların farklı koşullar altında farklı şeyler yapmasını isteriz. Loopların değişkenleri, seçenekleri ya da mantıksal önermeleri dikkate almasını isteriz.
 
 
 
-## Flow Statements | if statements
+## Flow ifadeleri | If ifadeleri
 
 ```{r}
 x <- 1:5
 
 for (i in 1:length(x)) {
   if(x[i] > 3) {
-    print(paste(x[i],"is greater than 3"))
+    print(paste(x[i],"3'ten büyüktür"))
   }
   if(x[i] <= 3) {
-    print(paste(x[i],"is less than or equal to 3"))
+    print(paste(x[i],"3'ten küçük ya da 3'e eşittir"))
   }
 }
 ```
 
 
 
-## Exercise 3.4
+## Alıştırma 3.4
 
-- Create a vector, `x`, with all integers between 1 and 100.
+- `x` isimli 1 ve 100 arasındaki tüm sayıları içeren bir vektör oluşturun.
 
-- Create a for loop that computes `x[i] * 2` for 100 iterations (the length of vector `x`). Place the output in a vector. However, calculate `x[i] * 3` if `x[i]` is larger than 32 and smaller than 50.
+- Vektör için `x[i] * 2` işlemini 100 kez (vektörün uzunluğu) gerçekleştirin. Fakat eğer `x[i]` 32'den büyük ve 50'den küçükse `x[i] * 3`'ı hesaplayın. Çıktıyı bir vektöre atayın. 
 
 
 
-## Flow Statements | else statements
 
-- When using only an `if` statement and when logical statement is `FALSE` nothing is executed.
+## Flow ifadeleri | Else ifadeleri
 
-- We can set up a statement to be executed when logical statement is `FALSE` by using `else`
+- `if` kullanırken eğer mantıksal önerme yanlış ise, `FALSE`, hiç bir şey çalışmaz.
+
+- `else` kullanarak mantıksal önerme yanlış, `FALSE`, olduğunda da bir başka kod çalıştırabiliriz.
+
 
 ```{r}
 if (1 > 2) {
@@ -1279,25 +1283,26 @@ if (1 > 2) {
 
 
 
-## Flow Statements | else statements
+## Flow ifadeleri | Else ifadeleri
 
-- When using only an `if` statement and when logical statement is `FALSE` nothing is executed.
+- `if` kullanırken eğer mantıksal önerme yanlış ise, `FALSE`, hiç bir şey çalışmaz.
 
-- We can set up a statement to be executed when logical statement is `FALSE` by using `else`
+- `else` kullanarak mantıksal önerme yanlış, `FALSE`, olduğunda da bir başka kod çalıştırabiliriz.
 
 ```{r}
 if (1 > 2) {
   print("Yes")
 } else {
-  print("No") # You can use curly braces with else statements as well
+  print("No") # Süslü parantezleri else ifadeleriyle de kullanabilirsiniz.
 }  
 ```
 
 
 
-## Exercise 3.5
+## Alıştırma 3.5
 
-- There are five geographically sepearate areas infested with ticks. Scientists sample 10 deers from each location and count the number of ticks on them. We can simulate a simple scenario like this as below, assuming we know the mean number of ticks excpected to be counted in each deer in each location and that number of ticks counted follows a poisson distribution    
+- Kene istilasına uğramış beş farklı coğrafi alan var. Bilim insanları her bölgeden 10 geyik için örneklem alarak sayım yapıyor. Bunun gibi basit bir senaryoyu her bölgedeki beklenen ortalama kene sayısını bildiğimizi ve sayımı yapılan kenelerin poisson dağılımına uyduğunu varsayarak simüle edebiliriz.
+ 
 
 ```{r}
 tick_mean <- c(4,32,17,10,12)
@@ -1307,21 +1312,21 @@ for (i in 1:5) {
 } 
 ```
 
-- Run the code above.
-- Create a new data set in which animals with a tick count less than or equal to 10 is assgined 0 and the ones with a tick count larger than assigned 1. Use for loops first. Then try to do it without a for loop. 
+- Yukarıdaki kodu çalıştırın.
+- Yeni bir veriseti oluşturun ve bu verisetinde 10 veya 10'dan daha az kenesi olan hayvanlara 0, 10'dan daha fazla kenesi olanlara 1 atayın. Bunu loop kullanarka yapın. Daha sonra loop kullanmadan yapın.
 
 
 
-# Part 4: Functions
+# Part 4: Fonksiyonlar
 
 
-## Base functions
+## Temel fonksiyonlar
 
-- Functions contain sets of instructions that we want to carry out repeatedly.
+- Fonksiyonlar sık sık gerçekleştirdiğimiz işlemleri gerçekleştiren komutlara sahiptir.
 
-- Like for loops they reduce the amount of laborius typing.
+- For loopları gibi gereksiz yere kod yazmayı önlerler.
 
-- We have already seen many of the basic functions that come pre-installed with R.
+- R ile yüklü olarak gelen bir çok temel fonksiyonu şimdiden gördük.
 
 ```{r, eval = FALSE}
 sum(seq(1, 100, 1))
@@ -1333,56 +1338,56 @@ colnames(iris)
 
 
 
-## Functions from packages 
+## Paket Fonksiyonlar
 
-- Many custom made functions availabe via packages. 
+- Bir çok başka fonksiyon paketler (packages) aracılığıyla yüklenebilir. 
 
 ```{r, eval = FALSE}
-# This will not run. tree is not loaded 
+# Bu çalışmayacak çünkü paket yüklü (install) ve açık (load) değil.
 tree(formula = Species ~ . -Species, data = iris) 
 
-install.packages("tree") # Install package 
-library(tree) # Load package 
+install.packages("tree") # Paketi yükler
+library(tree) # Paketi açar
 
-# Now it should work 
+# Şimdi çalışmalı.
 tree(formula = Species ~ . -Species, data = iris)
 ```
 
-- Vast user community leads to a lot of different packages.
+- R kullanan onlarca insan kendi amaçları için yazdıkları paketleri paylaşıyor. Bu sayede büyük bir çeşitlilik oluşuyor.
 
 
 
-## Make your own!
+## Kendi fonksiyonuzu yazın
 
-- It is also possible to *define your own functions*. This is especially important if you are going to write the same lines of code over and over again. 
+- R'da *Kendi fonksiyonunuzu yazmak* mümkün. Bu eğer aynı kodu tekrar tekrar yazacaksanız çok önemli ve gerekli bir durum.
 
-- R functions are objects just like anything else.
+- R fonksiyonları diğer her şey gibi birer obje.
 
 
 
-## Writing functions
+## Fonksiyon yazma
 
-- Typical syntax: 
+- Temel taslak: 
 
 `function_name <- function(arguments) {
   body
 }`
 
 ```{r}
-# define a function, f
+# fonksiyon tanımlayın, f
 f <- function(x, y) {
   x + y
 }
 
-# call function f
+# f fonksiyonunu çağırın
 f(x = 1, y = 3)
 ```
 
 
 
-## Writing functions
+## Fonksiyon yazma
 
-- Typical syntax: 
+- Temel taslak: 
 
 `function_name <- function(arguments) {
   body
@@ -1391,12 +1396,12 @@ f(x = 1, y = 3)
 ```{r}
 f
 
-# Also try to call teh function as f(). What error did you get?
+# Fonksiyonu f() olarak çağırmayı deneyin. Ne hata aldınız?
 ```
 
 
 
-## Main parts of functions
+## Fonksiyonun temel bileşenleri
 
 - Body
 
@@ -1410,7 +1415,7 @@ body(f)
 
 
 
-## Main parts of functions
+## Fonksiyonun temel bileşenleri
 
 - Body
 
@@ -1424,7 +1429,7 @@ formals(f)
 
 
 
-## Main parts of functions
+## Fonksiyonun temel bileşenleri
 
 - Body
 
@@ -1435,40 +1440,40 @@ formals(f)
 ```{r}
 environment(f)
 
-# Try to look for these three parts for the sum function. What do you see?
+# Sum fonksiyonunda bu üç bileşene bakmaya çalışın. Ne görüyorsunuz?
 ```
 
 
 
-## A Function and its environment 
+## Fonksiyon ve environment
 
-- Variables defined inside functions exist in a different *environment* than the global environment, i.e. they don't exist outside of the function.
+- Fonksiyon içinde tanımlanmış değişkenler genel environment'a dahil değildir, bunun yerine farklı bir environment'ta yer alırlar. Yani fonksiyonun dışında varlıkları geçerli değildir.
 
-- However, if a variable is not defined inside a function, the function will look one level above.
+- Fakat eğer değişken fonksiyon içinde tanımlanmış değilse fonksiyon bir üst seviyeye bakacaktır.
 
-- If you run this function, you'll see that `y` does not pop up in your environment panel.
+- Eğer bu fonksiyonu çalıştırırsanız göreceksiniz ki environment panelinde `y`objesi oluşmayacak.
 
 
 
-## A Function and its environment 
+## Fonksiyon ve environment
 
 ```{r}
-ismail <- 2  # variable defined outside the function
+nurbahar <- 2  # fonksiyon dışında oluşturulan obje
 
 g <- function() {
-     bilgecan <- 1 # variable defined inside the function 
-    c(ismail, bilgecan) 
+     bilgecan <- 1 # fonksiyon içinde oluşturulan obje
+    c(nurbahar, bilgecan) 
 }
 
 g()
 ```
 
-- Do you have an object named ismail in your environment? What about bilgecan?
+- Environemnt kımsında nurbahar adlı bir objeniz var mı? Peki bilgecan?
 
 
-## Function basics
+## Fonksiyonlar
 
-- Unless you use the function `return()` or write the output at the end of the function, you won't be able to access the output.
+- `return()` fonksiyonunu kullanmadığınız ya da fonksiyonun sonuna çıktı yazmadığınız müddetçe fonksiyonun sonucuna ulaşamazsınız.
 
 ```{r}
 f1 <- function(a, b) {
@@ -1477,12 +1482,12 @@ f1 <- function(a, b) {
     z <- a/b
 }
 
-f1(1, 2)  # doesn't return anything
+f1(1, 2)  # sonuç yok.
 ```
 
 
 
-## Function basics
+## Fonksiyonlar
 
 ```{r}
 f2 <- function(a, b) {
@@ -1496,27 +1501,27 @@ f3 <- function(a, b) {
     x <- a + b 
     y <- (a + b)^2
     z <- a/b
-    c(x, y, z) # same result as writing return(c(x, y, z))
+    c(x, y, z) # return(c(x, y, z)) yazmakla aynı
 }
 
-# returns x, y, and z
+# x, y, ve z'yi veriyor.
 f2(1, 2)  
 f3(1, 2)
 ```
 
 
 
-## Exercise 4.1
+## Alıştırma 4.1
 
-1. Create a function that takes in two arguments, `x` and `y`, and computes `x * 2 * y`.
+1. İki girdi (arguments) alan bir fonksiyon yazın. Girdiler `x` ve `y` olsun ve fonksiyon `x * 2 * y`'yi hespalasın.
 
-2. Create a function that takes in three arguments, and makes a vector from the result.
+2. Üç girdi alan bir fonksiyon yaratın ve sonuçtan vektör yaratın.
 
 
 
-## Function basics
+## Fonksiyonlar
 
-- Arguments can be passed to a function as a vector or a list
+- Fonksiyon girdileri bir vektör ya da liste olarak verilebilir. 
 
 ```{r}
 
@@ -1534,7 +1539,7 @@ f3(params)
 
 
 
-## Functions with pre-defined values
+## Fonksiyonlar ve önceden atanmış değerler
 
 ```{r}
 subtract <- function(a = 5, b = 2){
@@ -1547,33 +1552,33 @@ subtract(5, 6)
 
 
 
-## Exercise 4.2
+## Alıştırma 4.2
 
-Write a function that takes a vector as an argument and multiplies the sum of the vector by 10, and returns a logical statement based on whether the sum is under 1000.
-
-
-
-## Exercise 4.3 (Advanced)
-
-Write an R unction that seperates any given number to all it's multipliers.
+Bir vektörü girdi olarak alan, daha sonra vekötürün toplamını 10 ile çarpıp sonucun 1000'den küçük olduğunu mantıksal önerme ile dönen bir fonksiyon yazın.
 
 
 
-# Part 5: Heterogenous Data Structures
+## Alıştırma 4.3 (Zor)
+
+Verilen bir numarayı bölenlerine ayıran bir fonksiyon yazın.
 
 
 
-## 5. Data frames
-
-- Most data you are going to be working with in R is going to be in a "table" form but will also include variables of different types. So matrices and vectors do not meet all our needs.
-
-- Data frames can be thought of as collection of vectors with different types.
-
-- There are many pre-loaded data sets in R. We'll be working with **iris**, famously used by <a href = "http://en.wikipedia.org/wiki/Iris_flower_data_set">R.A. Fisher in 1936</a>.
+# Part 5: Heterojen Veri Yapıları
 
 
 
-## 5. Data frames
+## 5. Data frameler
+
+- R'la çalışırken kullanacağınız veriler genellikle tablo formatında olacak fakat farklı değişken tipleri içerecek. Yani matriksler ve vektörler bu ihtiyacı karşılamayacak.
+
+- Data frameler farklı veri tiplerinin bir araya geldiği objelerdir.
+
+- R'la yüklü gelen bir çok veri seti var. Biz bugün ünlü **iris** (R.A. Fisher, 1936) verisetiyle çalışacağız.
+
+
+
+## 5. Data frameler
 
 ```{r}
 iris
@@ -1581,7 +1586,7 @@ iris
 
 
 
-## 5. Data frames
+## 5. Data frameler
 
 ```{r}
 head(iris)
@@ -1590,36 +1595,36 @@ is.data.frame(iris)
 
 
 
-## 5. Data frames | Useful functions for dataframes and matrices
+## 5. Data frameler | Dataframes ve matriksler için faydalı fonksiyonlar
 
-- `head()` - see first 6 rows
-- `tail()` - see last 6 rows
-- `dim()` - dimensions (# rows, # columns)
-- `nrow()` - number of rows
-- `ncol()` - number of columns
-- `str()` - structure of any object
-- `rownames()` - row names 
-- `colnames()` - column names
-
-
-
-## Exercise 5.1
-
-*trees* and *mtcars* are other available data sets.
-
-1. How many rows does the *trees* and *mtcars* data frames have?
-
-2. How many columns? What are the column names?
-
-3. Using the `str()` function, how many species does *iris* data set have?
-
-4. What classes are each of the columns for the two data sets?
+- `head()` - ilk 6 satırı gör
+- `tail()` - son 6 satırı gör
+- `dim()` - boyutları gör (# rows, # columns)
+- `nrow()` - satır sayısı
+- `ncol()` - sütun sayısı
+- `str()` - objenin yapısı
+- `rownames()` - satır isimleri 
+- `colnames()` - sütun isimleri
 
 
 
-## 5. Data frames | Data frame subsetting
+## Alıştırma 5.1
 
-- Subsetting data frames is very similar to subsetting matrices
+*trees* ve *mtcars* R'da yüklü olan diğer iki veri setidir.
+
+1. Bu iki veri setinin kaç satıra sahip olduğuna bakın.
+
+2. Kaç sütuna sahipler? Sütünların isimleri neler?
+
+3. `str()` fonksiyonunu kullanarak *iris* veri setinin kaç türe sahip olduğunu bulun.
+
+4. İki veri setinde hangi class'lar mevcut?
+
+
+
+## 5. Data frameler | Veri setinden seçim yapma (subsetting)
+
+- Matrikslerle çok benzer.
 
 ```{r}
 iris[1,3]
@@ -1629,9 +1634,9 @@ tail(iris[,"Species"])
 
 
 
-## 5. Data frames | Data frame subsetting
+## 5. Data frameler | Veri setinden seçim yapma (subsetting)
 
-- We can also use the dollar sign to call specific columns
+- Belirli sütunları seçmek için dolar işaretini kullanabiliriz.
 
 ```{r}
 head(iris$Petal.Width)
@@ -1640,25 +1645,25 @@ head(iris[,4])
 
 
 
-## Exercise 5.2
+## Alıştırma 5.2
 
-1. What is the 9th entry of the `Sepal.Width` column of the `iris` data frame?
+1. `iris` veri setinde  sütunundaki 9. elementi bulun?
 
-2. Subset the 17th row of the `iris` data frame.
+2. `iris` veri setindeki 17.satırı seçin.
 
-3. Create an object with the 1st, 4th and 7th rows of the `iris` data frame.
+3. `iris` veri setinin 1, 4 ve 7. satırları ile bir obje oluşturun. 
 
-4. Use the `seq()` function to subset all odd rows in the `iris` data frame.
+4. `iris` veri setindeki tüm tek sayılı satırları seçmek için `seq()` fonksiyonunu kullanın.
 
-5. Remove the sepal width column from `iris` data frame, and assign this to an object.
+5. `iris` `Sepal.Width` sütununu silin ve başka bir objeye atayın.
 
-6. What do you get when you use the `length()` function on a data frame? How is that different from a matrix?
+6.  Bir veri setinde `length()` fonksiyonunu kullandığınızda ne sonuç alıyorsunuz? Matriksten farkı ne?
 
-7. Extract the rows of `iris` that has larger than 3 petal length.
+7. `iris`  veri setinde petal uzunluğu 3'den büyük olanları seçin.
 
 
 
-## 5. Data frames | Creating data frames
+## 5. Data frameler | Veri seti oluşturma
 
 ```{r}
 d <- data.frame(x = c(5.6, 2.45, 7.09), y = c("a","b","c"), z = c(1,2,3))
@@ -1668,7 +1673,7 @@ str(d)
 
 
 
-## 5. Data frames | Creating data frames
+## 5. Data frameler | Veri seti oluşturma
 
 ```{r}
 d <- data.frame(x = c(5.6, 2.45, 7.09), y = c("a","b","c"), z = c(1,2,3), 
@@ -1678,7 +1683,7 @@ str(d)
 
 
 
-## 5. Data frames | Creating data frames
+## 5. Data frameler | Veri seti oluşturma
 
 ```{r}
 d$t <- as.factor(c(10,20,30))
@@ -1688,7 +1693,7 @@ str(d)
 
 
 
-## 5. Data frames | Combining data frames
+## 5. Data frameler | Veri setlerini birleştirme
 
 ```{r}
 d1 <- data.frame(x = c(5.6, 2.45, 7.09), y = c("a","b","c"), 
@@ -1700,53 +1705,53 @@ str(d3)
 
 
 
-## 5. Data frames | Combining data frames
+## 5. Data frameler | Veri setlerini birleştirme
 
 ```{r}
-# When binding two data frames by row, column names must match!
-# Try binding d1 and d2 from the previous slide by row. What error do you get? 
+# İki veri setini satırlarla birleştirirken sütun isimleri birbirine eş olmalı!
+# Bir önceki slayttan d1 ve d2'yi birleştirmeyi deneyin. Ne hata alıyorsunuz?
 
 d2 <- data.frame(x = c(1,2,3), y = as.factor(c(10,20,30)))
 d4 <- rbind(d1,d2)
 
-# Remember coercison
+# Zorla güzellik olmayacağını hatırlayın.
 str(d4)
 ```
 
 
-## Exercise 5.3
+## Alıştırma 5.3
 
-1. Create a two column data frame with c(1,2,3) and c(4,5,6,7). What was the result?
+1. c(1,2,3) ve c(4,5,6,7) ile iki sütunlu bir veri seti oluşturun. Sonuç ne?
 
-2. Create a data frame with c("a","b","c") and c(1,2,3) using `dataframe` directly. Create another one using `cbind` first and then `data.frame`. What is the difference?
-
-
-  
-## Importing your own data
-  
-- R is not a spreadsheet program, so it's not great for direct data entry. It's best to start with spreadsheets for data entry and storage, and to import spreadhseets into R for data visualization and analysis.
-
-- **.csv** (comma separated values) files are often the preferred format to import into R. 
-
-- Before we do that, we will need to look at concept of your **working directory**.
+2. c("a","b","c") ve c(1,2,3) ile `dataframe` kulanarak bir veri seti oluşturun. Bir diğer veri setini önce `cbind`, sonra `data.frame` kullanarak oluşturun. Aradaki fark ne?
 
 
   
-## Importing your own data | Working directory
+## Kendi verinizi R'da açma
+  
+- R bir spreadsheet programı değil. Bu yüzden doğrudan veri girişi için güzel değil. O yüzden veri girişi ve saklamak için spreadsheetsleri kullanmak ve bunları görselleştirme ve analizler için R'a aktarmak en mantıklısı.
 
-- Find out what your current working directory is
+- Genellikle **.csv** (comma separated values) formatı tercih edilir.
+
+- Buna geçmeden önce **working directory** (çalışma dizini) kavramına bakalım.
+
+
+  
+## Kendi verinizi R'da açma | Working directory
+
+- Şu anda kullandığınız çalışma dizinini bulun
 
 ```{r}
 getwd()
 ```
 
-- This is the folder on your computer where R will look to open or write files. 
+- Bu klasör, bilgisayarınızın R'da dosya açmak ya da yazmak için kullanacağı klasördür.
 
 
   
-## Importing your own data | Working directory
+## Kendi verinizi R'da açma | Working directory
 
-- Set your working directory 
+- Çalışma dizininiz ayarlayın.
 
 ```{r, eval = FALSE}
 setwd("/Users/bilgecan/Desktop/")
@@ -1754,74 +1759,73 @@ setwd("/Users/bilgecan/Desktop/")
 
 
   
-## Importing your own data
+## Kendi verinizi R'da açma
 
 ```{r, eval=FALSE}
 blue.hill <- read.csv("BlueHill.csv")
 head(blue.hill)
 
-# Reading data without changing working directory
+# Çalışma dizininde olmayan dosyayı açma
 blue.hill <- read.csv("/Users/bilgecan/Desktop/BlueHill.csv")
 ```
 
 
 
-## R Tip: Variable names 
+## İpucu: Değişken isimleri
 
-- One of the largest sources of frustration with R can be importing data. Variable names often cause problems. 
-- Do not have spaces in variable names  
-- Use lower case letters
-- Abbreviate when appropriate  
+- Bir veriyi R'da açmak bazen çok sıkıntılı hale gelebilir. Genellikle sorun değişken isimlerinden gelir.
+- Değişken isimlerinde boşluk kullanmayın.
+- küçük harfler kullanın
+- Büyük harfleri sadece gerekli olduğunda kullanın.  
   
 ```{r, eval = FALSE}
-Average Height # BAD - this won't work
-Average.Height # OK - this will work but isn't best practice 
-average.height # BETTER - this will work, but will be slow to type repeatedly
-avg.height     # GOOD!  
+Average Height # KÖTÜ - hata verecek
+Average.Height # EH - çalışır fakat daha iyi olabilir.
+average.height # DAHA İYİ - tekrar tekrar yazarken yavaşlatabilir.
+avg.height     # ÇOK İYİ!  
 ```
 
 
 
-## Execise 5.4
+## Alıştırma 5.4
 
-1. Import the data frame <a href = https://www.dropbox.com/s/cg0yyuvfxpdbouy/BlueHill.csv?dl=0>BlueHill.csv</a> and read it into R.
+1. Şu adresteki veriyi <a href = https://www.dropbox.com/s/cg0yyuvfxpdbouy/BlueHill.csv?dl=0>BlueHill.csv</a> R'da açın.
 
-2. What is the mean daily temperature across all years and stations (**MNTM**)?
+2. Tüm istasyonlar ve yıllardaki günlük ortalama sıcaklık nedir? (**MNTM**)?
 
-3. Subset the fourth column and assign it to an object. What is its class and mode? Hint: use `class`
-and `mode` functions.
+3. Dördüncü sütunu seçin ve bir objeye atayın. Class'ı ve modu nedir? İpucu: `class` ve `mode` fonksiyonlarını kullanın.
 
-4. Subset the first row and assign it to an object. What is its class? Does it have a single mode?
+4. İlk satırı seçin ve bir objeye atayın. Class'ı nedir? Tek bir moda mı sahip?
 
-5. Considering the third and fourth questions, how is subsetting rows vs columns different for data frames compared to matrices?
-
+5. Üçüncü ve dördüncü alıştırmaları düşündüğünüzde veri setlerindeki seçim ile matrikslerdeki seçim arasında nasıl farklar var?
 
 
-## Exporting data frames 
 
-- After you've made changes (done subsetting, etc.), you may want to export the altered data frame.
+## Veri setlerini dışarı aktarma
+
+- Değişiklk yaptıktan sonra veri setlerinizi dışarı aktarmak isteyebilirsiniz.
 
 ```{r, eval = FALSE}
-# Write the file 
+# Bu dosyayı yazar
 write.csv(iris, file = "iris.csv", row.names = FALSE)
 
-# Check in your working directory for the new file
+# Dosya çalışma dizininizde mi diye kontrol eder
 list.files()
 ```
 
 
 
-## 6. Lists (Recursive Vectors)
+## 6. Listeler (lists, recursive vectors)
 
-- List can include elements of any type and class simultaneusly.
+- Listeler aynı anda herhangi bir tipte elementi ve classı barındırabilir.
 
-- A data frame is a list of vectors.
+- Veri seti vektörlerden oluşan bir dizi listeler barındırır.
 
-- Unless specified, data in lists are not stored in a table format.
+- Özellikle belirtmediğiniz sürece listelerdeki veriler tablo formatında saklanmaz.
 
 
 
-## 6. Lists
+## 6. Listeler
 
 ```{r}
 d <- data.frame(x = c(5.6, 2.45, 7.09), y = c("a","b","c"), z = as.factor(c(1,2,3)))
@@ -1833,19 +1837,19 @@ typeof(d)
 
 
 
-## 6. Lists
+## 6. Listeler
 
-- Elements of a list can include other lists and data frames as well.
+- Listelerdeki elementler başka listeler ve veri setleri içerebilir.
 
 ```{r}
-# Notice the similarity in the syntax with adding a column in a data frame
+# Bir veri setine sütun ekleme ile benzer
 l$d <- d
 l[2:4]
 ```
 
 
 
-## 6. Lists
+## 6. Listeler
 
 ```{r}
 # Listception
@@ -1855,9 +1859,9 @@ l[4:5]
 
 
 
-## 6. Lists | List subsetting
+## 6. Listeler | Listelerde seçim yapma (subsetting)
 
-- Brackets returns the elements of a given index as a list
+- Kare parantezler seçilen elementi liste olarak geri döndürür.
 
 ```{r}
 l[1]
@@ -1866,9 +1870,9 @@ str(l[1])
 
 
 
-## 6. Lists | List subsetting
+## 6. Listeler | List subsetting
 
-- Double brackets return the elements in its original type and class
+- Çift kare parantez elementi orjinal tipi ve classı ile döndürür.
 
 ```{r}
 l[[1]]
@@ -1877,7 +1881,7 @@ str(l[[1]])
 
 
 
-## 6. Lists | List naming
+## 6. Listeler | Liste isimlendirme
 
 ```{r}
 names(l)
@@ -1885,7 +1889,7 @@ names(l)
 
 
 
-## 6. Lists | List naming
+## 6. Listeler | Liste isimlendirme
 
 ```{r}
 names(l)[1] <- "new name"
@@ -1895,7 +1899,7 @@ names(l[1])
 
 
 
-## 6. Lists | List naming
+## 6. Listeler | Liste isimlendirme
 
 ```{r}
 names(l[[1]])
@@ -1905,9 +1909,9 @@ l[1]
 
 
 
-## 6. Lists | List naming
+## 6. Listeler | Liste isimlendirme
 
-- You can use `$` to call elements from a list as well. This is the same as using `[[]]`.
+- Element seçmek için `$` işaretini de kullanabilirsiniz. Bu, iki kare `[[]]` parentez kullanımı ile aynı.
 
 ```{r}
 l$x
@@ -1916,9 +1920,9 @@ l$y
 
 
 
-## Exercise 5.5
+## Alıştırma 5.5
 
-- Create the objects below:
+- Aşağıdaki objeyi oluşturun.
 
 ```{r}
 d <- data.frame(x = c(5.6, 2.45, 7.09), 
@@ -1934,35 +1938,35 @@ l$l2 <- l2
 
 
 
-## Exercise 5.5
+## Alıştırma 5.5
 
-- Extract the first element of `z` in the list.
+- `z` listesindeki ilk elementi seçin.
 
-- Extract the entire second column of `d` in the list.
+- `d` listesindeki ikinci sütunu seçin.
 
-- Extract the 50th element of b in the `l2` within `l`.
+- `l` listesinden b'den 50. elementi seçin
 
-- Multiply `x` in `l` with 2 by extracting it with `[]` and ``[[]]``. Why do you think one works and the other does not?
-
-
-
-## General subsetting suggestions
-
-- Subset vectors and factors using `[]`
-
-- Subset matrices, arrays, and data frames using `[,]`
-
-- Subset lists with `[]` if you want your output to be a list, or if you want to subset multiple elements from a list.
-
-- Subset lists with `[[]]` if you want to subset and use the actual data within the elements of a list.
+- `x`'in içindeki `l`'yi `[]` ve ``[[]]`` ile çıkarak 2 ile çarpın. Neden biri çalışırken diğeri çalışmıyor?
 
 
 
-# Part 6: Basic Plotting
+## Genel seçim yapma önerileri
+
+- Vektörleri ve faktörleri `[]` kullanarak seçin.
+
+- Matriksleri, arrayleri ve veri setlerini `[,]` ile seçin.
+
+- Listelerden seçim yaparken, eğer sonucun bir liste olmasını istiyorsanız veya birden fazla element seçmek istiyorsanız `[]` kullanın.
+
+- Listelerden seçim yaparken gerçek veriyi seçip kullanmak istiyorsanız `[[]]` kullanın.
 
 
 
-## Scatter Plots
+# Part 6: Temel Görselleştirme
+
+
+
+## Scatter Plot
 
 ```{r}
 x <- 1:10
@@ -1972,7 +1976,7 @@ plot(x, y)
 
 
 
-## Scatter Plots
+## Scatter Plot
 
 ```{r, eval=FALSE}
 iris <- iris[order(iris$Sepal.Length),]
@@ -1981,12 +1985,12 @@ y <- iris$Petal.Length
 plot(x, y, 
      xlab = "Sepal Length", 
      ylab = "Petal Length", 
-     main = "Couldn't think of a good name")
+     main = "Aklıma iyi bir isim gelmedi")
 ```
 
 
 
-## Scatter Plots
+## Scatter Plot
 
 ```{r, echo=FALSE}
 iris <- iris[order(iris$Sepal.Length),]
@@ -1995,22 +1999,22 @@ y <- iris$Petal.Length
 plot(x, y, 
      xlab = "Sepal Length", 
      ylab = "Petal Length", 
-     main = "Couldn't think of a good name")
+     main = "Aklıma iyi bir isim gelmedi")
 ```
 
 
 
-## Scatter Plots
+## Scatter Plot
 
 ```{r}
 plot(x, y, xlab = "Sepal Length", ylab = "Petal Length", pch = 16)
 ```
 
-- Lets look at ?par.
+- ?par fonksiyonuna bakalım.
 
 
 
-## Scatter Plots
+## Scatter Plot
 
 ```{r}
 plot(x, y, xlab = "Sepal Length", ylab = "Petal Length", pch = 16, cex = 0.5)
@@ -2018,7 +2022,7 @@ plot(x, y, xlab = "Sepal Length", ylab = "Petal Length", pch = 16, cex = 0.5)
 
 
 
-## Scatter Plots
+## Scatter Plot
 
 ```{r}
 plot(x, y, xlab = "Sepal Length", ylab = "Petal Length", pch = 16, cex = 2)
@@ -2026,7 +2030,7 @@ plot(x, y, xlab = "Sepal Length", ylab = "Petal Length", pch = 16, cex = 2)
 
 
 
-## Scatter Plots
+## Scatter Plot
 
 ```{r, eval=FALSE}
 plot(x, 
@@ -2040,7 +2044,7 @@ plot(x,
 
 
 
-## Scatter Plots
+## Scatter Plot
 
 ```{r, echo=FALSE}
 plot(x, 
@@ -2054,7 +2058,7 @@ plot(x,
 
 
 
-## Line Graphs
+## Line Graph
 
 ```{r, eval=FALSE}
 plot(x, 
@@ -2069,7 +2073,7 @@ plot(x,
 
 
 
-## Line Graphs
+## Line Graph
 
 ```{r, echo=FALSE}
 plot(x, 
@@ -2084,7 +2088,7 @@ plot(x,
 
 
 
-## Histograms
+## Histogram
 
 ```{r}
 hist(iris$Sepal.Length, xlab = "Sepal Length")
@@ -2092,7 +2096,7 @@ hist(iris$Sepal.Length, xlab = "Sepal Length")
 
 
 
-## Histograms
+## Histogram
 
 ```{r}
 hist(iris$Sepal.Length, xlab = "Sepal Length", breaks = 5)
@@ -2100,7 +2104,7 @@ hist(iris$Sepal.Length, xlab = "Sepal Length", breaks = 5)
 
 
 
-## Histograms
+## Histogram
 
 ```{r}
 plot(density(iris$Sepal.Length), xlab = "Sepal Length", main = "")
@@ -2108,7 +2112,7 @@ plot(density(iris$Sepal.Length), xlab = "Sepal Length", main = "")
 
 
 
-## Histograms
+## Histogram
 
 ```{r}
 hist(iris$Sepal.Length, xlab = "Sepal Length", probability = T, col = "grey")
@@ -2117,7 +2121,7 @@ lines(density(iris$Sepal.Length), col =  "red", lwd = 2)
 
 
 
-## Box Plots
+## Box Plot
 
 ```{r}
 boxplot(iris$Sepal.Length, iris$Petal.Length, names = c("Sepal Length", "Petal Length"))
@@ -2125,10 +2129,10 @@ boxplot(iris$Sepal.Length, iris$Petal.Length, names = c("Sepal Length", "Petal L
 
 
 
-## Combining Multiple Graphs
+## Birden çok grafiği birleştirmek
 
 ```{r, eval=FALSE}
-par(mfrow = c(2,2)) # you can also use mfcol()
+par(mfrow = c(2,2)) # mfcol() da kullanabilirsiniz.
 
 plot(x, 
      y, 
@@ -2148,7 +2152,7 @@ boxplot(x, y, names = c("Sepal Length", "Petal Length"))
 
 
 
-## Combining Multiple Graphs
+## Birden çok grafiği birleştirmek
 
 ```{r, echo=FALSE}
 par(mfrow = c(2,2))
@@ -2166,12 +2170,12 @@ boxplot(x, y, names = c("Sepal Length", "Petal Length"))
 
 
 
-## Combining Multiple Graphs
+## Birden çok grafiği birleştirmek
 
 ```{r, eval=FALSE}
-par(mfrow = c(2,2)) # you can also use mfcol()
+par(mfrow = c(2,2)) # mfcol() da kullanabilirsiniz.
 
-par(mar = c(5,4,1,1)) # default mar values are c(5, 4, 4, 2)
+par(mar = c(5,4,1,1)) # varsayılan değerler c(5, 4, 4, 2)
 plot(x, y, xlab = "Sepal Length", ylab = "Petal Length", 
      pch = 16, 
      cex = 0.5) 
@@ -2190,12 +2194,12 @@ boxplot(x, y, names = c("Sepal Length", "Petal Length"))
 
 
 
-## Combining Multiple Graphs
+## Birden çok grafiği birleştirmek
 
 ```{r, echo=FALSE}
-par(mfrow = c(2,2)) # you can also use mfcol()
+par(mfrow = c(2,2)) # mfcol() da kullanabilirsiniz.
 
-par(mar = c(5,4,1,1)) # default mar values are c(5, 4, 4, 2)
+par(mar = c(5,4,1,1)) # varsayılan değerler c(5, 4, 4, 2)
 plot(x, y, xlab = "Sepal Length", ylab = "Petal Length", 
      pch = 16, 
      cex = 0.5) 
@@ -2214,7 +2218,7 @@ boxplot(x, y, names = c("Sepal Length", "Petal Length"))
 
 
 
-# Epilogue
+# Sonsöz
 
 ---
 
@@ -2225,9 +2229,9 @@ boxplot(x, y, names = c("Sepal Length", "Petal Length"))
 
 
 
-## Mindblown!
+## Objepction!
 
-- Even operators are functions, and consequently objects.
+- Operatörler bile bir fonksiyon ve dolayısıyla obje!
 
 ```{r}
 `+`(2,3)
