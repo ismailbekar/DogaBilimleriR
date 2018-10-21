@@ -1,9 +1,9 @@
 
 library(tidyverse)
 library(RColorBrewer)
-setwd("~/Desktop/DogaBilimleriR/")
+setwd("~/GitHub/DogaBilimleriR/")
 
-file_adaylar <- as.tibble(read.csv("katilimcilar.csv"))
+file_adaylar <- as.tibble(read.csv("Katilimcilar/katilimcilar.csv"))
 
 # remove duplicates
 adaylar <- file_adaylar %>% 
@@ -32,7 +32,28 @@ levels(adaylar$area)
 adaylar_s <- adaylar %>% 
      filter(rlevel %in% c("Giriş", "Hiç")) %>% 
      filter(level %in% c("Yüksek Eğitim", "Doktora+")) %>% 
-     filter(area %in% c("Aerobiyoloji", "Atmosfer ve iklim", "Biyocoğrafya",
-                        "Biyoloji", "Botanik", "Deniz Bilimleri",
-                        "Doğa Koruma", "Ekoloji", "Ornitoloji", "Orman", 
-                        "Zooloji"))
+     filter(PreviousWorkshop == "Hayır") %>%
+     filter(area %in% c("Atmosfer ve iklim", "Biyocoğrafya", "Botanik", 
+                        "Deniz Bilimleri", "Doğa Koruma", "Ekoloji",
+                        "Ornitoloji", "Orman", "Zooloji")) %>% 
+     filter(isim != "Kiraz Erciyas Yavuz") %>% 
+     filter(isim != "Gülsima Usluer") %>% 
+     filter(isim != "İrem Tüfekcioğlu")
+
+adaylar_ek <- adaylar %>% 
+     filter(isim %in% c("Melike Karaca Bulut ", "Deniz ERDOĞAN DERELİ", "Cansu Yörgüç",
+                        "Dilek arslan", "Lider Sinav"))
+
+adaylar_secim <- bind_rows(adaylar_s, adaylar_ek)
+write.table(adaylar_secim, "saklı_secilmisler.txt", fileEncoding = "UTF-8")
+
+adaylar_yedek <- anti_join(adaylar, adaylar_secim) 
+
+adaylar_yedek <- adaylar_yedek %>% 
+     filter(level %in% c("Yüksek Eğitim", "Doktora+")) %>% 
+     filter(level %in% c("Lisans mezunu", "Yüksek Eğitim", "Doktora+")) %>% 
+     filter(university %in% c("ODTÜ", "Hacettepe Üniversitesi", "Bilkent Üniversitesi",
+                              "Ankara Üniversitesi")) %>% 
+     filter(area %in% c("Zooloji", "Evrim", "Genetik", "Entomoloji"))
+
+write.table(adaylar_yedek, "saklı_yedekler.txt")
