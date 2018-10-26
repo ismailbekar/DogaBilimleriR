@@ -705,15 +705,17 @@ y
 ## Alıştırma 2.2
 
 1. TRUE ve 50'yi içeren bir vektör oluşturun.
-2. "A" ve 1 içeren bir vektör oluşturunç
+2. "A" ve 1 içeren bir vektör oluşturun.
 3. TRUE ve "C" içeren bir vektör oluşturun.
 4. Örüntüyü farkettiniz mi? Oluşturduğunuz vektörleri modu nasıl belirlendi? 
 
 
 
-## R İpucu: Zorla güzellik olmaz
+## R ipucu: Zorla güzellik olmaz
 
-Atomic bir vektörün tüm elementleri aynı tipte olmalıdır. Yani birbirinden farklı elementleri birleştirmeye çalıştığınızda otomatik olarak en esnek tipte birleşeceklerdir. En esnek tipler en az esnek olandan başlalayarak şu şekilde sıralanır: logical, integer, double, and character.
+- Atomic bir vektörün tüm elementleri aynı tipte olmalıdır. 
+- Yani birbirinden farklı elementleri birleştirmeye çalıştığınızda otomatik olarak en esnek tipte birleşeceklerdir. 
+- En esnek tipler, en az esnek olandan başlayarak, şu şekilde sıralanır: logical, integer, double, and character.
 
 
 
@@ -953,7 +955,7 @@ tues[tues<15]
 
 ## Alıştırma 2.3
 
-- iki tane 5'e 2lik matriks oluşturun. Bir tanesi 1-2* arasındaki tüm çift sayıları içermeli, diğeri tüm tek sayıları. Matriksleri satırlara göre doldurdun.
+- İki tane 5'e 2lik matriks oluşturun. Bir tanesi 1-2* arasındaki tüm çift sayıları içermeli, diğeri tüm tek sayıları. Matriksleri satırlara göre doldurdun.
 - Bu iki matriksi satır ile birleştirin (rbind) ve yeni bir objeye atayın.
 - Bu iki matriksi sütun ile birleştirin (cbind) ve yeni bir objeye atayın.
 

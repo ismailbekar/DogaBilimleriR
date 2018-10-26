@@ -1,0 +1,111 @@
+---
+title: "DogaBilimleriCevaplar"
+author: "Ismail Bekar"
+date: "10/26/2018"
+output: pdf_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+
+## Alıştırma 2.1
+
+
+- `seq(1, 27, 0.5)` vektörünün 9 ve 12.sıradaki elementleri nelerdir? 
+
+```{r}
+data <- seq(1, 27, 0.5)
+
+data[9]
+data[12]
+```
+- 4 ve 34 arasındaki tüm çift sayıları içeren bir vektör yaratın ve bunu `a` objesine atayın. İpucu: `seq()` fonksiyonunu kullanın.
+```{r}
+a <- seq(from = 4, to = 34, by=2)
+```
+
+- `a` vektöründe 17'den büyük olan tüm elementleri seçerek çıkarın.
+
+```{r}
+
+a[a > 17]
+```
+
+## Alıştırma 2.2
+
+1. TRUE ve 50'yi içeren bir vektör oluşturun.
+```{r}
+data1 <- c(TRUE, 50)
+```
+
+2. "A" ve 1 içeren bir vektör oluşturun.
+```{r}
+data2 <- c("A", 1)
+```
+
+3. TRUE ve "C" içeren bir vektör oluşturun.
+```{r}
+data3 <- c(TRUE, "C")
+```
+
+
+## Alıştırma 2.3
+
+- İki tane 5'e 2lik matriks oluşturun. Bir tanesi 1-20 arasındaki tüm çift sayıları içermeli, diğeri tüm tek sayıları. Matriksleri satırlara göre doldurdun.
+```{r}
+
+matriks1 <- matrix(seq(from = 1, to = 20, by = 2), nrow = 5, ncol = 2)
+matriks2 <- matrix(seq(from = 2, to = 20, by = 2), nrow = 5, ncol = 2)
+```
+
+- Bu iki matriksi satır ile birleştirin (rbind) ve yeni bir objeye atayın.
+
+matriks3 <- rbind(matriks1, matriks2)
+matriks3
+
+- Bu iki matriksi sütun ile birleştirin (cbind) ve yeni bir objeye atayın.
+
+matriks4 <- cbind(matriks1, matriks2)
+matriks4
+
+
+
+## Alıştırma 2.4
+
+```{r, eval = F}
+january <- matrix(1:31, nrow = 5, ncol = 7, byrow = T)
+colnames(january) <- c("monday", "tuesday", "wednesday", 
+                       "thursday", "friday", "saturday", "sunday")
+rownames(january) <- c("week 1", "week 2", "week 3", "week 4", "week 5")
+```
+
+- Yukarıdaki kodu çalıştırın.
+- January ayından Saturday ve Sunday sütunlarını silin.
+
+```{r}
+january[,c(-6,-7)]
+```
+
+- 9, 10, ve 11. günlerde hasta oldunuz (geçmiş olsun). Bu günleri "hasta" olarak değiştirin. Matriksteki diğer girdiler bundan nasıl etkilendi?
+
+```{r}
+january[c(7, 12, 17)]  <- "hasta"
+january
+```
+
+- Kalan günleri "turp gibi" olarak değiştirin.
+```{r}
+january[c(-7, -12, -17)]  <- "turp gibi"
+```
+
+ 
+- length() fonksiyonunu matriks üzerinde kullanınca ne sonuç alıyorsunuz? Aynı matriks üzerinde nrow() ve ncol() fonksiyonlarını kullanın. İlk sonuçla nasıl ilişkililer?
+
+```{r}
+length(january)
+nrow(january)
+ncol(january)
+```
+

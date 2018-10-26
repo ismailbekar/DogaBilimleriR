@@ -858,14 +858,18 @@ y</pre>
 
 <ol>
 <li>TRUE ve 50&#39;yi içeren bir vektör oluşturun.</li>
-<li>&quot;A&quot; ve 1 içeren bir vektör oluşturunç</li>
+<li>&quot;A&quot; ve 1 içeren bir vektör oluşturun.</li>
 <li>TRUE ve &quot;C&quot; içeren bir vektör oluşturun.</li>
 <li>Örüntüyü farkettiniz mi? Oluşturduğunuz vektörleri modu nasıl belirlendi?</li>
 </ol>
 
-</article></slide><slide class=""><hgroup><h2>R İpucu: Zorla güzellik olmaz</h2></hgroup><article  id="r-ipucu-zorla-guzellik-olmaz">
+</article></slide><slide class=""><hgroup><h2>R ipucu: Zorla güzellik olmaz</h2></hgroup><article  id="r-ipucu-zorla-guzellik-olmaz">
 
-<p>Atomic bir vektörün tüm elementleri aynı tipte olmalıdır. Yani birbirinden farklı elementleri birleştirmeye çalıştığınızda otomatik olarak en esnek tipte birleşeceklerdir. En esnek tipler en az esnek olandan başlalayarak şu şekilde sıralanır: logical, integer, double, and character.</p>
+<ul>
+<li>Atomic bir vektörün tüm elementleri aynı tipte olmalıdır.</li>
+<li>Yani birbirinden farklı elementleri birleştirmeye çalıştığınızda otomatik olarak en esnek tipte birleşeceklerdir.</li>
+<li>En esnek tipler, en az esnek olandan başlayarak, şu şekilde sıralanır: logical, integer, double, and character.</li>
+</ul>
 
 </article></slide><slide class=""><hgroup><h2>2. Faktörler</h2></hgroup><article  id="faktorler">
 
@@ -1363,7 +1367,7 @@ for (i in 1:length(x)) {
 }
 head(outputs)</pre>
 
-<pre >## [1] 14.866849 12.018280  8.763144  7.967385  3.464486 10.890324</pre>
+<pre >## [1]  8.4500225  4.1314742 11.4755654 17.6513728  0.2662775  4.4966097</pre>
 
 </article></slide><slide class=""><hgroup><h2>Alıştırma 3.3</h2></hgroup><article  id="alstrma-3.3">
 
@@ -2098,7 +2102,7 @@ str(d4)</pre>
 
 <pre class = 'prettyprint lang-r'>getwd()</pre>
 
-<pre >## [1] &quot;/Users/ibekar/Downloads&quot;</pre>
+<pre >## [1] &quot;/Users/ibekar/GitHub/DogaBilimleriR/Sunumlar&quot;</pre>
 
 <ul>
 <li>Bu klasör, bilgisayarınızın R&#39;da dosya açmak ya da yazmak için kullanacağı klasördür.</li>
