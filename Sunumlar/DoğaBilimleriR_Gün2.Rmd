@@ -1,0 +1,1290 @@
+---
+title: "Doğa Bilimlerinde R Programlamaya Giriş"
+author: "Bilgecan Şen, İsmail Bekar, Nurbahar Usta"
+output:
+  ioslides_presentation:
+    widescreen: true
+---
+
+
+
+# 2. Gün
+
+- Kısım 1: <a href = "#/3"> Olasılık ve Olasılık Dağılımları </a>
+- Kısım 2: <a href = "#/39"> T-testi, güven aralığı, ve p değeri </a>
+- Kısım 3: <a href = "#/68"> Lineer Regresyon ve ANOVA </a>
+
+
+
+# Kısım 1: Olasılık ve Olasılık Dağılımları
+
+
+
+## Temel Olasılık Kuralları 
+
+- Bir torba dolusu bilye.
+
+- 3 renk: Kırmızı, Mavi, Yeşil.
+    + $P(K)$ : Kırmızı bilye çekme olasılığı
+    + $P(M)$ : Mavi bilye çekme olasılığı
+    + $P(Y)$ : Yeşil bilye çekme olasılığı
+    
+
+
+## Temel Olasılık Kuralları
+
+- Torbadan kırmızı VE mavi bilye çekme olasılığı?
+
+$P(K \cap M) = P(K,M) = P(K) \cdot P(M)$
+
+- Torbadan kırmızı VEYA yeşil bilye çekme olasılığı?
+
+$P(K \cup Y) = P(K) + P(Y) - P(K) \cdot P(Y)$
+
+
+
+## Koşullu Olasılık
+
+- Türkiye'de bir insanın boyunun 180 cm'den uzun olma olasılığı:
+
+$$
+P(B)
+$$
+
+- Türkiye'de bir insanın kadın olma olasılığı:
+
+$$
+P(K)
+$$
+
+- Türkiye'de bir kadının boyunun 180 cm'den uzun olma olasılığı:
+
+$$
+P(B \mid K) = \frac {P(B,K)}{P(K)} = \frac {P(B \cap K)}{P(K)}
+$$
+
+
+
+## Hesaplama belirsizliği (Estimation Uncertainty)
+
+Beypazarı'nda Mayıs ayı boyunca ağ kullanarak Küçük Akbaba (*Neophron percnopterus*) yakalıyorsunuz ve kanat uzunluğunu ölçüyorsunuz. Ölçtüğünüz her bireyin kanat uzunluğu birbirinden farklı. Bu çeşitliliğe katkıda bulunan faktörler neler?
+
+
+
+## Hesaplama belirsizliği (Estimation Uncertainty)
+
+Ölçtüğünüz kanat uzunlukları ile Küçük Akbaba Beypazarı populasyonunun ortalama kanat uzunluğunu hesaplamak istiyorsunuz. Sizin ortalama ölçümünüz ile populasyonun gerçek ortalamasının farklı olmasına yol açan faktörler neler?
+
+
+
+## Hesaplama belirsizliği (Estimation Uncertainty)
+
+- Bu belirsizliği matetimatiksel olarak ifade edebilmek için olasılık dağılımlarından yararlanıyoruz.
+
+- $X \sim N(\mu, \sigma^2)$
+
+- $\mu$: Populasyon ortalaması
+
+- $\sigma^2$: Gözlem hatası (Observation error) + Süreç varyansı (Process variance) 
+
+
+
+## En basit dağılım: Bernoulli Dağılımı
+
+- Yazı mı tura mı?
+
+- 1 mi 0 mı?
+
+- Tek parametre: $p$
+
+
+
+## Binom(Binomial) Dağılımı
+
+- Bernoulli'nin genelleştirilmiş hali.
+
+- İki parametre: $p$ ve $N$
+
+- $N=1$ olduğunda bernoulli dağılımı diyoruz.
+
+
+
+## Binom Dağılımı | Probability Mass Function (PMF)
+
+$$
+P(x \mid p,N) = \frac{N!}{x! \cdot (N-x)!} \cdot p^x \cdot (1-p)^{N-x} \\
+N \in \mathbb{Z}^+ \\
+x \in \{0,1,2,...,N\} \\
+p \in [0,1]
+$$
+
+
+
+## Binom Dağılımı | R'da kullanımı
+
+- `?rbinom` yazmayı deneyelim.
+
+- $N=10$ ve $p=0.5$ olsun.
+
+```{r}
+rbinom(1, size = 10, prob = 0.5)
+```
+
+```{r}
+dbinom(5, 10, 0.5)
+```
+
+
+
+## Binom Dağılımı | R'da kullanımı
+
+```{r}
+x <- rbinom(1000, 10, 0.5)
+head(x)
+length(which(x==5))/length(x)
+```
+
+
+
+## Binom Dağılımı | R'da kullanımı
+
+```{r}
+hist(x, breaks = 50, ylab = "P(x|p,N)", xlab = "x", main = "", cex.lab = 1.5)
+```
+
+
+
+## Binom Dağılımı | PMF
+
+$$
+P(x \mid p,N) = \frac{N!}{x! \cdot (N-x)!} \cdot p^x \cdot (1-p)^{N-x} \\
+\sum_{x=0}^{N} P(x \mid p,N) = 1
+$$
+
+
+
+## Alıştırma 1.1
+
+$x_1$ ve $x_2$ bağımsız ve binom dağılımı gösteren değişkenler ise, $p=0.2$ ve $N=40$ iken, $x_1=5$ ve $x_2=25$ olma olasılığı kaçtır? 
+
+$$
+P(x_1=5 \cap x_2=25 \mid p=0.2,N=40)
+$$
+
+
+
+## Poisson Dağılımı
+
+- Tek parametre: $\lambda$
+
+- $\lambda$ hem dağılımın ortalaması hem de varyansı.
+
+- Daha çok sayılabilen kavramların dağılımında kullanılır.
+
+- Tür zenginliği, Populasyon büyüklüğü vb.
+
+
+
+## Poisson Dağılımı | PMF
+
+$$
+P(x \mid \lambda) = \frac {e^{-\lambda} \cdot \lambda^x}{x!} \\
+x \in \mathbb{N} \\
+\lambda >0 \\
+\sum_{x=0}^{\infty} P(x \mid \lambda) = 1
+$$
+
+
+
+## Poisson Dağılımı | R'da kullanımı
+
+```{r}
+x1 <- rpois(10000, lambda = 50)
+x2 <- rpois(10000, lambda = 25)
+x3 <- rpois(10000, lambda = 15)
+```
+
+
+
+## Poisson Dağılımı | R'da kullanımı
+
+```{r, eval=FALSE}
+plot(density(x1), main = "", xlim = c(0,90), ylim = c(0,0.11), lwd  = 2,
+     xlab = "x", ylab = "P(x|Lambda)", cex.lab = 1.5)
+lines(density(x2), col = "red", lwd  = 2)
+lines(density(x3), col = "blue", lwd  = 2)
+```
+
+
+
+## Poisson Dağılımı | R'da kullanımı
+
+```{r, echo=FALSE}
+plot(density(x1), main = "", xlim = c(0,90), ylim = c(0,0.11), lwd  = 2,
+     xlab = "x", ylab = "P(x|Lambda)", cex.lab = 1.5)
+lines(density(x2), col = "red", lwd  = 2)
+lines(density(x3), col = "blue", lwd  = 2)
+```
+
+
+
+## Poisson Dağılımı | R'da kullanımı
+
+```{r}
+dpois(25,lambda = 50)
+dpois(100,lambda = 50)
+```
+
+
+
+## Poisson Dağılımı | R'da kullanımı
+
+- Yüzdelik dilimler
+
+```{r}
+qpois(0.5,lambda = 50)
+qpois(0.1,lambda = 20)
+```
+
+
+
+## Poisson Dağılımı | R'da kullanımı
+
+- Yüzdelik dilimler
+
+```{r}
+ppois(50,lambda = 50)
+ppois(14,lambda = 20)
+```
+
+
+
+## Alıştırma 1.2
+$x$ bağımsız ve poisson dağılım gösteren bir değişken ise, $P(x>10 \mid \lambda=15)$? 
+
+
+
+## Normal dağılım
+
+- En bilinen dağılım.
+
+- Herhangi bir dağılım gösteren rastgele değişkenler sonsuz limitte normal dağılım gösterir.
+
+- Herhangi bir dağılım gösteren rastgele değişkenlerin örneklem ortalaması normal dağılım gösterir (**Cental Limit Theorem**).
+
+- İki parametre: $\mu$ ve $\sigma^2$
+
+
+
+## Normal dağılım | Probablity Density Function (PDF)
+
+$$
+f(x \mid \mu, \sigma) =\frac {1}{\sqrt{2 \cdot \pi \cdot \sigma^2}} \cdot e^{\frac {(x-\mu)^2}{2 \cdot \sigma^2}} \\
+x \in \mathbb{R} \\
+\mu \in \mathbb{R} \\
+\sigma >0 \\
+\int_{-\infty}^{\infty}f(x \mid \mu,\sigma)=1
+$$
+
+
+
+## Normal dağılım | R'da kullanımı
+
+```{r}
+rnorm(1, mean = 10, sd = 5)
+x <- rnorm(100, mean = 10, sd = 5)
+head(x)
+```
+
+
+
+## Normal dağılım | R'da kullanımı
+
+```{r}
+dnorm(1, mean = 0, sd = 1)
+dnorm(0, mean = 0, sd = 1)
+dnorm(-10, mean = 0, sd = 1)
+```
+
+
+
+## Normal dağılım | R'da kullanımı
+
+- Olasılık yoğunluğu aynı olasılık kurallarına tabidir.
+
+$$
+f(x_1=10 \cap x_2=12 \mid \mu=5, \sigma=10)
+$$
+
+```{r}
+dnorm(10, mean = 5, sd = 10)*dnorm(12, mean = 5, sd = 10)
+```
+
+
+
+## Normal dağılım | R'da kullanımı
+
+- Normal dağılım ile gerçek olasılık hesaplama.
+
+$$
+P(0<x<10 \mid \mu=5, \sigma=10) = \int_{0}^{10} f(x \mid \mu=5, \sigma=10)
+$$
+
+
+
+## Normal dağılım | R'da kullanımı
+
+```{r, echo=FALSE}
+suppressMessages(library(ggplot2))
+suppressMessages(library(tidyverse))
+x <- data.frame(x = rnorm(1000000, 5, 10))
+theme_set(theme_bw())
+sg1 <- ggplot(x, aes(x=x)) + geom_density() 
+sg1_data <- ggplot_build(sg1)[[1]][[1]][,c("y","x")]
+
+sg1 + geom_area(data = subset(sg1_data, x<10), aes(x=x, y=y), fill = "red", alpha = 0.5) +
+  geom_area(data = subset(sg1_data, x<0), aes(x=x, y=y), fill = "blue", alpha = 0.5) +
+  scale_x_continuous(breaks = seq(-30,30,5)) +
+  labs(y = "Olasılık Yoğunluğu") +
+  theme(axis.text = element_text(size = 10),
+        axis.title = element_text(size = 15))
+```
+
+
+
+## Normal dağılım | R'da kullanımı
+
+```{r}
+pnorm(10,5,10) - pnorm(0,5,10)
+```
+
+
+
+## Alıştırma 1.3
+
+Bağımsız ve Normal dağılım gösteren bir `x` değişkeninin, $\mu=0$ ve $\sigma=1$ iken, 2'den büyük veya -2'den küçük olma ihtimali kaçtır? 
+
+$$
+P(x>2 \cup x<-2 \mid \mu=0,\sigma=1)
+$$
+
+
+
+## Alıştırma 1.3
+
+```{r, echo=FALSE}
+suppressMessages(library(ggplot2))
+suppressMessages(library(tidyverse))
+x <- data.frame(x = rnorm(1000000, 0, 1))
+theme_set(theme_bw())
+sg1 <- ggplot(x, aes(x=x)) + geom_density() 
+sg1_data <- ggplot_build(sg1)[[1]][[1]][,c("y","x")]
+
+sg1 + geom_area(data = subset(sg1_data, x>2), aes(x=x, y=y), fill = "red", alpha = 0.5) +
+  geom_area(data = subset(sg1_data, x < -2), aes(x=x, y=y), fill = "blue", alpha = 0.5) +
+  scale_x_continuous(breaks = seq(-4,4,1)) +
+  labs(y = "Probablity Density")
+```
+
+
+
+## Veri simülasyonu (kendin pişir kendin ye)
+
+- Bu dağılımlardan yararlanarak kendi verimizi simüle edebiliriz!
+
+- Basit bir senaryo: Kuzey Amerika'da güney ve kuzey Vaşak(Bobcat, *Lynx rufus*) populasyonlarının hem dağılım gösterdiği habitatlar hem de diyetleri biribirinden oldukça farklı. Bu farklılıklar vücut ağırlıklarından bir ayrışmaya da dönüşüyor mu? Bir grup bilim adamı bu hipotezi test etmek için iki populasyondan 10'ar vaşak yakalayıp ağırlıklarını ölçüyor.
+
+
+
+## Veri simülasyonu (kendin pişir kendin ye)
+
+```{r}
+south <- rnorm(10, 8, 3)
+north <- rnorm(10, 12, 3)
+t.test(south, north)
+```
+
+
+
+# Kısım 2: T-testi, güven aralığı, ve p-değeri
+
+
+
+## T-testi | Tek grup
+
+$$
+X \sim N(\mu, \sigma^2)
+$$
+
+
+
+## T-testi | Tek grup
+
+$$
+\bar{X} \sim N(\mu, \frac {\sigma^2}{n})
+$$
+
+
+
+## T-testi | Tek grup
+
+$$
+\bar{X} - \mu \sim  N(0, \frac {\sigma^2}{n})
+$$
+
+
+
+## T-testi | Tek grup
+
+$$
+\frac {\bar{X} - \mu}{\frac {\sigma}{\sqrt{n}}} \sim N(0,1) \\
+$$
+
+
+## T-testi | Tek grup
+
+$$
+\frac {\bar{X} - \mu}{\frac {s}{\sqrt{n}}} \sim t_{n-1}
+$$
+
+
+
+## T-testi | Test istatistiği
+
+$$
+T^* = \frac {\bar{X} - \mu}{\frac {s}{\sqrt{n}}} \sim t_{n-1}
+$$
+
+- Hiçlik hipotezinin doğru olması koşulu ile test istatistiği bir dağılım gösterir.
+
+- P değeri bu dağılım üzerinden hesaplanır.
+
+
+
+## T-testi | Hiçlik Hipotezi (Null Hypothesis)
+
+- mesela bir hipotez: $\mu=5$.
+
+- Öyle ise veri $X \sim N(5,\sigma^2)$
+
+- Bu durumda $T^*=\frac{ \bar{X}-5}{\frac{s}{\sqrt{n}}} \sim t_{n-1}$
+
+- Bu dağılımı kullanarak bir olasılık hesaplayabilir miyiz?
+
+
+
+## T-testi | Hiçlik Hipotezi
+
+```{r, echo=FALSE}
+x <- data.frame(x = rt(1000000, 19))
+theme_set(theme_bw())
+suppressWarnings(print(
+  ggplot(x, aes(x=x)) + 
+    geom_density() +
+    labs(y = "Probablity Density") +
+    xlim(c(-4,4))
+))
+```
+
+
+
+## T-testi | T*=1.5 iken p-değeri
+
+```{r, echo=FALSE}
+sg2 <- ggplot(x, aes(x=x)) + 
+  geom_density()
+
+sg2_data <- ggplot_build(sg2)[[1]][[1]][,c("y","x")]
+sg2 + geom_area(data = subset(sg2_data, x<(-1.5)), aes(x=x, y=y), fill = "red", alpha = 0.5) +
+  geom_area(data = subset(sg2_data, x>1.5), aes(x=x, y=y), fill = "red", alpha = 0.5) +
+  scale_x_continuous(breaks = c(-1.5,1.5), labels = c("-T*=-1.5", "T*=1.5")) +
+  coord_cartesian(xlim=c(-4,4)) +
+  labs(y = "Probablity Density")
+
+```
+
+
+
+## T-testi | p-değeri
+
+- **p-değeri**: Hiçlik hipotezi altında elimizdeki veriden daha aşırı veri elde etme olasılığı.
+
+- $T$ rastgele ve bağımsız $t_{n-1}$ dağılmı gösteren bir değişken olsun.
+
+- $p = P(T^*>T \mid H_0) + P(-T^*<T \mid H_0)$
+
+
+
+## Alıştırma 2.1
+
+- Tek gruplu t-testi analizi yapan bir fonksiyon yazın.
+- İpuçları:
+    + Bu fonksiyonun iki girdisi olmalı: Bir vektör olarak örnekleminiz, ve tek bir rakam olarak hipoteziniz.
+    + İki tane de çıktısı olmalı: T* istatistiği ve p değeri.
+    + Bunları hesaplamak için önceki slaytlardaki formüllerden yararlanabilirsiniz.
+
+Kuzey Amerika'daki dişi vaşak ağırlığının $N(6.8,2^2)$ dağılım gösterdiğini varsayalım.
+
+- Bu populasyon 20 bireylik bir örneklem oluşturun.
+
+- Populasyonun ortalamasının 5'e eşit olup olmadığını yadığınız fonksiyon ile test edin.
+
+
+    
+
+## T-testi | %95 Güven aralığı
+
+$$
+\frac{ \bar{X}-\mu}{\frac{s}{\sqrt{n}}} \sim t_{n-1}
+$$
+
+
+
+## T-testi | %95 Güven aralığı
+
+$$
+\frac{ \mu- \bar{X}}{\frac{s}{\sqrt{n}}} \sim t_{n-1}
+$$
+
+
+
+## T-testi | %95 Güven aralığı
+
+$$
+\mu - \bar{X} \sim t_{n-1} \cdot \frac{s}{\sqrt{n}}
+$$
+
+
+
+
+## T-testi | %95 Güven aralığı
+
+$$
+\mu \sim \bar{X} + t_{n-1} \cdot \frac{s}{\sqrt{n}}
+$$
+
+
+
+## T-testi | %95 Güven aralığı
+
+$$
+\bar{X} + t_{(n-1)[0.025]} \cdot \frac{s}{\sqrt{n}} \le \mu \le \bar{X} + t_{(n-1)[0.975]} \cdot \frac{s}{\sqrt{n}}
+$$
+
+
+
+## T-testi | %95 Güven aralığı
+
+$$
+\bar{X} - t_{(n-1)[0.975]} \cdot \frac{s}{\sqrt{n}} \le \mu \le \bar{X} + t_{(n-1)[0.975]} \cdot \frac{s}{\sqrt{n}}
+$$
+
+
+
+## T-testi | %95 Güven aralığı
+
+$$
+P \left( \bar{X} - t_{(n-1)[0.975]} \cdot \frac{s}{\sqrt{n}} \le \mu \le \bar{X} + t_{(n-1)[0.975]} \cdot \frac{s}{\sqrt{n}} \right)=1 - \alpha
+$$
+
+
+
+## T-testi | %95 Güven aralığı
+
+```{r, echo=FALSE}
+sg2 <- ggplot(x, aes(x=x)) + 
+  geom_density()
+
+sg2_data <- ggplot_build(sg2)[[1]][[1]][,c("y","x")]
+sg2 + geom_area(data = subset(sg2_data, x>(qt(0.025,19)) & x<(qt(0.975,19))), aes(x=x, y=y), fill = "blue", alpha = 0.5) +
+  scale_x_continuous(breaks = c(round(qt(0.025,19),2),round(qt(0.975,19),2))) +
+  coord_cartesian(xlim=c(-4,4)) +
+  labs(y = "Probablity Density")
+```
+
+
+
+## Alıştırma 2.2
+
+- Bir önceki Alıştırmade yazdığınız fonksiyona güven aralığı hesaplamayı ekleyin. Böylece fonskiyonunuzun 3 çıktısı olacak: T*, p-değeri, ve %95 güven aralığı.
+
+- Sonuçlarınızı R'daki **t.test** fonksiyonu ile kıyaslayın. Yazdığınız fonksiyona benzer olarak **t.test** fonksiyonuna hipotezinizi *mu* girdisi ile belirtebilirisiniz. Yardım için **?t.test**'i kullanın.
+
+
+
+## Güven aralığı ve p-değerinin anlamı
+
+$\alpha=0.05$ iken
+
+- Örnekleme ve analiz işlemlerini 100 defa tekrar edersek ve eğer hiçlik hipotezimiz doğru ise, bu hiptezi 5 defa yanlış bir şekilde reddederiz.
+
+- Örnekleme ve analiz işlemlerini 100 defa tekrar edersek ve eğer hiçlik hipotezimiz doğru ise, Güven aralığımız doğru parametere değerini (önceki örneklerdeki $\mu$) 95 defa içerecektir.
+
+
+## Alıştırma 2.3
+
+10000 defa dişi vaşak populasyonundan, $N(6.8,2^2)$, 20'lik örneklem çekin. Her defasında bir t-testi uygulayın ve:
+
+- p-değerinin kaç defa 0.05'ten düşük geldiğini hesaplayın. Bunu 10000'e oranlayın. Bu sonuç ile $\alpha=0.05$'i kıyaslayın.
+
+- Güven aralığının kaç defa doğru parametre değerini ($\mu=6.8$) içerdiğini hesaplayın. Bunu 10000'e oranlayın. Bu sonuç ile $1-\alpha=0.95$'i kıyaslayın.
+
+
+
+## İki grup t-testi
+
+$$
+\frac {(\bar{X_A} - \bar{X_B}) - (\mu_a-\mu_b)}{SE_{diff}} \sim t_{n_a+n_b-1}
+$$
+
+
+
+## İki grup t-testi
+
+$$
+\frac {\bar{X_A} - \bar{X_B}}{SE_{diff}} \sim t_{n_a+n_b-1}
+$$
+
+
+
+## İki grup t-testi
+
+```{r}
+south <- rnorm(10, 8, 3)
+north <- rnorm(10, 12, 3)
+t.test(south, north)
+```
+
+
+
+## Standart hata
+
+- Ortalamaların dağılmının standart sapması.
+
+- Daha genel olarak bir parametrenin dağılımının standar sapması.
+
+- Örneklem büyüklüğü arttıkça standart hata düşer.
+
+- Örneklem büyüklüğü arttıkça verinizin standart sapması düşebilir veya yükselebilir.
+
+
+## Alıştırma 2.4
+
+10000 defa dişi vaşak populasyonundan, $N(6.8,2^2)$, 10'luk örneklem çekin. Her defasında örnekleminizin ortalamasını hesaplayın. Daha sonra tüm bu ortalamaların standart sapmasını hesaplayın. Aynı işlemi 50'lik ve 100'lük örneklem ile tekrar edin. Hesapladığınız standart sapmalar, ortalamanının standart hatası.
+
+
+## Alıştırma 2.5
+
+10000 defa dişi vaşak populasyonundan, $N(6.8,2^2)$, 10'luk örneklem çekin. Her defasında örnekleminizin standart sapmasını hesaplayın. Daha sonra tüm bu standart sapmaların standart sapmasını hesaplayın. Aynı işlemi 50'lik ve 100'lük örneklem ile tekrar edin. Hesapladığınız standart sapmalar, standart sapmanın standart hatası.
+
+
+
+# Kısım 3: Lineer Regresyon ve ANOVA
+
+
+
+## En basit model
+
+$$
+Y \sim N(\mu, \sigma^2)
+$$
+
+
+
+## Lineer regresyon
+
+$$
+Y_i \sim N(\mu_i, \sigma^2)
+$$
+
+
+
+## Lineer regresyon
+
+$$
+Y_i \sim N(\mu_i, \sigma^2) \\
+\mu_i = \alpha + \beta \cdot X_i
+$$
+
+$$
+Y_i = \alpha + \beta \cdot X_i + \epsilon_i \\
+\epsilon_i \sim N(0,\sigma^2)
+$$
+
+
+
+## Lineer regresyon | Veri simulasyonu
+
+```{r}
+alpha <- 1
+beta <- 0.5
+x <- 1:20
+y <- alpha + beta*x
+y
+```
+
+- Yanlış!!
+
+
+
+## Lineer regresyon | Veri simulasyonu
+
+```{r}
+alpha <- 1
+beta <- 0.5
+sigma <- 1
+x <- 1:20
+mu <- alpha + beta*x
+
+y <- c()
+for (i in 1:length(mu)) {
+  y[i] <- rnorm(1, mu[i], sigma^2)
+}
+y
+```
+
+
+
+
+## Lineer regresyon | Veri simulasyonu
+
+```{r}
+lm(y~x)
+```
+
+
+
+## Lineer regresyon | Veri simulasyonu
+
+```{r}
+model1 <- lm(y~x)
+summary(model1)
+```
+
+
+
+## Olabilirlik (likelihood) kavramı
+
+- Düzgün(fair) bir bozuk paranız var. Bu bozuk parayı 10 defa atacaksınız. 7 defa yazı gelme ihtimali nedir?
+
+- Bir bozuk parayı 10 defa attınız. 7 defa yazı geldi. Bu bozuk paranın düzgün(fair) olma ihtimali nedir?
+
+
+
+## Olabilirlik (likelihood) kavramı
+
+- $p=0.5$. 10'dan 7 defa yazı gelme ihtimali nedir?
+
+- 10'dan 7 defa yazı geldi. $p=0.5$ olma ihtimali nedir? 
+
+
+
+## Azami olabilirlik hesaplaması (maximum likelihood estimation)
+
+- 10'dan 7 defa yazı geldi. $p=0.5$ olma ihtimali nedir? Bu olasılık direkt olarak hesaplanamaz.
+
+- Eğer $p=0.1$ ise 10'dan 7 defa yazı gelme ihtimali nedir? Veya eğer $p=0.2$ ise 10'dan 7 defa yazı gelme ihtimali nedir?
+
+- Bu şekilde pek çok farklı $p$ denenir. Hesaplanan her ihtimale olabilirlik denir.
+
+- Azami olabilirlik değerini veren $p$'nin, verinin geldiği dağılımın $p$'si olduğunu varsayarız.
+
+
+
+## Azami olabilirlik hesaplaması | Binom Dağılımı
+
+```{r}
+x <- rbinom(10, 1, 0.5)
+# p'nin ne oldğunu bilmediğimizi varsayalım
+p <- seq(0,1,0.01)
+head(p)
+```
+
+
+
+## Azami olabilirlik hesaplaması | Binom Dağılımı
+
+```{r}
+db <- dbinom(x, 1, p = 0.2)
+head(x)
+head(db)
+prod(db)
+```
+
+
+
+## Azami olabilirlik hesaplaması | Binom Dağılımı
+
+```{r}
+likelihood <- c()
+for (i in 1:length(p)) {
+  db <- dbinom(x, 1, p = p[i])
+  likelihood[i] <- prod(db)
+}
+head(p)
+head(likelihood)
+```
+
+
+
+## Azami olabilirlik hesaplaması | Binom Dağılımı
+
+```{r}
+which(likelihood==max(likelihood))
+index <- which(likelihood==max(likelihood))
+p[index]
+mean(x)
+```
+
+
+
+## Azami olabilirlik hesaplaması | Normal Dağılım
+
+- hesaplamak istediğimiz parametre $\mu$, dağılımın ortalaması.
+
+```{r}
+x <- rnorm(25, 5, 2)
+mu <- seq(-10, 10, 0.1)
+stan.dv <- seq(0, 5, 0.1)
+likelihood <- matrix(nrow = length(mu), ncol = length(stan.dv))
+for (i in 1:length(mu)) {
+  for (h in 1:length(stan.dv)) {
+    dn <- dnorm(x, mean = mu[i], sd = stan.dv[h], log = T)
+    likelihood[i,h] <- sum(dn)
+  }
+}
+```
+
+
+
+## Azami olabilirlik hesaplaması | Normal Dağılım
+
+```{r}
+head(likelihood)
+```
+
+
+
+## Azami olabilirlik hesaplaması | Normal Dağılım
+
+```{r}
+which(likelihood==max(likelihood), arr.ind = T)
+index <- which(likelihood==max(likelihood), arr.ind = T)
+c(mu[index[1,1]], round(mean(x),1))
+c(stan.dv[index[1,2]], round(sd(x),1))
+```
+
+
+
+## Alıştırma 3.1
+
+Kuzey Amerika vaşaklarının vücut ağırlığı ile yıllık ortalama sıcak arasında negatif bir ilişki var. Soğuk yerlerdeki vaşaklar, sıcak yerlerdeki vaşaklardan daha ağırlar. Bir grup araştırmacı ortalama sıcaklık değerleri -5 ile +8 derece arasında değişen alanlardan vaşak yakalayıp ağırlıklarını ölçüyor.
+
+```{r}
+library(truncnorm)
+alpha <- 8
+beta <- 0.5
+x <- rtruncnorm(100, mean = 0, sd = 5, a = -5, b = 8)
+mu <- alpha + beta*x
+y <- rnorm(100, mu, sd = 2)
+```
+
+
+
+## Alıştırma 3.1
+
+- Simüle ettiğiniz veriden, azami olabilirlik yöntemini kullanarak $\alpha$ ve $\beta$ parametrelerini hesaplayın. Bu hesapları lm() fonksiyonundan aldığınız değerler ile kıyaslayın. Standart sapma için azami olabilirlik yöntemini uygulamanıza gerek yok. $\alpha$ ve $\beta$ hesaplarınızda sd() fonksiyounun kullanabilirsiniz.
+
+
+
+## Lineer regresyon | İki kategorili değişkenler
+
+```{r}
+south <- rnorm(10, 8, 3)
+north <- rnorm(10, 12, 3)
+
+data1 <- data.frame(weight = c(north,south),
+                    pop = rep(c("north","south"), each = 10))
+
+head(data1)
+```
+
+
+
+## Lineer regresyon | İki kategorili değişkenler
+
+```{r}
+model1 <- lm(weight~pop, data = data1)
+summary(model1)
+```
+
+
+
+## Lineer regresyon | İki kategorili değişkenler
+
+```{r}
+model1$coefficients
+
+mean(north)
+
+mean(north) - mean(south)
+```
+
+
+
+## Lineer regresyon | İki kategorili değişkenler
+
+```{r}
+sum1 <- summary(model1)
+sum1$coefficients
+t.test(south, north)
+```
+
+
+
+## Lineer regresyon | İki kategorili değişkenler
+
+### T- testi yaparken de aslında bir lineer regresyon modeli kuruyoruz!
+
+
+
+## Lineer regresyon | ANOVA
+
+- Bir kategorik değişkenin ikiden fazla kategorisi var ise artık t-testi uygulayamayız.
+
+- Analysis of Variance (ANOVA) bu noktada devreye girer.
+
+
+
+## Lineer regresyon | ANOVA
+
+Küçük Akbaba'nın (*Neophron percnopterus*) 3 tane alt türü var:
+
+1- *percnopterus*
+
+2- *ginginianus*
+
+3- *majorensis*
+
+Alt tür ayrımına iten genetik değişikliklerin aynı zamanda morfolojik değişikliklere neden olup olmadığını merak ediyoruz. Bu durumu test etmek için her türden örneklem alıp kanat uzunluklarını ölçüyoruz.
+
+
+
+## Alıştırma 3.2
+
+1- Küçük Akbaba'nın alt türlerine uygun 3 Gruplu bir veri simule edin ve bu veriyi linear regresyon yapmaya uygun bir **data frame** haline getirin. Tüm grupların normal dağıldığını varsayın. *percnopterus* grubunun ortalamsı 180 cm, *ginginianus* grubunun ortalaması 190 cm, ve 
+*majorensis* grubunun ortalaması 150 cm, tüm grupların standart sapması ise 25 olsun. Her gruptan 10'luk bir örneklem alın.
+
+2- **lm()** fonksiyonunu kullanarak verinize lineer regresyon uygulayın.
+
+
+
+## Lineer regresyon | ANOVA
+
+```{r}
+per <- rnorm(10, 180, 25)
+gin <- rnorm(10, 190, 25)
+maj <- rnorm(10, 150, 25)
+
+data2 <- data.frame(len = c(per,gin,maj),
+                    sp = rep(c("per", "gin", "maj"), each = 10))
+```
+
+
+
+## Lineer regresyon | ANOVA
+
+```{r}
+model2 <- lm(len~sp, data = data2)
+summary(model2)
+```
+
+
+
+## Lineer regresyon | ANOVA
+
+```{r}
+anova(model2)
+```
+
+
+
+## Lineer regresyon | ANOVA
+
+```{r}
+aov(len~sp, data = data2)
+```
+
+
+
+## Lineer regresyon | ANOVA
+
+```{r}
+model3 <- aov(len~sp, data = data2)
+summary.aov(model3)
+```
+
+
+
+## Lineer regresyon | ANOVA
+
+```{r}
+TukeyHSD(model3)
+```
+
+
+
+## Çoklu lineer regresyon
+
+- Lineer regresyondan birden fazla değişken kullanabiliriz.
+
+- Mesela yıllık ortalama sıcaklık vaşaklarda ağırlığı etkileyebilir, fakat cinsiyetin de bir etkisi olduğunu biliyoruz.
+
+- Böyle bir veriyi nasıl simüle etmeli?
+
+
+
+## Çoklu lineer regresyon
+
+```{r}
+alpha_m <- 9.6
+alpha_f <- 6.8
+beta <- 0.5
+
+x <- rtruncnorm(100, mean = 0, sd = 5, a = -5, b = 8)
+mu_m <- alpha_m + beta*x
+mu_f <- alpha_f + beta*x
+y_m <- rnorm(50, mu_m, sd = 2)
+y_f <- rnorm(50, mu_f, sd = 2)
+```
+
+
+
+## Çoklu lineer regresyon
+
+```{r}
+data3 <- data.frame(weight = c(y_m, y_f),
+                    sex = rep(c("M", "F"), each = 50),
+                    temp = rep(x, times = 2))
+head(data3)
+```
+
+
+
+## Çoklu lineer regresyon
+
+```{r}
+model4 <- lm(weight ~ sex + temp, data = data3)
+summary(model4)
+```
+
+
+
+## Alıştırma 3.3
+
+Kendi çalıştığınız verilere uygun, çoklu lineer regresyon ile analiz edebileceğiniz bir veri simüle edin. Simüle ettiğiniz veriyi etkileyen bir tane 3 veya daha fazla kategorili değişken ve bir tane de sürekli değişken olsun. Çoklu lineer regresyon uyguladığınız zaman veri simülasyonunda kullandığınız parametreleri hesaplayabildiniz mi?
+
+
+
+## Model Denetlemesi (Model Checking)
+
+- p-değeri
+
+- Hangi değişkenler modelde yer almalı? (AIC)
+
+- $R^2$: Modelimiz verideki varyasyonun ne kadarını açıklıyor?
+
+- "Residual" grafikleri
+
+
+
+## Model Denetlemesi | $R^2$
+
+```{r, echo=FALSE, cache=TRUE}
+library(grid)
+library(truncnorm)
+alpha <- 8
+beta <- 0.5
+x <- rtruncnorm(100, mean = 0, sd = 5, a = -5, b = 8)
+mu <- alpha + beta*x
+y <- rnorm(100, mu, sd = 2)
+model1 <- lm(y ~ x)
+a <- model1$coefficients[1]
+b <- model1$coefficients[2]
+
+data1 <- data.frame(y = y, x = x)
+data2 <- data.frame(x = c(2.5, 2.5), y = c(mean(y), 11))
+data3 <- data.frame(x = c(2.5, 2.5), y = c(mean(y), a+b*2.5))
+data4 <- data.frame(x = c(2.5, 2.5), y = c(11, a+b*2.5))
+  
+  
+ggplot(data1, aes(y=y, x=x)) +
+  geom_point() +
+  geom_hline(yintercept = mean(data1$y), col  = "red") + 
+  labs(x = "Sıcaklık", y = "Ağırlık")
+```
+
+
+
+## Model Denetlemesi | $R^2$
+
+```{r, , echo=FALSE}
+ggplot(data1, aes(y=y, x=x)) +
+  geom_point() +
+  geom_hline(yintercept = mean(data1$y), col  = "red") + 
+  labs(x = "Sıcaklık", y = "Ağırlık") +
+  geom_smooth(method = lm, se = F, col = "blue")
+```
+
+
+
+## Model Denetlemesi | $R^2$
+
+```{r, , echo=FALSE}
+ggplot(data1, aes(y=y, x=x)) +
+  geom_smooth(method = lm, se = F, col = "blue") +
+  geom_hline(yintercept = mean(data1$y), col  = "red") + 
+  labs(x = "Sıcaklık", y = "Ağırlık") +
+  geom_point(x = 2.5, y = 11)
+```
+
+
+
+## Model Denetlemesi | SST
+
+```{r, echo=FALSE}
+ggplot(data1, aes(y=y, x=x)) +
+  geom_smooth(method = lm, se = F, col = "blue") +
+  geom_hline(yintercept = mean(data1$y), col  = "red") + 
+  labs(x = "Sıcaklık", y = "Ağırlık") +
+  geom_point(x = 2.5, y = 11) + 
+  geom_line(data = data2, aes(x = x, y = y))
+```
+
+
+
+## Model Denetlemesi | SSR
+
+```{r, , echo=FALSE}
+ggplot(data1, aes(y=y, x=x)) +
+  geom_smooth(method = lm, se = F, col = "blue") +
+  geom_hline(yintercept = mean(data1$y), col  = "red") + 
+  labs(x = "Sıcaklık", y = "Ağırlık") +
+  geom_point(x = 2.5, y = 11) + 
+  geom_line(data = data3, aes(x = x, y = y))
+```
+
+
+
+## Model Denetlemesi | SSE
+
+```{r, , echo=FALSE}
+ggplot(data1, aes(y=y, x=x)) +
+  geom_smooth(method = lm, se = F, col = "blue") +
+  geom_hline(yintercept = mean(data1$y), col  = "red") + 
+  labs(x = "Sıcaklık", y = "Ağırlık") +
+  geom_point(x = 2.5, y = 11) + 
+  geom_line(data = data4, aes(x = x, y = y))
+```
+
+
+
+## Model Denetlemesi | $R^2$
+
+$$
+SST = \sum{Y_i - \bar{Y}} \\
+SSR = \sum{\hat{Y_i} - \bar{Y}} \\
+SSE = \sum{Y_i - \hat{Y_i}}
+$$
+
+
+## Model Denetlemesi | $R^2$
+
+$$
+R^2=\frac{SSR}{SST}=\frac{1-SSE}{SST}
+$$
+
+
+
+## Model Denetlemesi | $R^2$
+
+```{r}
+summary(model1)
+```
+
+
+
+## Model Denetlemesi | $R^2$
+
+```{r}
+sum1 <- summary(model1)
+sum1$r.squared
+sum1$adj.r.squared
+
+```
+
+
+
+## Model Denetlemesi | Residual grafikleri
+
+```{r}
+plot(fitted(model1), residuals(model1), ylab = "Residuals", xlab = "Ağırlık")
+```
+
+
+
+## Veri normal dağılmıyorsa? | Poisson
+
+```{r}
+alpha <- 5
+beta <- 0.5
+x <- rtruncnorm(100, mean = 0, sd = 5, a = -5, b = 8)
+lambda <- exp(alpha + beta*x)
+y <- rpois(100, lambda)
+model2 <- lm(y ~ x)
+```
+
+
+
+## Veri normal dağılmıyorsa? | Poisson
+
+```{r}
+plot(fitted(model2), residuals(model2), ylab = "Residuals", xlab = "Populasyon Büyüklüğü")
+```
+
+
+
+## Veri normal dağılmıyorsa? | Poisson
+
+```{r}
+model3 <- glm(y ~ x, family = "poisson")
+summary(model3)
+```
+
+
+
+## Veri normal dağılmıyorsa? | Poisson
+
+```{r}
+plot(fitted(model3), residuals(model3), ylab = "Residuals", xlab = "Populasyon Büyüklüğü")
+```
+
+
+
+## R ve İstatistik
+
+R'ı ve kod yazmayı bir istatistik paket programı(SPSS, MiniTab) gibi kullanmak zorunda değilsiniz. Kod yazmak kendi verinize ve uyguladığınız metodlara dair anlayışınız gelişmesine de çok büyük katkısı olacaktır.
+
+
+
+## TEŞEKÜRLER!!
+
+**Bilgecan**
+
+- @bilgecan_sen (<a href = "https://twitter.com/bilgecan_sen"> Twitter </a>)
+
+- bilgecansen (<a href = "https://github.com/bilgecansen"> GitHub </a>)
+
+
+
+

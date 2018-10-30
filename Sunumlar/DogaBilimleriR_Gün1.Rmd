@@ -23,17 +23,17 @@ output:
 
 # 1. Gün
 
-- Part 1: <a href = "#/3"> R Programlamaya Giriş </a>
-- Part 2: <a href = "#/30"> Homojen Veri Yapıları </a>
-- Part 3: <a href = "#/93"> Loops and Flow İfadeleri </a>
-- Part 4: <a href = "#/116"> Fonksiyonlar </a>
-- Part 5: <a href = "#/133"> Heterojen Veri Yapıları </a>
-- Part 6: <a href = "#/172"> Temel Görselleştirme </a>
-- Part 7: <a href = "#/172"> Kapanış </a> 
+- Bölüm 1: <a href = "#/3"> R Programlamaya Giriş </a>
+- Bölüm 2: <a href = "#/30"> Homojen Veri Yapıları </a>
+- Bölüm 3: <a href = "#/93"> Loops and Flow İfadeleri </a>
+- Bölüm 4: <a href = "#/116"> Fonksiyonlar </a>
+- Bölüm 5: <a href = "#/133"> Heterojen Veri Yapıları </a>
+- Bölüm 6: <a href = "#/172"> Temel Görselleştirme </a>
+- Bölüm 7: <a href = "#/172"> Kapanış </a> 
 
 
 
-# Part 1: R Programlamaya Giriş
+# Bölüm 1: R Programlamaya Giriş
 
 
 
@@ -342,7 +342,7 @@ help(mean)
 
 
 
-# Part 2: Homojen Veri Yapıları
+# Bölüm 2: Homojen Veri Yapıları
 
 
 
@@ -1027,7 +1027,7 @@ a[1,2,2]
 
 
 
-# Part 3: Loops and Flow İfadeleri
+# Bölüm 3: Loops and Flow İfadeleri
 
 
 
@@ -1319,7 +1319,7 @@ for (i in 1:5) {
 
 
 
-# Part 4: Fonksiyonlar
+# Bölüm 4: Fonksiyonlar
 
 
 ## Temel fonksiyonlar
@@ -1566,7 +1566,7 @@ Verilen bir numarayı bölenlerine ayıran bir fonksiyon yazın.
 
 
 
-# Part 5: Heterojen Veri Yapıları
+# Bölüm 5: Heterojen Veri Yapıları
 
 
 
@@ -1964,7 +1964,7 @@ l$l2 <- l2
 
 
 
-# Part 6: Temel Görselleştirme
+# Bölüm 6: Temel Görselleştirme
 
 
 
