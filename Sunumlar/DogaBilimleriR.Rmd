@@ -1230,7 +1230,7 @@ if (3 > 2) {
 
 - Temel taslak:
 
-`if (logical statement) {`
+`if (mantıksal ifade) {`
 `buraya kod gelecek`
 `}`
 

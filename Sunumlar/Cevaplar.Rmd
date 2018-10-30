@@ -109,3 +109,120 @@ nrow(january)
 ncol(january)
 ```
 
+
+
+## Alıştırma 3.1
+
+Bu alıştırma için 2.kısımda oluşturduğunuzda `january` matriksini kullanın.
+
+- Tüm wednesdaylerin tarihlerini yazdırın.
+
+```{r, eval = F}
+january <- matrix(1:31, nrow = 5, ncol = 7, byrow = T)
+colnames(january) <- c("monday", "tuesday", "wednesday", 
+                       "thursday", "friday", "saturday", "sunday")
+rownames(january) <- c("week 1", "week 2", "week 3", "week 4", "week 5")
+
+
+for (i in 11:15){
+    print(january[i])
+}
+```
+
+- Beşinci haftada yer alan February günlerini `NA` ile değiştirin.
+
+
+```{r}
+for (i in 11:15){
+    print(january[i])
+}
+```
+
+
+## Alıştırma 3.2
+
+Sizin sıranızda oturan insanların ismiyle bir vektör oluşturup, onlara bir loop ile küçük süprizler yapın (güzel bir şeyler yazın).
+
+```{r}
+insanlar <- c("Bilgecan", "Nurbahar")
+
+for (i in length(insanlar)) {
+     g.insanlar <- paste("Çok güzel insan", insanlar[i], sep = " ")
+     print(g.insanlar)
+}
+```
+
+
+## Alıştırma 3.3
+
+```{r}
+x <- rnorm(n = 50, mean = 0, sd = 1)
+m <- matrix(x, ncol = 5, nrow = 10)
+```
+
+- `m` matriksindeki her sütunun ortalamasını hesaplayan bir loop yazın ve sonucu a objesine atayarak saklayın.
+
+```{r}
+a <- c()
+
+for (i in 1:ncol(m)) {
+     a <- mean(m[,i])
+     print(a)
+}
+```
+
+
+## Alıştırma 3.4
+
+- `x` isimli 1 ve 100 arasındaki tüm sayıları içeren bir vektör oluşturun.
+
+- Vektör için `x[i] * 2` işlemini 100 kez (vektörün uzunluğu) gerçekleştirin. Fakat eğer `x[i]` 32'den büyük ve 50'den küçükse `x[i] * 3`'ı hesaplayın. Çıktıyı bir vektöre atayın. 
+
+```{r}
+x <- seq(1:100)
+
+for (i in 1:length(x)) {
+  if(x[i] > 32 & x[i] < 50) {
+    a <- x[i] * 3
+    print(a)
+  }
+  if(x[i] < 33 | x[i] > 51) {
+    a <- x[i] * 2
+    print(a)
+  }
+}
+```
+
+
+## Alıştırma 3.5
+
+- Kene istilasına uğramış beş farklı coğrafi alan var. Bilim insanları her bölgeden 10 geyik için örneklem alarak sayım yapıyor. Bunun gibi basit bir senaryoyu her bölgedeki beklenen ortalama kene sayısını bildiğimizi ve sayımı yapılan kenelerin poisson dağılımına uyduğunu varsayarak simüle edebiliriz.
+ 
+
+```{r}
+tick_mean <- c(4,32,17,10,12)
+tick_count <- matrix(nrow = 10, ncol = 5)
+for (i in 1:5) {
+  tick_count[,i] <- rpois(10, tick_mean[i])
+} 
+```
+
+- Yukarıdaki kodu çalıştırın.
+- Yeni bir veriseti oluşturun ve bu verisetinde 10 veya 10'dan daha az kenesi olan hayvanlara 0, 10'dan daha fazla kenesi olanlara 1 atayın. Bunu loop kullanarak yapın. Daha sonra loop kullanmadan yapın.
+
+```{r}
+
+tick_bi <- tick_count
+tick_bi <- for (i in 1:length(tick_bi)) {
+     if (tick_bi[tick_bi >= 10]) {
+          tick_bi[tick_bi >= 10]) <- 1
+     } else {
+          tick_bi[i] <- 0
+     }
+}
+
+
+```
+
+
+
