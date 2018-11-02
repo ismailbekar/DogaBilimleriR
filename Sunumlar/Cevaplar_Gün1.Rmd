@@ -13,21 +13,20 @@ knitr::opts_chunk$set(echo = TRUE)
 ## Alıştırma 2.1
 
 
-- `seq(1, 27, 0.5)` vektörünün 9 ve 12.sıradaki elementleri nelerdir? 
-
+1. `seq(1, 27, 0.5)` vektörünün 9 ve 12.sıradaki elementleri nelerdir? 
 ```{r}
 data <- seq(1, 27, 0.5)
 
 data[9]
 data[12]
 ```
-- 4 ve 34 arasındaki tüm çift sayıları içeren bir vektör yaratın ve bunu `a` objesine atayın. İpucu: `seq()` fonksiyonunu kullanın.
+
+2. 4 ve 34 arasındaki tüm çift sayıları içeren bir vektör yaratın ve bunu `a` objesine atayın. İpucu: `seq()` fonksiyonunu kullanın.
 ```{r}
 a <- seq(from = 4, to = 34, by=2)
 ```
 
-- `a` vektöründe 17'den büyük olan tüm elementleri seçerek çıkarın.
-
+3. `a` vektöründe 17'den büyük olan tüm elementleri seçerek çıkarın.
 ```{r}
 
 a[a > 17]
@@ -53,56 +52,57 @@ data3 <- c(TRUE, "C")
 
 ## Alıştırma 2.3
 
-- İki tane 5'e 2lik matriks oluşturun. Bir tanesi 1-20 arasındaki tüm çift sayıları içermeli, diğeri tüm tek sayıları. Matriksleri satırlara göre doldurdun.
+1. İki tane 5'e 2lik matriks oluşturun. Bir tanesi 1-20 arasındaki tüm çift sayıları içermeli, diğeri tüm tek sayıları. Matriksleri satırlara göre doldurdun.
 ```{r}
 
 matriks1 <- matrix(seq(from = 1, to = 20, by = 2), nrow = 5, ncol = 2)
 matriks2 <- matrix(seq(from = 2, to = 20, by = 2), nrow = 5, ncol = 2)
 ```
 
-- Bu iki matriksi satır ile birleştirin (rbind) ve yeni bir objeye atayın.
-
+2. Bu iki matriksi satır ile birleştirin (rbind) ve yeni bir objeye atayın.
+```{r}
 matriks3 <- rbind(matriks1, matriks2)
 matriks3
+```
 
-- Bu iki matriksi sütun ile birleştirin (cbind) ve yeni bir objeye atayın.
 
+3. Bu iki matriksi sütun ile birleştirin (cbind) ve yeni bir objeye atayın.
+```{r}
 matriks4 <- cbind(matriks1, matriks2)
 matriks4
-
+```
 
 
 ## Alıştırma 2.4
 
 ```{r, eval = F}
 january <- matrix(1:31, nrow = 5, ncol = 7, byrow = T)
-colnames(january) <- c("monday", "tuesday", "wednesday", 
-                       "thursday", "friday", "saturday", "sunday")
+colnames(january) <- c(
+  "monday", "tuesday", "wednesday",
+  "thursday", "friday", "saturday", "sunday"
+)
 rownames(january) <- c("week 1", "week 2", "week 3", "week 4", "week 5")
 ```
 
-- Yukarıdaki kodu çalıştırın.
-- January ayından Saturday ve Sunday sütunlarını silin.
-
+1. Yukarıdaki kodu çalıştırın.
+2. January ayından Saturday ve Sunday sütunlarını silin.
 ```{r}
 january[,c(-6,-7)]
 ```
 
-- 9, 10, ve 11. günlerde hasta oldunuz (geçmiş olsun). Bu günleri "hasta" olarak değiştirin. Matriksteki diğer girdiler bundan nasıl etkilendi?
-
+3. 9, 10, ve 11. günlerde hasta oldunuz (geçmiş olsun). Bu günleri "hasta" olarak değiştirin. Matriksteki diğer girdiler bundan nasıl etkilendi?
 ```{r}
 january[c(7, 12, 17)]  <- "hasta"
 january
 ```
 
-- Kalan günleri "turp gibi" olarak değiştirin.
+4. Kalan günleri "turp gibi" olarak değiştirin.
 ```{r}
 january[c(-7, -12, -17)]  <- "turp gibi"
 ```
 
  
-- length() fonksiyonunu matriks üzerinde kullanınca ne sonuç alıyorsunuz? Aynı matriks üzerinde nrow() ve ncol() fonksiyonlarını kullanın. İlk sonuçla nasıl ilişkililer?
-
+5. length() fonksiyonunu matriks üzerinde kullanınca ne sonuç alıyorsunuz? Aynı matriks üzerinde nrow() ve ncol() fonksiyonlarını kullanın. İlk sonuçla nasıl ilişkililer?
 ```{r}
 length(january)
 nrow(january)
@@ -115,40 +115,37 @@ ncol(january)
 
 Bu alıştırma için 2.kısımda oluşturduğunuzda `january` matriksini kullanın.
 
-- Tüm wednesdaylerin tarihlerini yazdırın.
-
+1. Tüm wednesdaylerin tarihlerini yazdırın.
 ```{r, eval = F}
 january <- matrix(1:31, nrow = 5, ncol = 7, byrow = T)
-colnames(january) <- c("monday", "tuesday", "wednesday", 
-                       "thursday", "friday", "saturday", "sunday")
+colnames(january) <- c(
+  "monday", "tuesday", "wednesday",
+  "thursday", "friday", "saturday", "sunday"
+)
 rownames(january) <- c("week 1", "week 2", "week 3", "week 4", "week 5")
 
-
-for (i in 11:15){
-    print(january[i])
+for (i in 11:15) {
+  print(january[i])
 }
 ```
 
-- Beşinci haftada yer alan February günlerini `NA` ile değiştirin.
-
-
+2. Beşinci haftada yer alan February günlerini `NA` ile değiştirin.
 ```{r}
-for (i in 11:15){
-    print(january[i])
+for (i in c(seq(20, 35, by=5))) {
+  january[i] <- NA*i
 }
 ```
 
 
 ## Alıştırma 3.2
 
-Sizin sıranızda oturan insanların ismiyle bir vektör oluşturup, onlara bir loop ile küçük süprizler yapın (güzel bir şeyler yazın).
-
+1. Sizin sıranızda oturan insanların ismiyle bir vektör oluşturup, onlara bir loop ile küçük süprizler yapın (güzel bir şeyler yazın).
 ```{r}
 insanlar <- c("Bilgecan", "Nurbahar")
 
-for (i in length(insanlar)) {
-     g.insanlar <- paste("Çok güzel insan", insanlar[i], sep = " ")
-     print(g.insanlar)
+for (i in 1:length(insanlar)) {
+  g.insanlar <- paste("Çok güzel insan", insanlar[i], sep = " ")
+  print(g.insanlar)
 }
 ```
 
@@ -166,7 +163,7 @@ m <- matrix(x, ncol = 5, nrow = 10)
 a <- c()
 
 for (i in 1:ncol(m)) {
-     a <- mean(m[,i])
+     a[i] <- mean(m[,i])
      print(a)
 }
 ```
@@ -182,12 +179,12 @@ for (i in 1:ncol(m)) {
 x <- seq(1:100)
 
 for (i in 1:length(x)) {
-  if(x[i] > 32 & x[i] < 50) {
-    a <- x[i] * 3
+  if (x[i] > 32 & x[i] < 50) {
+    a[i] <- x[i] * 3
     print(a)
   }
-  if(x[i] < 33 | x[i] > 51) {
-    a <- x[i] * 2
+  if (x[i] < 33 | x[i] > 49) {
+    a[i] <- x[i] * 2
     print(a)
   }
 }
@@ -200,11 +197,11 @@ for (i in 1:length(x)) {
  
 
 ```{r}
-tick_mean <- c(4,32,17,10,12)
+tick_mean <- c(4, 32, 17, 10, 12)
 tick_count <- matrix(nrow = 10, ncol = 5)
 for (i in 1:5) {
-  tick_count[,i] <- rpois(10, tick_mean[i])
-} 
+  tick_count[, i] <- rpois(10, tick_mean[i])
+}
 ```
 
 - Yukarıdaki kodu çalıştırın.
@@ -224,5 +221,120 @@ tick_bi <- for (i in 1:length(tick_bi)) {
 
 ```
 
+## Alıştırma 5.1
+
+*trees* ve *mtcars* R'da yüklü olan diğer iki veri setidir.
+
+1. Bu iki veri setinin kaç satıra sahip olduğuna bakın.
+```{r}
+nrow(trees)
+nrow(mtcars)
+```
+
+2. Kaç sütuna sahipler? Sütünların isimleri neler?
+```{r}
+ncol(trees)
+ncol(mtcars)
+```
+
+3. `str()` fonksiyonunu kullanarak *iris* veri setinin kaç türe sahip olduğunu bulun.
+```{r}
+str(iris)
+```
+
+4. İki veri setinde hangi class'lar mevcut?
+```{r}
+str(trees)
+str(mtcars)
+str(iris)
+```
+
+## Alıştırma 5.2
+
+1. `iris` veri setinde `Sepal.Width` sütunundaki 9. elementi bulun?
+```{r}
+iris[9,2]
+iris[9,"Sepal.Width"]
+```
+
+2. `iris` veri setindeki 17.satırı seçin.
+```{r}
+iris[17,]
+```
+
+3. `iris` veri setinin 1, 4 ve 7. satırları ile bir obje oluşturun. 
+```{r}
+a <- iris[c(1,4,7),]
+```
+
+4. `iris` veri setindeki tüm tek sayılı satırları seçmek için `seq()` fonksiyonunu kullanın.
+```{r}
+iris[seq(from= 1, to= 150, by= 2),]
+```
+
+5. `iris` vei setindeki `Sepal.Width` sütununu silin ve başka bir objeye atayın.
+```{r}
+aa <- iris[, "Sepal.Width"]
+iris[, "Sepal.Width"] <- NULL
+```
+
+6. `iris` veri setinde petal uzunluğu 3'den büyük olanları seçin.
+```{r}
+iris[iris$Petal.Length > 3,]
+```
+
+7.  Bir veri setinde `length()` fonksiyonunu kullandığınızda ne sonuç alıyorsunuz? Matriksten farkı ne?
+
+```{r}
+length(iris)
+```
+
+## Alıştırma 5.3
+
+1. c(1,2,3) ve c(4,5,6,7) ile iki sütunlu bir veri seti oluşturun. Sonuç ne?
+```{r}
+data.frame(x= c(1,2,3), y= c(4,5,6,7))
+```
+
+2. c("a","b","c") ve c(1,2,3) ile `data.frame` kulanarak bir veri seti oluşturun. Bir diğer veri setini önce `cbind`, sonra `data.frame` kullanarak oluşturun. Aradaki fark ne?
+```{r}
+a <- data.frame(x= c("a","b","c"))
+b <- data.frame(y= c(1,2,3))
+aa <- data.frame(x= c("a","b","c"), y= c(1,2,3))
+ab <- cbind(a,b)
+str(aa)
+str(ab)
+```
+
+
+## Alıştırma 5.4
+
+1. Şu adresteki veriyi <a href = https://www.dropbox.com/s/cg0yyuvfxpdbouy/BlueHill.csv?dl=0>BlueHill.csv</a> R'da açın.
+```{r}
+setwd("~/GitHub/DogaBilimleriR/Sunumlar")
+bluehill <- read.csv("BlueHill.csv")
+```
+
+2. Tüm istasyonlar ve yıllardaki günlük ortalama sıcaklık nedir? (**MNTM**)?
+```{r}
+mean(bluehill$MNTM)
+```
+
+3. Dördüncü sütunu seçin ve bir objeye atayın. Class'ı ve modu nedir? İpucu: `class` ve `mode` fonksiyonlarını kullanın.
+```{r}
+a <- bluehill$MNTM
+class(a)
+mode(a)
+```
+
+4. İlk satırı seçin ve bir objeye atayın. Class'ı nedir? Tek bir moda mı sahip?
+```{r}
+b <- bluehill[1,]
+class(b)
+mode(b)
+```
+
+
+5. Üçüncü ve dördüncü alıştırmaları düşündüğünüzde veri setlerindeki seçim ile matrikslerdeki seçim arasında nasıl farklar var?
 
 

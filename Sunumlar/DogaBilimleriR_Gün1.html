@@ -116,16 +116,16 @@
 </article></slide><slide class="segue dark nobackground level1"><hgroup class = 'auto-fadein'><h2>1. Gün</h2></hgroup><article  id="gun">
 
 <ul>
-<li>Part 1: <a href = "#/3"> R Programlamaya Giriş </a></li>
-<li>Part 2: <a href = "#/30"> Homojen Veri Yapıları </a></li>
-<li>Part 3: <a href = "#/93"> Loops and Flow İfadeleri </a></li>
-<li>Part 4: <a href = "#/116"> Fonksiyonlar </a></li>
-<li>Part 5: <a href = "#/133"> Heterojen Veri Yapıları </a></li>
-<li>Part 6: <a href = "#/172"> Temel Görselleştirme </a></li>
-<li>Part 7: <a href = "#/172"> Kapanış </a></li>
+<li>Bölüm 1: <a href = "#/3"> R Programlamaya Giriş </a></li>
+<li>Bölüm 2: <a href = "#/30"> Homojen Veri Yapıları </a></li>
+<li>Bölüm 3: <a href = "#/93"> Loops and Flow İfadeleri </a></li>
+<li>Bölüm 4: <a href = "#/116"> Fonksiyonlar </a></li>
+<li>Bölüm 5: <a href = "#/133"> Heterojen Veri Yapıları </a></li>
+<li>Bölüm 6: <a href = "#/172"> Temel Görselleştirme </a></li>
+<li>Bölüm 7: <a href = "#/172"> Kapanış </a></li>
 </ul>
 
-</article></slide><slide class="segue dark nobackground level1"><hgroup class = 'auto-fadein'><h2>Part 1: R Programlamaya Giriş</h2></hgroup><article  id="part-1-r-programlamaya-giris">
+</article></slide><slide class="segue dark nobackground level1"><hgroup class = 'auto-fadein'><h2>Bölüm 1: R Programlamaya Giriş</h2></hgroup><article  id="bolum-1-r-programlamaya-giris">
 
 </article></slide><slide class=""><hgroup><h2>R</h2></hgroup><article  id="r">
 
@@ -156,14 +156,14 @@
 
 <ul>
 <li>Sıradan bir metin editörü R betik dosyaları (script) için yeterli</li>
-<li>Rstudio daha rahat bir kullanım tecrübesi sağlıyor</li>
+<li>RStudio daha rahat bir kullanım tecrübesi sağlıyor</li>
 <li>Ekran dört parçadan oluşuyor:
 
 <ul>
-<li><strong>Workspace:</strong> (Sol üst) Betikleri yazdığınız ve kaydetttiğiniz yer</li>
-<li><strong>Console:</strong> (Sol alt) Komutların çalıştırıldığı yer</li>
-<li><strong>Environment, History:</strong> (Sağ üst) Objelerin saklandığı yer</li>
-<li><strong>Files, Plots, Packages, and Help:</strong> (Sağ alt) Veriyi görüntüleme, yardım</li>
+<li><strong>Workspace</strong> (Sol üst): Betikleri yazdığınız ve kaydetttiğiniz yer</li>
+<li><strong>Console</strong> (Sol alt): Komutların çalıştırıldığı yer</li>
+<li><strong>Environment, History</strong> (Sağ üst): Objelerin saklandığı yer</li>
+<li><strong>Files, Plots, Packages, ve Help</strong> (Sağ alt): Veriyi görüntüleme, yardım</li>
 </ul></li>
 </ul>
 
@@ -330,14 +330,14 @@ x==y</pre>
 
 </article></slide><slide class=""><hgroup><h2>Alıştırma 1.1</h2></hgroup><article  id="alstrma-1.1">
 
-<ul>
+<ol>
 <li>Bir sayı seçin ve bunu <strong>z</strong> objesine atayın</li>
 <li><strong>z</strong> objesini ikiyle çarpın ve bunu <strong>a</strong> objesine atayın</li>
 <li><strong>a</strong> objesine 10 ekleyin ve bunu <strong>b</strong> objesine atayın</li>
 <li><strong>b</strong> objesini ikiye bölün ve bunu <strong>c</strong> objesine atayın</li>
 <li><strong>z</strong> objesini <strong>c</strong> objesinden çıkarın ve bunu <strong>d</strong> objesine atayın</li>
 <li><strong>d</strong> objesi <strong>z</strong> objesine eşit mi?</li>
-</ul>
+</ol>
 
 </article></slide><slide class=""><hgroup><h2>Objeler </h2><h3> Bir çok elementi tek bir objeye atama <code>c()</code></h3></hgroup><article  id="objeler-bir-cok-elementi-tek-bir-objeye-atama-c">
 
@@ -375,7 +375,7 @@ x==y</pre>
 
 </article></slide><slide class=""><hgroup><h2>Alıştırma 1.2</h2></hgroup><article  id="alstrma-1.2">
 
-<ul>
+<ol>
 <li>45, 3, 9, 99, ve 0&#39;ı barındıran bir obje oluşturun</li>
 <li>66, 0, 1, 5, and 0&#39;ı barındıran bir diğer obje oluşturun</li>
 <li>Bu iki objeyi toplayın</li>
@@ -383,15 +383,17 @@ x==y</pre>
 <li>Birinciyi ikinciye bölün</li>
 <li>Sonuç kaç çıktı?</li>
 <li>R tek boyutlu ve birçok elemente sahip objelerle nasıl başa çıkıyor?</li>
-</ul>
+</ol>
 
 </article></slide><slide class=""><hgroup><h2>Fonksiyonlar</h2></hgroup><article  id="fonksiyonlar">
 
 <ul>
 <li><p><em>fonksiyon</em> verilen bir girdi (<em>arguments</em>) ile belirli bir işlemi gerçekleştiren objelerdir. R halihazırda bir çok fonksiyona sahip ama isterseniz kendi fonksiyonunuzu yazmanız da mümkün.</p></li>
 <li><p>Fonksiyonlar şu şekilde kullanılır: <code>name_of_function(inputs)</code></p></li>
-<li><p>Fonksiyonun sonucu bir objeye saklanabilir: <code>output &lt;- name_of_function(inputs)</code></p></li>
+<li><p>Fonksiyonun sonucu bir objeye saklanabilir:</p></li>
 </ul>
+
+<p><code>output &lt;- name_of_function(inputs)</code></p>
 
 </article></slide><slide class=""><hgroup><h2>Fonksiyonlar</h2></hgroup><article  id="fonksiyonlar-1">
 
@@ -455,7 +457,7 @@ z</pre>
 <li><p><code>mean(4, 5)</code>&#39;ün sonucu <code>mean(c(4, 5))</code>&#39;den farklı mı?</p></li>
 </ol>
 
-</article></slide><slide class="segue dark nobackground level1"><hgroup class = 'auto-fadein'><h2>Part 2: Homojen Veri Yapıları</h2></hgroup><article  id="part-2-homojen-veri-yaplar">
+</article></slide><slide class="segue dark nobackground level1"><hgroup class = 'auto-fadein'><h2>Bölüm 2: Homojen Veri Yapıları</h2></hgroup><article  id="bolum-2-homojen-veri-yaplar">
 
 </article></slide><slide class=""><hgroup><h2></h2></hgroup><article >
 
@@ -714,11 +716,11 @@ y[y &lt; 10 &amp; y != 5]  </pre>
 
 </article></slide><slide class=""><hgroup><h2>Alıştırma 2.1</h2></hgroup><article  id="alstrma-2.1">
 
-<ul>
+<ol>
 <li><p><code>seq(1, 27, 0.5)</code> vektörünün 9 ve 12.sıradaki elementleri nelerdir?</p></li>
 <li><p>4 ve 34 arasındaki tüm çift sayıları içeren bir vektör yaratın ve bunu <code>a</code> objesine atayın. İpucu: <code>seq()</code> fonksiyonunu kullanın.</p></li>
 <li><p><code>a</code> vektöründe 17&#39;den büyük olan tüm elementleri seçerek çıkarın.</p></li>
-</ul>
+</ol>
 
 </article></slide><slide class=""><hgroup><h2>Vektör Çeşitleri</h2></hgroup><article  id="vektor-cesitleri">
 
@@ -799,7 +801,7 @@ z</pre>
 
 <pre >## [1]  TRUE FALSE  TRUE FALSE</pre>
 
-</article></slide><slide class=""><hgroup><h2>Modların birbirine dönüşümleri </h2><h3> character&#39;e dönüştürme</h3></hgroup><article  id="modlarn-birbirine-donusumleri-charactere-donusturme">
+</article></slide><slide class=""><hgroup><h2>Modların birbirine dönüşümleri </h2><h3> Character&#39;e dönüştürme</h3></hgroup><article  id="modlarn-birbirine-donusumleri-charactere-donusturme">
 
 <pre class = 'prettyprint lang-r'>x</pre>
 
@@ -809,7 +811,7 @@ z</pre>
 
 <pre >## [1]  TRUE FALSE  TRUE FALSE</pre>
 
-</article></slide><slide class=""><hgroup><h2>Modların birbirine dönüşümleri </h2><h3> character&#39;e dönüştürme</h3></hgroup><article  id="modlarn-birbirine-donusumleri-charactere-donusturme-1">
+</article></slide><slide class=""><hgroup><h2>Modların birbirine dönüşümleri </h2><h3> Character&#39;e dönüştürme</h3></hgroup><article  id="modlarn-birbirine-donusumleri-charactere-donusturme-1">
 
 <pre class = 'prettyprint lang-r'>x &lt;- as.character(x)
 x</pre>
@@ -821,7 +823,7 @@ z</pre>
 
 <pre >## [1] &quot;TRUE&quot;  &quot;FALSE&quot; &quot;TRUE&quot;  &quot;FALSE&quot;</pre>
 
-</article></slide><slide class=""><hgroup><h2>Modların birbirine dönüşümleri </h2><h3> numeric&#39;e dönüştürme</h3></hgroup><article  id="modlarn-birbirine-donusumleri-numerice-donusturme">
+</article></slide><slide class=""><hgroup><h2>Modların birbirine dönüşümleri </h2><h3> Numeric&#39;e dönüştürme</h3></hgroup><article  id="modlarn-birbirine-donusumleri-numerice-donusturme">
 
 <pre class = 'prettyprint lang-r'>x &lt;- c(&quot;1&quot;,&quot;-2&quot;, &quot;3.25&quot;, &quot;A&quot;)
 x &lt;- as.numeric(x)</pre>
@@ -832,7 +834,7 @@ x &lt;- as.numeric(x)</pre>
 
 <pre >## [1]  1.00 -2.00  3.25    NA</pre>
 
-</article></slide><slide class=""><hgroup><h2>Modların birbirine dönüşümleri </h2><h3> numeric&#39;e dönüştürme</h3></hgroup><article  id="modlarn-birbirine-donusumleri-numerice-donusturme-1">
+</article></slide><slide class=""><hgroup><h2>Modların birbirine dönüşümleri </h2><h3> Numeric&#39;e dönüştürme</h3></hgroup><article  id="modlarn-birbirine-donusumleri-numerice-donusturme-1">
 
 <pre class = 'prettyprint lang-r'>y &lt;- c(T,F,F,T,T)
 y &lt;- as.numeric(y)
@@ -840,7 +842,7 @@ y</pre>
 
 <pre >## [1] 1 0 0 1 1</pre>
 
-</article></slide><slide class=""><hgroup><h2>Modların birbirine dönüşümleri </h2><h3> logical&#39;a dönüştürme</h3></hgroup><article  id="modlarn-birbirine-donusumleri-logicala-donusturme">
+</article></slide><slide class=""><hgroup><h2>Modların birbirine dönüşümleri </h2><h3> Logical&#39;a dönüştürme</h3></hgroup><article  id="modlarn-birbirine-donusumleri-logicala-donusturme">
 
 <pre class = 'prettyprint lang-r'>x &lt;- c(0, 0, 5, 79, 3500)
 x &lt;- as.logical(x)
@@ -863,7 +865,7 @@ y</pre>
 <li>Örüntüyü farkettiniz mi? Oluşturduğunuz vektörleri modu nasıl belirlendi?</li>
 </ol>
 
-</article></slide><slide class=""><hgroup><h2>R ipucu: Zorla güzellik olmaz</h2></hgroup><article  id="r-ipucu-zorla-guzellik-olmaz">
+</article></slide><slide class=""><hgroup><h2>R ipucu: zorla güzellik olmaz</h2></hgroup><article  id="r-ipucu-zorla-guzellik-olmaz">
 
 <ul>
 <li>Atomic bir vektörün tüm elementleri aynı tipte olmalıdır.</li>
@@ -942,7 +944,7 @@ f</pre>
 
 <ul>
 <li>İki boyutlu veri dosyası (tablo)</li>
-<li>Matriksler vektörlerle çok benzer davranış gösterir.</li>
+<li>Vektörlerle çok benzer davranış gösterirler</li>
 </ul>
 
 </article></slide><slide class=""><hgroup><h2>3. Matriksler </h2><h3> Matriks oluşturma</h3></hgroup><article  id="matriksler-matriks-olusturma">
@@ -976,7 +978,7 @@ m</pre>
 
 <pre >## [1] TRUE</pre>
 
-</article></slide><slide class=""><hgroup><h2>3. Matriksler </h2><h3> Matriksler oluşturma</h3></hgroup><article  id="matriksler-matriksler-olusturma">
+</article></slide><slide class=""><hgroup><h2>3. Matriksler </h2><h3> Matriks oluşturma</h3></hgroup><article  id="matriksler-matriks-olusturma-3">
 
 <pre class = 'prettyprint lang-r'>v1 &lt;- c(1,2,3)
 v2 &lt;- c(4,5,6)
@@ -989,7 +991,7 @@ m</pre>
 ## [2,]  2  5
 ## [3,]  3  6</pre>
 
-</article></slide><slide class=""><hgroup><h2>3. Matriksler </h2><h3> Matriksler oluşturma</h3></hgroup><article  id="matriksler-matriksler-olusturma-1">
+</article></slide><slide class=""><hgroup><h2>3. Matriksler </h2><h3> Matriks oluşturma</h3></hgroup><article  id="matriksler-matriks-olusturma-4">
 
 <pre class = 'prettyprint lang-r'>m &lt;- rbind(v1, v2)
 m</pre>
@@ -1148,11 +1150,11 @@ tues[tues&lt;15]</pre>
 
 </article></slide><slide class=""><hgroup><h2>Alıştırma 2.3</h2></hgroup><article  id="alstrma-2.3">
 
-<ul>
+<ol>
 <li>İki tane 5&#39;e 2lik matriks oluşturun. Bir tanesi 1-2* arasındaki tüm çift sayıları içermeli, diğeri tüm tek sayıları. Matriksleri satırlara göre doldurdun.</li>
 <li>Bu iki matriksi satır ile birleştirin (rbind) ve yeni bir objeye atayın.</li>
 <li>Bu iki matriksi sütun ile birleştirin (cbind) ve yeni bir objeye atayın.</li>
-</ul>
+</ol>
 
 </article></slide><slide class=""><hgroup><h2>Alıştırma 2.4</h2></hgroup><article  id="alstrma-2.4">
 
@@ -1163,11 +1165,14 @@ rownames(january) &lt;- c(&quot;week 1&quot;, &quot;week 2&quot;, &quot;week 3&q
 
 <ul>
 <li>Yukarıdaki kodu çalıştırın.</li>
+</ul>
+
+<ol>
 <li>January ayından Saturday ve Sunday sütunlarını silin.</li>
 <li>9, 10, ve 11. günlerde hasta oldunuz (geçmiş olsun!). Bu günleri &quot;hasta&quot; olarak değiştirin. Matriksteki diğer girdiler bundan nasıl etkilendi?</li>
 <li>Kalan günleri &quot;sağlıklı&quot; olarak değiştirin.</li>
 <li>length() fonksiyonunu matriks üzerinde kullanınca ne sonuç alıyorsunuz? Aynı matriks üzerinde nrow() ve ncol() fonksiyonlarını kullanın. İlk sonuçla nasıl ilişkililer?</li>
-</ul>
+</ol>
 
 </article></slide><slide class=""><hgroup><h2>4. Arrayler</h2></hgroup><article  id="arrayler">
 
@@ -1242,7 +1247,7 @@ a</pre>
 
 <pre >## [1] 7</pre>
 
-</article></slide><slide class="segue dark nobackground level1"><hgroup class = 'auto-fadein'><h2>Part 3: Loops and Flow İfadeleri</h2></hgroup><article  id="part-3-loops-and-flow-ifadeleri">
+</article></slide><slide class="segue dark nobackground level1"><hgroup class = 'auto-fadein'><h2>Bölüm 3: Loops and Flow İfadeleri</h2></hgroup><article  id="bolum-3-loops-and-flow-ifadeleri">
 
 </article></slide><slide class=""><hgroup><h2>Loop</h2></hgroup><article  id="loop">
 
@@ -1252,7 +1257,15 @@ a</pre>
 <li><p>Temel taslak:</p></li>
 </ul>
 
-<p><code>for (i in 1:number_of_iterations) {</code> <code>buraya bakarlar</code> <code>buraya kod gelecek</code> <code>buraya bakarlar</code> <code>}</code></p>
+<p><code>for (i in 1:number_of_iterations) {</code></p>
+
+<p><code>buraya bakarlar</code></p>
+
+<p><code>buraya kod gelecek</code></p>
+
+<p><code>buraya bakarlar</code></p>
+
+<p><code>}</code></p>
 
 </article></slide><slide class=""><hgroup><h2>For loop </h2><h3> Neden for loop?</h3></hgroup><article  id="for-loop-neden-for-loop">
 
@@ -1304,7 +1317,7 @@ a</pre>
 <pre >## [1] 2</pre>
 
 <ul>
-<li>i eğer onunla başka bir loop çalıştırırsanız kendini yenileyecektir.</li>
+<li>i, eğer onunla başka bir loop çalıştırırsanız kendini yenileyecektir.</li>
 </ul>
 
 </article></slide><slide class=""><hgroup><h2>For loop</h2></hgroup><article  id="for-loop-1">
@@ -1329,10 +1342,10 @@ for (i in 1:4){
 
 <p>Bu alıştırma için 2.kısımda oluşturduğunuzda <code>january</code> matriksini kullanın.</p>
 
-<ul>
+<ol>
 <li><p>Tüm wednesdaylerin tarihlerini yazdırın.</p></li>
 <li><p>Beşinci haftada yer alan February günlerini <code>NA</code> ile değiştirin.</p></li>
-</ul>
+</ol>
 
 </article></slide><slide class=""><hgroup><h2>For loop </h2><h3> Loop Environment</h3></hgroup><article  id="for-loop-loop-environment">
 
@@ -1349,7 +1362,9 @@ for (i in 1:length(wizards)){
 
 </article></slide><slide class=""><hgroup><h2>Alıştırma 3.2</h2></hgroup><article  id="alstrma-3.2">
 
-<p>Sizin sıranızda oturan insanların ismiyle bir vektör oluşturup, onlara bir loop ile küçük süprizler yapın (güzel bir şeyler yazın).</p>
+<ol>
+<li>Sizin sıranızda oturan insanların ismiyle bir vektör oluşturup, bir loop ile onlara küçük süprizler yapın (güzel bir şeyler yazın).</li>
+</ol>
 
 </article></slide><slide class=""><hgroup><h2>For loop </h2><h3> Loop sonuçlarını nasıl kaydederiz?</h3></hgroup><article  id="for-loop-loop-sonuclarn-nasl-kaydederiz">
 
@@ -1367,16 +1382,16 @@ for (i in 1:length(x)) {
 }
 head(outputs)</pre>
 
-<pre >## [1] 10.910253  8.461812 10.375403  4.828255  9.551723  3.806785</pre>
+<pre >## [1]  9.0255448  6.0503630  6.6946558 12.0542763 -0.7120153 13.5586366</pre>
 
 </article></slide><slide class=""><hgroup><h2>Alıştırma 3.3</h2></hgroup><article  id="alstrma-3.3">
 
 <pre class = 'prettyprint lang-r'>x &lt;- rnorm(n = 50, mean = 0, sd = 1)
 m &lt;- matrix(x, ncol = 5, nrow = 10)</pre>
 
-<ul>
+<ol>
 <li><code>m</code> matriksindeki her sütunun ortalamasını hesaplayan bir loop yazın ve sonucu a objesine atayarak saklayın.</li>
-</ul>
+</ol>
 
 </article></slide><slide class=""><hgroup><h2>For loop </h2><h3> Nested for loop</h3></hgroup><article  id="for-loop-nested-for-loop">
 
@@ -1437,7 +1452,11 @@ for (i in 1:nrow(m)) {
 <li>Temel taslak:</li>
 </ul>
 
-<p><code>if (mantıksal ifade) {</code> <code>buraya kod gelecek</code> <code>}</code></p>
+<p><code>if (mantıksal ifade) {</code></p>
+
+<p><code>buraya kod gelecek</code></p>
+
+<p><code>}</code></p>
 
 <ul>
 <li>Eğer mantıksal önerme doğru ise, <strong>TRUE</strong>, kod çalışacak. Eğer yanlış ise, <strong>FALSE</strong>, çalışmayacak.</li>
@@ -1446,7 +1465,7 @@ for (i in 1:nrow(m)) {
 </article></slide><slide class=""><hgroup><h2>Flow ifadeleri </h2><h3> If ifadeleri</h3></hgroup><article  id="flow-ifadeleri-if-ifadeleri-2">
 
 <ul>
-<li>Genellikle loopların farklı koşullar altında farklı şeyler yapmasını isteriz. Loopların değişkenleri, seçenekleri ya da mantıksal önermeleri dikkate almasını isteriz.</li>
+<li>Genellikle loopların farklı koşullar altında farklı şeyler yapmasını isteriz. Mesela: değişkenleri, seçenekleri ya da mantıksal önermeleri dikkate almasını isteriz.</li>
 </ul>
 
 </article></slide><slide class=""><hgroup><h2>Flow ifadeleri </h2><h3> If ifadeleri</h3></hgroup><article  id="flow-ifadeleri-if-ifadeleri-3">
@@ -1470,10 +1489,10 @@ for (i in 1:length(x)) {
 
 </article></slide><slide class=""><hgroup><h2>Alıştırma 3.4</h2></hgroup><article  id="alstrma-3.4">
 
-<ul>
+<ol>
 <li><p><code>x</code> isimli 1 ve 100 arasındaki tüm sayıları içeren bir vektör oluşturun.</p></li>
 <li><p>Vektör için <code>x[i] * 2</code> işlemini 100 kez (vektörün uzunluğu) gerçekleştirin. Fakat eğer <code>x[i]</code> 32&#39;den büyük ve 50&#39;den küçükse <code>x[i] * 3</code>&#39;ı hesaplayın. Çıktıyı bir vektöre atayın.</p></li>
-</ul>
+</ol>
 
 </article></slide><slide class=""><hgroup><h2>Flow ifadeleri </h2><h3> Else ifadeleri</h3></hgroup><article  id="flow-ifadeleri-else-ifadeleri">
 
@@ -1517,10 +1536,13 @@ for (i in 1:5) {
 
 <ul>
 <li>Yukarıdaki kodu çalıştırın.</li>
-<li>Yeni bir veriseti oluşturun ve bu verisetinde 10 veya 10&#39;dan daha az kenesi olan hayvanlara 0, 10&#39;dan daha fazla kenesi olanlara 1 atayın. Bunu loop kullanarak yapın. Daha sonra loop kullanmadan yapın.</li>
 </ul>
 
-</article></slide><slide class="segue dark nobackground level1"><hgroup class = 'auto-fadein'><h2>Part 4: Fonksiyonlar</h2></hgroup><article  id="part-4-fonksiyonlar">
+<ol>
+<li>Yeni bir veriseti oluşturun ve bu verisetinde 10 veya 10&#39;dan daha az kenesi olan hayvanlara 0, 10&#39;dan daha fazla kenesi olanlara 1 atayın. Bunu loop kullanarak yapın. Daha sonra loop kullanmadan yapın.</li>
+</ol>
+
+</article></slide><slide class="segue dark nobackground level1"><hgroup class = 'auto-fadein'><h2>Bölüm 4: Fonksiyonlar</h2></hgroup><article  id="bolum-4-fonksiyonlar">
 
 </article></slide><slide class=""><hgroup><h2>Temel fonksiyonlar</h2></hgroup><article  id="temel-fonksiyonlar">
 
@@ -1747,13 +1769,17 @@ subtract()</pre>
 
 </article></slide><slide class=""><hgroup><h2>Alıştırma 4.2</h2></hgroup><article  id="alstrma-4.2">
 
-<p>Bir vektörü girdi olarak alan, daha sonra vekötürün toplamını 10 ile çarpıp sonucun 1000&#39;den küçük olduğunu mantıksal önerme ile dönen bir fonksiyon yazın.</p>
+<ol>
+<li>Bir vektörü girdi olarak alan, daha sonra vekötürün toplamını 10 ile çarpıp sonucun 1000&#39;den küçük olduğunu mantıksal önerme ile dönen bir fonksiyon yazın.</li>
+</ol>
 
 </article></slide><slide class=""><hgroup><h2>Alıştırma 4.3 (Zor)</h2></hgroup><article  id="alstrma-4.3-zor">
 
-<p>Verilen bir numarayı bölenlerine ayıran bir fonksiyon yazın.</p>
+<ol>
+<li>Verilen bir numarayı bölenlerine ayıran bir fonksiyon yazın.</li>
+</ol>
 
-</article></slide><slide class="segue dark nobackground level1"><hgroup class = 'auto-fadein'><h2>Part 5: Heterojen Veri Yapıları</h2></hgroup><article  id="part-5-heterojen-veri-yaplar">
+</article></slide><slide class="segue dark nobackground level1"><hgroup class = 'auto-fadein'><h2>Bölüm 5: Heterojen Veri Yapıları</h2></hgroup><article  id="bolum-5-heterojen-veri-yaplar">
 
 </article></slide><slide class=""><hgroup><h2>5. Data frameler</h2></hgroup><article  id="data-frameler">
 
@@ -1935,7 +1961,7 @@ subtract()</pre>
 
 <pre >## [1] TRUE</pre>
 
-</article></slide><slide class=""><hgroup><h2>5. Data frameler </h2><h3> Dataframes ve matriksler için faydalı fonksiyonlar</h3></hgroup><article  id="data-frameler-dataframes-ve-matriksler-icin-faydal-fonksiyonlar">
+</article></slide><slide class=""><hgroup><h2>5. Data frameler </h2><h3> Dataframeler ve matriksler için faydalı fonksiyonlar</h3></hgroup><article  id="data-frameler-dataframeler-ve-matriksler-icin-faydal-fonksiyonlar">
 
 <ul>
 <li><code>head()</code> - ilk 6 satırı gör</li>
@@ -1999,7 +2025,7 @@ subtract()</pre>
 <li><p><code>iris</code> veri setindeki 17.satırı seçin.</p></li>
 <li><p><code>iris</code> veri setinin 1, 4 ve 7. satırları ile bir obje oluşturun.</p></li>
 <li><p><code>iris</code> veri setindeki tüm tek sayılı satırları seçmek için <code>seq()</code> fonksiyonunu kullanın.</p></li>
-<li><p><code>iris</code> vei setindeki <code>Sepal.Width</code> sütununu silin ve başka bir objeye atayın.</p></li>
+<li><p><code>iris</code> vei setindeki <code>Sepal.Width</code> sütununu başka bir objeye atayın ve sonrasında silin.</p></li>
 <li><p><code>iris</code> veri setinde petal uzunluğu 3&#39;den büyük olanları seçin.</p></li>
 <li><p>Bir veri setinde <code>length()</code> fonksiyonunu kullandığınızda ne sonuç alıyorsunuz? Matriksten farkı ne?</p></li>
 </ol>
@@ -2124,7 +2150,7 @@ head(blue.hill)
 # Çalışma dizininde olmayan dosyayı açma
 blue.hill &lt;- read.csv(&quot;/Users/bilgecan/Desktop/BlueHill.csv&quot;)</pre>
 
-</article></slide><slide class=""><hgroup><h2>İpucu: Değişken isimleri</h2></hgroup><article  id="ipucu-degisken-isimleri">
+</article></slide><slide class=""><hgroup><h2>İpucu: değişken isimleri</h2></hgroup><article  id="ipucu-degisken-isimleri">
 
 <ul>
 <li>Bir veriyi R&#39;da açmak bazen çok sıkıntılı hale gelebilir. Genellikle sorun değişken isimlerinden gelir.</li>
@@ -2145,7 +2171,7 @@ avg.height     # ÇOK İYİ!  </pre>
 <li><p>Tüm istasyonlar ve yıllardaki günlük ortalama sıcaklık nedir? (<strong>MNTM</strong>)?</p></li>
 <li><p>Dördüncü sütunu seçin ve bir objeye atayın. Class&#39;ı ve modu nedir? İpucu: <code>class</code> ve <code>mode</code> fonksiyonlarını kullanın.</p></li>
 <li><p>İlk satırı seçin ve bir objeye atayın. Class&#39;ı nedir? Tek bir moda mı sahip?</p></li>
-<li><p>Üçüncü ve dördüncü alıştırmaları düşündüğünüzde veri setlerindeki seçim ile matrikslerdeki seçim arasında nasıl farklar var?</p></li>
+<li><p>Üçüncü ve dördüncü alıştırmaları düşündüğünüzde dataframedeki seçim ile matrikslerdeki seçim arasında nasıl farklar var?</p></li>
 </ol>
 
 </article></slide><slide class=""><hgroup><h2>Veri setlerini dışarı aktarma</h2></hgroup><article  id="veri-setlerini-dsar-aktarma">
@@ -2336,12 +2362,12 @@ l$l2 &lt;- l2</pre>
 
 </article></slide><slide class=""><hgroup><h2>Alıştırma 5.5</h2></hgroup><article  id="alstrma-5.5-1">
 
-<ul>
+<ol>
 <li><p><code>z</code> listesindeki ilk elementi seçin.</p></li>
 <li><p><code>d</code> listesindeki ikinci sütunu seçin.</p></li>
 <li><p><code>l</code> listesinden b&#39;den 50. elementi seçin</p></li>
 <li><p><code>x</code>&#39;in içindeki <code>l</code>&#39;yi <code>[]</code> ve <code>[[]]</code> ile çıkarak 2 ile çarpın. Neden biri çalışırken diğeri çalışmıyor?</p></li>
-</ul>
+</ol>
 
 </article></slide><slide class=""><hgroup><h2>Genel seçim yapma önerileri</h2></hgroup><article  id="genel-secim-yapma-onerileri">
 
@@ -2352,7 +2378,7 @@ l$l2 &lt;- l2</pre>
 <li><p>Listelerden seçim yaparken gerçek veriyi seçip kullanmak istiyorsanız <code>[[]]</code> kullanın.</p></li>
 </ul>
 
-</article></slide><slide class="segue dark nobackground level1"><hgroup class = 'auto-fadein'><h2>Part 6: Temel Görselleştirme</h2></hgroup><article  id="part-6-temel-gorsellestirme">
+</article></slide><slide class="segue dark nobackground level1"><hgroup class = 'auto-fadein'><h2>Bölüm 6: Temel Görselleştirme</h2></hgroup><article  id="bolum-6-temel-gorsellestirme">
 
 </article></slide><slide class=""><hgroup><h2>Scatter Plot</h2></hgroup><article  id="scatter-plot">
 

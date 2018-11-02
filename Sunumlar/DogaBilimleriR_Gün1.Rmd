@@ -21,6 +21,7 @@ output:
 
 
 
+
 # 1. Gün
 
 - Bölüm 1: <a href = "#/3"> R Programlamaya Giriş </a>
@@ -30,7 +31,6 @@ output:
 - Bölüm 5: <a href = "#/133"> Heterojen Veri Yapıları </a>
 - Bölüm 6: <a href = "#/172"> Temel Görselleştirme </a>
 - Bölüm 7: <a href = "#/172"> Kapanış </a> 
-
 
 
 # Bölüm 1: R Programlamaya Giriş
@@ -62,12 +62,12 @@ output:
 ## RStudio
 
 - Sıradan bir metin editörü R betik dosyaları (script) için yeterli
-- Rstudio daha rahat bir kullanım tecrübesi sağlıyor
+- RStudio daha rahat bir kullanım tecrübesi sağlıyor
 - Ekran dört parçadan oluşuyor: 
-    + **Workspace:** (Sol üst) Betikleri yazdığınız ve kaydetttiğiniz yer
-    + **Console:** (Sol alt) Komutların çalıştırıldığı yer
-    + **Environment, History:** (Sağ üst) Objelerin saklandığı yer
-    + **Files, Plots, Packages, and Help:** (Sağ alt) Veriyi görüntüleme, yardım
+    + **Workspace** (Sol üst): Betikleri yazdığınız ve kaydetttiğiniz yer
+    + **Console** (Sol alt): Komutların çalıştırıldığı yer
+    + **Environment, History** (Sağ üst): Objelerin saklandığı yer
+    + **Files, Plots, Packages, ve Help** (Sağ alt): Veriyi görüntüleme, yardım
 
 
 
@@ -217,12 +217,12 @@ x>y
 
 ## Alıştırma 1.1
 
-- Bir sayı seçin ve bunu **z** objesine atayın
-- **z** objesini ikiyle çarpın ve bunu **a** objesine atayın
-- **a** objesine 10 ekleyin ve bunu **b** objesine atayın
-- **b** objesini ikiye bölün ve bunu **c** objesine atayın
-- **z** objesini **c** objesinden çıkarın ve bunu **d** objesine atayın
-- **d** objesi **z** objesine eşit mi?
+1. Bir sayı seçin ve bunu **z** objesine atayın
+2. **z** objesini ikiyle çarpın ve bunu **a** objesine atayın
+3. **a** objesine 10 ekleyin ve bunu **b** objesine atayın
+4. **b** objesini ikiye bölün ve bunu **c** objesine atayın
+5. **z** objesini **c** objesinden çıkarın ve bunu **d** objesine atayın
+6. **d** objesi **z** objesine eşit mi?
 
 
 
@@ -259,13 +259,13 @@ x>y
 
 ## Alıştırma 1.2
 
-- 45, 3, 9, 99, ve 0'ı barındıran bir obje oluşturun
-- 66, 0, 1, 5, and 0'ı barındıran bir diğer obje oluşturun
-- Bu iki objeyi toplayın
-- Birbiriyle çarpın
-- Birinciyi ikinciye bölün
-- Sonuç kaç çıktı?
-- R tek boyutlu ve birçok elemente sahip objelerle nasıl başa çıkıyor? 
+1. 45, 3, 9, 99, ve 0'ı barındıran bir obje oluşturun
+2. 66, 0, 1, 5, and 0'ı barındıran bir diğer obje oluşturun
+3. Bu iki objeyi toplayın
+4. Birbiriyle çarpın
+5. Birinciyi ikinciye bölün
+6. Sonuç kaç çıktı?
+7. R tek boyutlu ve birçok elemente sahip objelerle nasıl başa çıkıyor? 
 
 
 
@@ -276,6 +276,7 @@ x>y
 - Fonksiyonlar şu şekilde kullanılır: `name_of_function(inputs)`   
 
 - Fonksiyonun sonucu bir objeye saklanabilir:
+
 `output <- name_of_function(inputs)`
 
 
@@ -568,11 +569,11 @@ y[y < 10 & y != 5]
 
 ## Alıştırma 2.1
 
-- `seq(1, 27, 0.5)` vektörünün 9 ve 12.sıradaki elementleri nelerdir? 
+1. `seq(1, 27, 0.5)` vektörünün 9 ve 12.sıradaki elementleri nelerdir? 
 
-- 4 ve 34 arasındaki tüm çift sayıları içeren bir vektör yaratın ve bunu `a` objesine atayın. İpucu: `seq()` fonksiyonunu kullanın.
+2. 4 ve 34 arasındaki tüm çift sayıları içeren bir vektör yaratın ve bunu `a` objesine atayın. İpucu: `seq()` fonksiyonunu kullanın.
 
-- `a` vektöründe 17'den büyük olan tüm elementleri seçerek çıkarın.
+3. `a` vektöründe 17'den büyük olan tüm elementleri seçerek çıkarın.
 
 
 
@@ -647,7 +648,7 @@ z
 
 
 
-## Modların birbirine dönüşümleri | character'e dönüştürme
+## Modların birbirine dönüşümleri | Character'e dönüştürme
 
 ```{r}
 x
@@ -656,7 +657,7 @@ z
 
 
 
-## Modların birbirine dönüşümleri | character'e dönüştürme
+## Modların birbirine dönüşümleri | Character'e dönüştürme
 
 ```{r}
 x <- as.character(x)
@@ -668,7 +669,7 @@ z
 
 
 
-## Modların birbirine dönüşümleri | numeric'e dönüştürme
+## Modların birbirine dönüşümleri | Numeric'e dönüştürme
 
 ```{r}
 x <- c("1","-2", "3.25", "A")
@@ -678,7 +679,7 @@ x
 
 
 
-## Modların birbirine dönüşümleri | numeric'e dönüştürme
+## Modların birbirine dönüşümleri | Numeric'e dönüştürme
 
 ```{r}
 y <- c(T,F,F,T,T)
@@ -688,7 +689,7 @@ y
 
 
 
-## Modların birbirine dönüşümleri | logical'a dönüştürme
+## Modların birbirine dönüşümleri | Logical'a dönüştürme
 
 ```{r}
 x <- c(0, 0, 5, 79, 3500)
@@ -711,7 +712,7 @@ y
 
 
 
-## R ipucu: Zorla güzellik olmaz
+## R ipucu: zorla güzellik olmaz
 
 - Atomic bir vektörün tüm elementleri aynı tipte olmalıdır. 
 - Yani birbirinden farklı elementleri birleştirmeye çalıştığınızda otomatik olarak en esnek tipte birleşeceklerdir. 
@@ -777,7 +778,7 @@ typeof(f)
 ## 3. Matriksler
 
 - İki boyutlu veri dosyası (tablo)
-- Matriksler vektörlerle çok benzer davranış gösterir.
+- Vektörlerle çok benzer davranış gösterirler
 
 
 
@@ -810,7 +811,7 @@ is.matrix(m)
 
 
 
-## 3. Matriksler | Matriksler oluşturma
+## 3. Matriksler | Matriks oluşturma
 
 ```{r}
 v1 <- c(1,2,3)
@@ -822,7 +823,7 @@ m
 
 
 
-## 3. Matriksler | Matriksler oluşturma
+## 3. Matriksler | Matriks oluşturma
 
 ```{r}
 m <- rbind(v1, v2)
@@ -955,9 +956,9 @@ tues[tues<15]
 
 ## Alıştırma 2.3
 
-- İki tane 5'e 2lik matriks oluşturun. Bir tanesi 1-2* arasındaki tüm çift sayıları içermeli, diğeri tüm tek sayıları. Matriksleri satırlara göre doldurdun.
-- Bu iki matriksi satır ile birleştirin (rbind) ve yeni bir objeye atayın.
-- Bu iki matriksi sütun ile birleştirin (cbind) ve yeni bir objeye atayın.
+1. İki tane 5'e 2lik matriks oluşturun. Bir tanesi 1-2* arasındaki tüm çift sayıları içermeli, diğeri tüm tek sayıları. Matriksleri satırlara göre doldurdun.
+2. Bu iki matriksi satır ile birleştirin (rbind) ve yeni bir objeye atayın.
+3. Bu iki matriksi sütun ile birleştirin (cbind) ve yeni bir objeye atayın.
 
 
 
@@ -971,10 +972,10 @@ rownames(january) <- c("week 1", "week 2", "week 3", "week 4", "week 5")
 ```
 
 - Yukarıdaki kodu çalıştırın.
-- January ayından Saturday ve Sunday sütunlarını silin.
-- 9, 10, ve 11. günlerde hasta oldunuz (geçmiş olsun!). Bu günleri "hasta" olarak değiştirin. Matriksteki diğer girdiler bundan nasıl etkilendi?
-- Kalan günleri "sağlıklı" olarak değiştirin.
-- length() fonksiyonunu matriks üzerinde kullanınca ne sonuç alıyorsunuz? Aynı matriks üzerinde nrow() ve ncol() fonksiyonlarını kullanın. İlk sonuçla nasıl ilişkililer?
+1. January ayından Saturday ve Sunday sütunlarını silin.
+2. 9, 10, ve 11. günlerde hasta oldunuz (geçmiş olsun!). Bu günleri "hasta" olarak değiştirin. Matriksteki diğer girdiler bundan nasıl etkilendi?
+3. Kalan günleri "sağlıklı" olarak değiştirin.
+4. length() fonksiyonunu matriks üzerinde kullanınca ne sonuç alıyorsunuz? Aynı matriks üzerinde nrow() ve ncol() fonksiyonlarını kullanın. İlk sonuçla nasıl ilişkililer?
 
 
 
@@ -1040,9 +1041,13 @@ a[1,2,2]
 - Temel taslak:
 
 `for (i in 1:number_of_iterations) {`
+
 `buraya bakarlar`
+
 `buraya kod gelecek`
+
 `buraya bakarlar`
+
 `}`
 
 
@@ -1091,7 +1096,7 @@ for (i in 1:2){
 i # i şu anda workspace'de bir obje.
 ```
 
-- i eğer onunla başka bir loop çalıştırırsanız kendini yenileyecektir.
+- i, eğer onunla başka bir loop çalıştırırsanız kendini yenileyecektir.
 
 
 
@@ -1114,9 +1119,9 @@ for (i in 1:4){
 
 Bu alıştırma için 2.kısımda oluşturduğunuzda `january` matriksini kullanın.
 
-- Tüm wednesdaylerin tarihlerini yazdırın.
+1. Tüm wednesdaylerin tarihlerini yazdırın.
 
-- Beşinci haftada yer alan February günlerini `NA` ile değiştirin.
+2. Beşinci haftada yer alan February günlerini `NA` ile değiştirin.
 
 
 
@@ -1138,7 +1143,7 @@ for (i in 1:length(wizards)){
 
 ## Alıştırma 3.2
 
-Sizin sıranızda oturan insanların ismiyle bir vektör oluşturup, onlara bir loop ile küçük süprizler yapın (güzel bir şeyler yazın).
+1. Sizin sıranızda oturan insanların ismiyle bir vektör oluşturup, bir loop ile onlara küçük süprizler yapın (güzel bir şeyler yazın).
 
 
 
@@ -1167,7 +1172,7 @@ x <- rnorm(n = 50, mean = 0, sd = 1)
 m <- matrix(x, ncol = 5, nrow = 10)
 ```
 
-- `m` matriksindeki her sütunun ortalamasını hesaplayan bir loop yazın ve sonucu a objesine atayarak saklayın.
+1. `m` matriksindeki her sütunun ortalamasını hesaplayan bir loop yazın ve sonucu a objesine atayarak saklayın.
 
 
 
@@ -1231,7 +1236,9 @@ if (3 > 2) {
 - Temel taslak:
 
 `if (mantıksal ifade) {`
+
 `buraya kod gelecek`
+
 `}`
 
 - Eğer mantıksal önerme doğru ise, **TRUE**, kod çalışacak. Eğer yanlış ise, **FALSE**, çalışmayacak.
@@ -1240,7 +1247,7 @@ if (3 > 2) {
 
 ## Flow ifadeleri | If ifadeleri
 
-- Genellikle loopların farklı koşullar altında farklı şeyler yapmasını isteriz. Loopların değişkenleri, seçenekleri ya da mantıksal önermeleri dikkate almasını isteriz.
+- Genellikle loopların farklı koşullar altında farklı şeyler yapmasını isteriz. Mesela: değişkenleri, seçenekleri ya da mantıksal önermeleri dikkate almasını isteriz.
 
 
 
@@ -1263,9 +1270,9 @@ for (i in 1:length(x)) {
 
 ## Alıştırma 3.4
 
-- `x` isimli 1 ve 100 arasındaki tüm sayıları içeren bir vektör oluşturun.
+1. `x` isimli 1 ve 100 arasındaki tüm sayıları içeren bir vektör oluşturun.
 
-- Vektör için `x[i] * 2` işlemini 100 kez (vektörün uzunluğu) gerçekleştirin. Fakat eğer `x[i]` 32'den büyük ve 50'den küçükse `x[i] * 3`'ı hesaplayın. Çıktıyı bir vektöre atayın. 
+2. Vektör için `x[i] * 2` işlemini 100 kez (vektörün uzunluğu) gerçekleştirin. Fakat eğer `x[i]` 32'den büyük ve 50'den küçükse `x[i] * 3`'ı hesaplayın. Çıktıyı bir vektöre atayın. 
 
 
 
@@ -1315,7 +1322,7 @@ for (i in 1:5) {
 ```
 
 - Yukarıdaki kodu çalıştırın.
-- Yeni bir veriseti oluşturun ve bu verisetinde 10 veya 10'dan daha az kenesi olan hayvanlara 0, 10'dan daha fazla kenesi olanlara 1 atayın. Bunu loop kullanarak yapın. Daha sonra loop kullanmadan yapın.
+1. Yeni bir veriseti oluşturun ve bu verisetinde 10 veya 10'dan daha az kenesi olan hayvanlara 0, 10'dan daha fazla kenesi olanlara 1 atayın. Bunu loop kullanarak yapın. Daha sonra loop kullanmadan yapın.
 
 
 
@@ -1556,13 +1563,13 @@ subtract(5, 6)
 
 ## Alıştırma 4.2
 
-Bir vektörü girdi olarak alan, daha sonra vekötürün toplamını 10 ile çarpıp sonucun 1000'den küçük olduğunu mantıksal önerme ile dönen bir fonksiyon yazın.
+1. Bir vektörü girdi olarak alan, daha sonra vekötürün toplamını 10 ile çarpıp sonucun 1000'den küçük olduğunu mantıksal önerme ile dönen bir fonksiyon yazın.
 
 
 
 ## Alıştırma 4.3 (Zor)
 
-Verilen bir numarayı bölenlerine ayıran bir fonksiyon yazın.
+1. Verilen bir numarayı bölenlerine ayıran bir fonksiyon yazın.
 
 
 
@@ -1597,7 +1604,7 @@ is.data.frame(iris)
 
 
 
-## 5. Data frameler | Dataframes ve matriksler için faydalı fonksiyonlar
+## 5. Data frameler | Dataframeler ve matriksler için faydalı fonksiyonlar
 
 - `head()` - ilk 6 satırı gör
 - `tail()` - son 6 satırı gör
@@ -1657,7 +1664,7 @@ head(iris[,4])
 
 4. `iris` veri setindeki tüm tek sayılı satırları seçmek için `seq()` fonksiyonunu kullanın.
 
-5. `iris` vei setindeki `Sepal.Width` sütununu silin ve başka bir objeye atayın.
+5. `iris` vei setindeki `Sepal.Width` sütununu başka bir objeye atayın ve sonrasında silin.
 
 6. `iris` veri setinde petal uzunluğu 3'den büyük olanları seçin.
 
@@ -1773,7 +1780,7 @@ blue.hill <- read.csv("/Users/bilgecan/Desktop/BlueHill.csv")
 
 
 
-## İpucu: Değişken isimleri
+## İpucu: değişken isimleri
 
 - Bir veriyi R'da açmak bazen çok sıkıntılı hale gelebilir. Genellikle sorun değişken isimlerinden gelir.
 - Değişken isimlerinde boşluk kullanmayın.
@@ -1799,7 +1806,7 @@ avg.height     # ÇOK İYİ!
 
 4. İlk satırı seçin ve bir objeye atayın. Class'ı nedir? Tek bir moda mı sahip?
 
-5. Üçüncü ve dördüncü alıştırmaları düşündüğünüzde veri setlerindeki seçim ile matrikslerdeki seçim arasında nasıl farklar var?
+5. Üçüncü ve dördüncü alıştırmaları düşündüğünüzde dataframedeki seçim ile matrikslerdeki seçim arasında nasıl farklar var?
 
 
 
@@ -1942,13 +1949,13 @@ l$l2 <- l2
 
 ## Alıştırma 5.5
 
-- `z` listesindeki ilk elementi seçin.
+1. `z` listesindeki ilk elementi seçin.
 
-- `d` listesindeki ikinci sütunu seçin.
+2. `d` listesindeki ikinci sütunu seçin.
 
-- `l` listesinden b'den 50. elementi seçin
+3. `l` listesinden b'den 50. elementi seçin
 
-- `x`'in içindeki `l`'yi `[]` ve ``[[]]`` ile çıkarak 2 ile çarpın. Neden biri çalışırken diğeri çalışmıyor?
+4. `x`'in içindeki `l`'yi `[]` ve ``[[]]`` ile çıkarak 2 ile çarpın. Neden biri çalışırken diğeri çalışmıyor?
 
 
 
