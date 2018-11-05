@@ -2,7 +2,10 @@
 title: "DogaBilimleriCevaplar"
 author: "Ismail Bekar"
 date: "10/26/2018"
-output: pdf_document
+output:
+  pdf_document: default
+  html_document:
+    df_print: paged
 ---
 
 ```{r setup, include=FALSE}
@@ -13,7 +16,8 @@ knitr::opts_chunk$set(echo = TRUE)
 ## Alıştırma 2.1
 
 
-1. `seq(1, 27, 0.5)` vektörünün 9 ve 12.sıradaki elementleri nelerdir? 
+1. `seq(1, 27, 0.5)` vektörünün 9 ve 12.sıradaki elementleri nelerdir?
+
 ```{r}
 data <- seq(1, 27, 0.5)
 
@@ -22,11 +26,13 @@ data[12]
 ```
 
 2. 4 ve 34 arasındaki tüm çift sayıları içeren bir vektör yaratın ve bunu `a` objesine atayın. İpucu: `seq()` fonksiyonunu kullanın.
+
 ```{r}
 a <- seq(from = 4, to = 34, by=2)
 ```
 
 3. `a` vektöründe 17'den büyük olan tüm elementleri seçerek çıkarın.
+
 ```{r}
 
 a[a > 17]
@@ -35,16 +41,19 @@ a[a > 17]
 ## Alıştırma 2.2
 
 1. TRUE ve 50'yi içeren bir vektör oluşturun.
+
 ```{r}
 data1 <- c(TRUE, 50)
 ```
 
 2. "A" ve 1 içeren bir vektör oluşturun.
+
 ```{r}
 data2 <- c("A", 1)
 ```
 
 3. TRUE ve "C" içeren bir vektör oluşturun.
+
 ```{r}
 data3 <- c(TRUE, "C")
 ```
@@ -53,6 +62,7 @@ data3 <- c(TRUE, "C")
 ## Alıştırma 2.3
 
 1. İki tane 5'e 2lik matriks oluşturun. Bir tanesi 1-20 arasındaki tüm çift sayıları içermeli, diğeri tüm tek sayıları. Matriksleri satırlara göre doldurdun.
+
 ```{r}
 
 matriks1 <- matrix(seq(from = 1, to = 20, by = 2), nrow = 5, ncol = 2)
@@ -65,7 +75,6 @@ matriks3 <- rbind(matriks1, matriks2)
 matriks3
 ```
 
-
 3. Bu iki matriksi sütun ile birleştirin (cbind) ve yeni bir objeye atayın.
 ```{r}
 matriks4 <- cbind(matriks1, matriks2)
@@ -75,12 +84,11 @@ matriks4
 
 ## Alıştırma 2.4
 
-```{r, eval = F}
+```{r}
 january <- matrix(1:31, nrow = 5, ncol = 7, byrow = T)
 colnames(january) <- c(
-  "monday", "tuesday", "wednesday",
-  "thursday", "friday", "saturday", "sunday"
-)
+     "monday", "tuesday", "wednesday",
+     "thursday", "friday", "saturday", "sunday")
 rownames(january) <- c("week 1", "week 2", "week 3", "week 4", "week 5")
 ```
 
@@ -90,19 +98,24 @@ rownames(january) <- c("week 1", "week 2", "week 3", "week 4", "week 5")
 january[,c(-6,-7)]
 ```
 
-3. 9, 10, ve 11. günlerde hasta oldunuz (geçmiş olsun). Bu günleri "hasta" olarak değiştirin. Matriksteki diğer girdiler bundan nasıl etkilendi?
+3. 9, 10, ve 11. günlerde hasta oldunuz (geçmiş olsun). Bu günleri "hasta" olarak değiştirin. Matriksteki diğer girdiler bundan nasıl etkilendi? 
+4. Kalan günleri "turp gibi" olarak değiştirin
+
 ```{r}
-january[c(7, 12, 17)]  <- "hasta"
+# Birinci çözüm
+january[c(1,3:5),] <- "turp gibi"
+january[2, c(1,5:7)] <- "turp gibi"
+january[2, c(2:4)] <- "hasta"
+january
+
+# İkinci çözüm
+january[!january %in% c(9,10,11)] <- "turp gibi"
+january[january %in% c(9,10,11)] <- "hasta"
 january
 ```
-
-4. Kalan günleri "turp gibi" olarak değiştirin.
-```{r}
-january[c(-7, -12, -17)]  <- "turp gibi"
-```
-
  
 5. length() fonksiyonunu matriks üzerinde kullanınca ne sonuç alıyorsunuz? Aynı matriks üzerinde nrow() ve ncol() fonksiyonlarını kullanın. İlk sonuçla nasıl ilişkililer?
+
 ```{r}
 length(january)
 nrow(january)
@@ -110,18 +123,17 @@ ncol(january)
 ```
 
 
-
 ## Alıştırma 3.1
 
 Bu alıştırma için 2.kısımda oluşturduğunuzda `january` matriksini kullanın.
 
 1. Tüm wednesdaylerin tarihlerini yazdırın.
+
 ```{r, eval = F}
 january <- matrix(1:31, nrow = 5, ncol = 7, byrow = T)
 colnames(january) <- c(
-  "monday", "tuesday", "wednesday",
-  "thursday", "friday", "saturday", "sunday"
-)
+     "monday", "tuesday", "wednesday",
+  "thursday", "friday", "saturday", "sunday")
 rownames(january) <- c("week 1", "week 2", "week 3", "week 4", "week 5")
 
 for (i in 11:15) {
@@ -130,16 +142,19 @@ for (i in 11:15) {
 ```
 
 2. Beşinci haftada yer alan February günlerini `NA` ile değiştirin.
+
 ```{r}
-for (i in c(seq(20, 35, by=5))) {
-  january[i] <- NA*i
+for (i in 4:7) {
+  january[5,i] <- NA
 }
+january
 ```
 
 
 ## Alıştırma 3.2
 
 1. Sizin sıranızda oturan insanların ismiyle bir vektör oluşturup, onlara bir loop ile küçük süprizler yapın (güzel bir şeyler yazın).
+
 ```{r}
 insanlar <- c("Bilgecan", "Nurbahar")
 
@@ -181,13 +196,12 @@ x <- seq(1:100)
 for (i in 1:length(x)) {
   if (x[i] > 32 & x[i] < 50) {
     a[i] <- x[i] * 3
-    print(a)
   }
   if (x[i] < 33 | x[i] > 49) {
     a[i] <- x[i] * 2
-    print(a)
   }
 }
+a
 ```
 
 
@@ -209,15 +223,46 @@ for (i in 1:5) {
 
 ```{r}
 
+# Dört farklı çözüm yöntemi için dört farklı veri
 tick_bi <- tick_count
-tick_bi <- for (i in 1:length(tick_bi)) {
-     if (tick_bi[tick_bi >= 10]) {
-          tick_bi[tick_bi >= 10]) <- 1
+tick_bi2 <- tick_count  
+tick_bi3 <- tick_count 
+tick_bi4 <- tick_count 
+
+# Birinci çözüm
+for (i in 1:length(tick_bi)) {
+     if (tick_bi[i] > 10) {
+          tick_bi[i] <- 1
      } else {
           tick_bi[i] <- 0
      }
 }
 
+# İkinci çözüm
+for (i in 1:length(tick_bi2)) {
+     if (tick_bi2[i] <= 10) {
+          tick_bi2[i] <- 0
+          }
+     if (tick_bi2[i] > 10) {
+          tick_bi2[i] <- 1
+     } 
+}
+
+# Üçüncü çözüm
+for (i in 1:nrow(tick_bi3)) {
+     for (h in 1:ncol(tick_bi3)) {
+          if (tick_bi3[i,h] <= 10) {
+          tick_bi3[i,h] <- 0
+          }
+     if (tick_bi3[i,h] > 10) {
+          tick_bi3[i,h] <- 1
+     } 
+     }
+}
+
+# Dördüncü çözüm
+tick_bi4[tick_bi4 < 10] <- 0
+tick_bi4[tick_bi4 >= 10] <- 1
 
 ```
 
@@ -226,23 +271,27 @@ tick_bi <- for (i in 1:length(tick_bi)) {
 *trees* ve *mtcars* R'da yüklü olan diğer iki veri setidir.
 
 1. Bu iki veri setinin kaç satıra sahip olduğuna bakın.
+
 ```{r}
 nrow(trees)
 nrow(mtcars)
 ```
 
 2. Kaç sütuna sahipler? Sütünların isimleri neler?
+
 ```{r}
 ncol(trees)
 ncol(mtcars)
 ```
 
 3. `str()` fonksiyonunu kullanarak *iris* veri setinin kaç türe sahip olduğunu bulun.
+
 ```{r}
 str(iris)
 ```
 
 4. İki veri setinde hangi class'lar mevcut?
+
 ```{r}
 str(trees)
 str(mtcars)
@@ -252,33 +301,39 @@ str(iris)
 ## Alıştırma 5.2
 
 1. `iris` veri setinde `Sepal.Width` sütunundaki 9. elementi bulun?
+
 ```{r}
-iris[9,2]
+iris[9, 2]
 iris[9,"Sepal.Width"]
 ```
 
 2. `iris` veri setindeki 17.satırı seçin.
+
 ```{r}
 iris[17,]
 ```
 
 3. `iris` veri setinin 1, 4 ve 7. satırları ile bir obje oluşturun. 
+
 ```{r}
 a <- iris[c(1,4,7),]
 ```
 
 4. `iris` veri setindeki tüm tek sayılı satırları seçmek için `seq()` fonksiyonunu kullanın.
+
 ```{r}
 iris[seq(from= 1, to= 150, by= 2),]
 ```
 
 5. `iris` vei setindeki `Sepal.Width` sütununu silin ve başka bir objeye atayın.
+
 ```{r}
 aa <- iris[, "Sepal.Width"]
 iris[, "Sepal.Width"] <- NULL
 ```
 
 6. `iris` veri setinde petal uzunluğu 3'den büyük olanları seçin.
+
 ```{r}
 iris[iris$Petal.Length > 3,]
 ```
@@ -292,11 +347,13 @@ length(iris)
 ## Alıştırma 5.3
 
 1. c(1,2,3) ve c(4,5,6,7) ile iki sütunlu bir veri seti oluşturun. Sonuç ne?
-```{r}
+
+```{r, eval= FALSE}
 data.frame(x= c(1,2,3), y= c(4,5,6,7))
 ```
 
 2. c("a","b","c") ve c(1,2,3) ile `data.frame` kulanarak bir veri seti oluşturun. Bir diğer veri setini önce `cbind`, sonra `data.frame` kullanarak oluşturun. Aradaki fark ne?
+
 ```{r}
 a <- data.frame(x= c("a","b","c"))
 b <- data.frame(y= c(1,2,3))
@@ -310,17 +367,20 @@ str(ab)
 ## Alıştırma 5.4
 
 1. Şu adresteki veriyi <a href = https://www.dropbox.com/s/cg0yyuvfxpdbouy/BlueHill.csv?dl=0>BlueHill.csv</a> R'da açın.
+
 ```{r}
 setwd("~/GitHub/DogaBilimleriR/Sunumlar")
 bluehill <- read.csv("BlueHill.csv")
 ```
 
 2. Tüm istasyonlar ve yıllardaki günlük ortalama sıcaklık nedir? (**MNTM**)?
+
 ```{r}
 mean(bluehill$MNTM)
 ```
 
 3. Dördüncü sütunu seçin ve bir objeye atayın. Class'ı ve modu nedir? İpucu: `class` ve `mode` fonksiyonlarını kullanın.
+
 ```{r}
 a <- bluehill$MNTM
 class(a)
@@ -328,6 +388,7 @@ mode(a)
 ```
 
 4. İlk satırı seçin ve bir objeye atayın. Class'ı nedir? Tek bir moda mı sahip?
+
 ```{r}
 b <- bluehill[1,]
 class(b)
@@ -336,5 +397,3 @@ mode(b)
 
 
 5. Üçüncü ve dördüncü alıştırmaları düşündüğünüzde veri setlerindeki seçim ile matrikslerdeki seçim arasında nasıl farklar var?
-
-

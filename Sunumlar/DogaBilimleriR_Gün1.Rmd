@@ -1522,7 +1522,7 @@ f3(1, 2)
 
 ## Alıştırma 4.1
 
-1. İki girdi (arguments) alan bir fonksiyon yazın. Girdiler `x` ve `y` olsun ve fonksiyon `x * 2 * y`'yi hespalasın.
+1. İki girdi (arguments) alan bir fonksiyon yazın. Girdiler `x` ve `y` olsun ve fonksiyon `x * 2 * y`'yi hesaplasın.
 
 2. Üç girdi alan bir fonksiyon yaratın ve sonuçtan vektör yaratın.
 
