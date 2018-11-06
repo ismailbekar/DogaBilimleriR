@@ -1,7 +1,7 @@
 library(likert)
 library(tidyverse)
-
 setwd("~/GitHub/DogaBilimleriR")
+
 anket <- read.csv("anket.csv")
 
 anket1 <- anket[,4:6]
@@ -27,16 +27,33 @@ names(anket2) <- c("Çalıştayın genel zorluk seviyesi nasıldı ?",
 
 anket_lik1 <- likert(anket1)
 anket_lik2 <- likert(anket2)
+tt <- "Doğa Bilimlerinde R Programlamaya Giriş Çalıştayı Değerlendirme Anketi"
 
-plot(anket_lik1)
-plot(anket_lik2)
+plot(anket_lik1) + theme(
+     axis.text.y = element_text(size = 13),
+     strip.background = element_rect(colour = "white", fill = "white"),
+     panel.grid.major = element_blank(),
+     panel.grid.minor = element_blank(),
+     panel.border = element_blank())
+plot(anket_lik2) + theme(
+     axis.text.y = element_text(size = 13),
+     strip.background = element_rect(colour = "white", fill = "white"),
+     panel.grid.major = element_blank(),
+     panel.grid.minor = element_blank(),
+     panel.border = element_blank())
+
 plot(anket_lik1, type = "density") +
      theme(strip.background = element_rect(colour = "white", fill = "white"),
            panel.grid.major = element_blank(),
            panel.grid.minor = element_blank(),
-           panel.border = element_blank()) 
+           panel.border = element_blank()) +
+     ggtitle("Doğa Bilimlerinde R Programlamaya Giriş Çalıştayı Değerlendirme Anketi")
 plot(anket_lik2, type = "density") + 
      theme(strip.background = element_rect(colour = "white", fill = "white"),
            panel.grid.major = element_blank(),
            panel.grid.minor = element_blank(),
-           panel.border = element_blank()) 
+           panel.border = element_blank()) +
+     ggtitle("Doğa Bilimlerinde R Programlamaya Giriş Çalıştayı Değerlendirme Anketi")
+
+
+
