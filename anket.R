@@ -21,21 +21,22 @@ for (i in 1:2) {
 
 names(anket1) <- c("Eğitmenler çalıştaya iyi hazırlanmıştı",
                    "Eğitmenler çalıştay boyunca yardımcı oldular",
-                   "Bu çalıştayda öğrendiklerimi daha sonra kullanabileceğim")
+                   "Bu çalıştayda öğrendiklerimi ileride kullanabileceğim")
 names(anket2) <- c("Çalıştayın genel zorluk seviyesi nasıldı ?",
-                   "Çalıştayın ilerleme hızı nasıldı?")
+                   "Çalıştayın genel ilerleme hızı nasıldı ?")
 
 anket_lik1 <- likert(anket1)
 anket_lik2 <- likert(anket2)
 
-
-theme_update(legend.text = element_text(size = rel(0.7)))
 plot(anket_lik1)
 plot(anket_lik2)
-plot(anket_lik1, type = "density") + 
-     theme(
-          strip.background = element_rect(colour = "white", fill = "white"),
+plot(anket_lik1, type = "density") +
+     theme(strip.background = element_rect(colour = "white", fill = "white"),
            panel.grid.major = element_blank(),
            panel.grid.minor = element_blank(),
            panel.border = element_blank()) 
-plot(anket_lik2, type = "density")
+plot(anket_lik2, type = "density") + 
+     theme(strip.background = element_rect(colour = "white", fill = "white"),
+           panel.grid.major = element_blank(),
+           panel.grid.minor = element_blank(),
+           panel.border = element_blank()) 
