@@ -4,3 +4,5 @@
 .Rproj.user
 *.png
 .RData
+.Rhistory
+.DS_Store
