@@ -11,11 +11,13 @@ for (i in 2:4) {
                              "Katılıyorum","Kesinlikle katılıyorum")
 }
 
-for (i in 2:3) {
-     anket2[,i] <- factor(anket2[,i], levels= c("1","2","3","4","5"))
-     levels(anket2[,i]) <- c("Çok yavaş", "Yavaş", "Normal", 
-                             "Hızlı","Çok hızlı")
-}
+
+anket2[,3] <- factor(anket2[,3], levels= c("1","2","3","4","5"))
+levels(anket2[,3]) <- c("Çok kolay", "Kolay", "Normal", 
+                             "Zor","Çok zor")
+anket2[,2] <- factor(anket2[,2], levels= c("1","2","3","4","5"))
+levels(anket2[,2]) <- c("Çok yavaş", "Yavaş", "Normal", 
+                        "Hızlı","Çok hızlı")
 
 names(anket1) <- c("ID",
                    "Eğitmenler çalıştaya iyi hazırlanmıştı",
@@ -48,4 +50,5 @@ ggplot(anket_lf2, aes(variable, fill= value, width=1)) +
           y= "Katılımcı Sayısı",
           fill= "Cevaplar") +
      scale_fill_brewer(palette = "Spectral", direction = -1) +
-     theme_light()
+     theme_light() +
+     facet_wrap("")
