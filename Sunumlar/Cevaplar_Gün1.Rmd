@@ -321,7 +321,7 @@ a <- iris[c(1,4,7),]
 
 4. `iris` veri setindeki tüm tek sayılı satırları seçmek için `seq()` fonksiyonunu kullanın.
 
-```{r}
+```{r, eval= FALSE}
 iris[seq(from= 1, to= 150, by= 2),]
 ```
 
@@ -334,7 +334,7 @@ iris[, "Sepal.Width"] <- NULL
 
 6. `iris` veri setinde petal uzunluğu 3'den büyük olanları seçin.
 
-```{r}
+```{r, eval= FALSE}
 iris[iris$Petal.Length > 3,]
 ```
 
