@@ -1,36 +1,43 @@
 ---
 title: "Doğa Bilimlerinde R Programlamaya Giriş"
-author: "Bilgecan Şen, Nurbahar Usta, İsmail Bekar"
+author: "Nurbahar Usta, İsmail Bekar"
 output:
   ioslides_presentation:
     widescreen: true
 ---
 
----
+## Gerekli Dökümanlar
+
+https://bit.ly/dogaBR2022
+
+##
 
 **Kaynaklar**
 
-- <a href = "http://r4ds.had.co.nz">R for Data Science</a>
+- <a href = "http://r4ds.had.co.nz">R for Data Science</a> ARTIK TÜRKÇE!!!
 - <a href = "http://adv-r.had.co.nz">Advanced R</a>
 
 **Katkı Sağlayanlar**
 
-- <a href = "http://benweinstein.weebly.com/">Ben Weinstein</a> (2014)
-- <a href = "http://mccannecology.weebly.com/">Mike McCann</a> (2015)
-- <a href = "http://gurevitchlab.weebly.com/nicole-kinlock.html">Nicole Kinlock</a> (2016, 2017)
+- Ben Weinstein (2014)
+- Mike McCann (2015)
+- Nicole Kinlock (2016, 2017)
+- Bilgecan Şen (2018)
 
 
 
 
-# 1. Gün
+## Program
+
 
 - Bölüm 1: <a href = "#/3"> R Programlamaya Giriş </a>
 - Bölüm 2: <a href = "#/30"> Homojen Veri Yapıları </a>
 - Bölüm 3: <a href = "#/93"> Loops and Flow İfadeleri </a>
 - Bölüm 4: <a href = "#/116"> Fonksiyonlar </a>
 - Bölüm 5: <a href = "#/133"> Heterojen Veri Yapıları </a>
-- Bölüm 6: <a href = "#/172"> Temel Görselleştirme </a>
-- Bölüm 7: <a href = "#/172"> Kapanış </a> 
+- Bölüm 6: <a href = "#/172"> Tidyverse </a>
+- Bölüm 7: <a href = "#/172"> Temel Görselleştirme </a>
+- Bölüm 8: <a href = "#/172"> Kapanış </a> 
 
 
 # Bölüm 1: R Programlamaya Giriş
@@ -139,7 +146,7 @@ output:
 
 
 
-## Mantıksal Operatörler
+## Mantıksal operatörler
 
 ```{r}
 2<3
@@ -310,7 +317,7 @@ mean(x)
 
 
 
-## R İpucu: Yardım Sistemi
+## İpucu: Yardım sistemi
 
 - Yardım dosyaları fonksiyonların neler yaptığı, nasıl çalıştığı gibi bilgilerin yanı sıra çeşitli örnekleri de içinde barındırır. 
 
@@ -321,7 +328,7 @@ help(mean)
 - Fonksiyonun adından önce `?` yazarak da yardım sayfasını görüntüleyebilirsiniz.
 
 ```{r}
-?mean  # Same as help(mean) 
+?mean  # help(mean) yazmakla aynı
 ```
 
 - `??` kullanarak `"sequence"` kelimesini içeren tüm fonksiyonları aratabilirsiniz.
@@ -334,7 +341,7 @@ help(mean)
 
 ## Alıştırma 1.3
 
-1. 34, 16, 105, ve 27'nin "medianını" hesaplayın.
+1. 34, 16, 105, ve 27'nin medyanını "median" hesaplayın.
 *Hatırlatma:* fonksiyon isimleri işlevlerine göre verilmiştir.
 
 2. `range()` fonksiyonu ne yaptığını açıklayın ve yardım dosyasındaki örneğin ne olduğuna bakın.
@@ -362,7 +369,7 @@ help(mean)
 
 ## 1. Vektörler | Vektör oluşturma
 
-- Şu ana kadar oluşturduğumuz her obje bir vektör.
+- Şu ana kadar oluşturduğumuz her obje bir vektör
 - Vektörler her uzunlukta olabilir
 - Tek boyutlu
 
@@ -577,7 +584,7 @@ y[y < 10 & y != 5]
 
 
 
-## Vektör Çeşitleri
+## Vektör çeşitleri
 
 - "Storage mode"" veya sadece "mode"" olarak da adlandırılır.
 - Altı çeşit vektör vardır:
@@ -590,7 +597,7 @@ y[y < 10 & y != 5]
 
 
 
-## Vektör Çeşitleri | Numeric ve integer
+## Vektör çeşitleri | Numeric ve integer
 
 ```{r}
 x <- c(1,2,3,4,5)
@@ -602,7 +609,7 @@ is.double(y)
 
 
 
-## Vektör Çeşitleri | Numeric ve integer
+## Vektör çeşitleri | Numeric ve integer
 
 ```{r}
 z1 <- c(1L,2L,3L,4L,5L)
@@ -614,28 +621,28 @@ is.integer(z2)
 
 
 
-## Vektör Çeşitleri | Character
+## Vektör çeşitleri | Character
 
 ```{r}
-x <- c("Bilgecan is the best Teaching Assistant")
+x <- c("İsmail and Nurbahar are the best teaching assistants")
 x
 length(x)
 ```
 
 
 
-## Vektör Çeşitleri | Character
+## Vektör çeşitleri | Character
 
 ```{r}
-y <- c("Bilgecan", "is", "the", "best", "Teaching", "Assistant")
+y <- c("İsmail", "and", "Nurbahar", "are", "best", "teaching", "assistants")
 y
 y[1]
-y[c(2,4)]
+y[c(3,5)]
 ```
 
 
 
-## Vektör Çeşitleri | Logical
+## Vektör çeşitleri | Logical
 
 ```{r}
 x <- c(1,2,3,4,5)
@@ -669,7 +676,7 @@ z
 
 
 
-## Modların birbirine dönüşümleri | Numeric'e dönüştürme
+## Modların birbirine dönüşümleri | numeric'e dönüştürme
 
 ```{r}
 x <- c("1","-2", "3.25", "A")
@@ -716,7 +723,7 @@ y
 
 - Atomic bir vektörün tüm elementleri aynı tipte olmalıdır. 
 - Yani birbirinden farklı elementleri birleştirmeye çalıştığınızda otomatik olarak en esnek tipte birleşeceklerdir. 
-- En esnek tipler, en az esnek olandan başlayarak, şu şekilde sıralanır: logical, integer, double, and character.
+- En esnek tipler, en az esnek olandan başlayarak, şu şekilde sıralanır: logical, integer, double, ve character.
 
 
 
@@ -956,7 +963,7 @@ tues[tues<15]
 
 ## Alıştırma 2.3
 
-1. İki tane 5'e 2lik matriks oluşturun. Bir tanesi 1-2* arasındaki tüm çift sayıları içermeli, diğeri tüm tek sayıları. Matriksleri satırlara göre doldurdun.
+1. İki tane 5'e 2lik matriks oluşturun. Bir tanesi 1-20 arasındaki tüm çift sayıları içermeli, diğeri tüm tek sayıları. Matriksleri satırlara göre doldurdun.
 2. Bu iki matriksi satır ile birleştirin (rbind) ve yeni bir objeye atayın.
 3. Bu iki matriksi sütun ile birleştirin (cbind) ve yeni bir objeye atayın.
 
@@ -1970,8 +1977,85 @@ l$l2 <- l2
 - Listelerden seçim yaparken gerçek veriyi seçip kullanmak istiyorsanız `[[]]` kullanın.
 
 
+# Bölüm 6: Tidyverse
 
-# Bölüm 6: Temel Görselleştirme
+## Tidyverse nedir?
+
+- Birden fazla R paketinden oluşan bir paket topluluğu
+- ggplot2, dplyr, tibble, readr
+
+## Tibble
+
+- Tibble = Steroidli dataframe
+
+```{r}
+iris
+
+```
+
+## Tibble
+
+```{r, warning=FALSE}
+library(tibble)
+iris <- as_tibble(iris)
+iris
+
+```
+
+## Tibble
+
+```{r, warning=FALSE}
+library(tibble)
+df_tibble <- tibble(`İsim` = "İsmail",
+                    `000` = "numara",)
+df_tibble
+df_normal <- data.frame(`İsim` = "İsmail",
+                        `000` = "numara")
+df_normal
+```
+
+## Readr
+
+- Dosyaları daha hızlı ve hatasız bir şekilde okumak için geliştirildi
+
+## Readr
+
+```{r, warning=FALSE}
+
+blue.hill <- read.csv("BlueHill.csv")
+head(blue.hill)
+
+```
+
+## Readr
+
+```{r, warning=FALSE}
+
+library(readr) 
+blue.hill <- read_csv("BlueHill.csv")
+
+```
+
+## Readr
+
+```{r, warning=FALSE}
+
+blue.hill <- read.csv("BlueHill.csv")
+
+```
+
+## Alıştırma 6.1
+
+1. Temel R kullanarak bir data frame oluşturun. 
+
+2. Temel R kullanarak bu data frame'i csv dosyası olarak yazdırın.
+
+3. Temel R kullanarak bu csv dosyasını R'a aktarın.
+
+4. 1, 2 ve 3 numaralı alıştırmaları tidyverse fonksiyonları kullanarak yapın ve aradaki farkı bulun.
+
+
+# Bölüm 7: Temel Görselleştirme
 
 
 
